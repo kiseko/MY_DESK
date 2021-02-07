@@ -64,9 +64,14 @@
   width: 580px;
   height: 40px;
   padding: 0 10px;
-  border: 1px solid #F1A55E;
+  border: 1px solid #F5BC86;
   border-radius: 10px;
   font-size: 20px;
+}
+
+.input-box:hover {
+  border: 1px solid #EE8F36;
+  outline: none;
 }
 
 .input-box:focus {
@@ -87,6 +92,22 @@
   border-radius: 10px;
   font-size: 20px;
 }
+
+.form-button:hover {
+  border: 3px solid #EA7304;
+}
+
+.form-button:active {
+  margin-top: 1px;
+  border: 5px solid #EA7304;
+  outline: none;
+}
+
+.form-button:focus {
+  margin-top: none;
+  outline: none;
+}
+
 
 @media screen and (max-width: 920px) {
 
