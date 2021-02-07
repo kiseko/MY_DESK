@@ -1,0 +1,114 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #666666;
+}
+
+.container {
+  margin: 0 auto;
+  width: 900px;
+}
+
+.title {
+  margin: 105px 0 60px;
+  text-align: center;
+  color: #EA7304;
+  font-size: 36px;
+}
+
+.form-content {
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  min-width: 320px;
+  display: flex;
+  align-items: center;
+}
+
+.marker {
+  width: 20px;
+  height: 30px;
+  background-color: #EE8F36;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.label-text {
+  padding-top: 2px;
+  font-size: 20px;
+}
+
+.input-box {
+  width: 580px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #F1A55E;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.input-box:focus {
+  border: 2px solid #EE8F36;
+  outline: none;
+}
+
+.submit {
+  text-align: center;
+}
+
+.form-button {
+  width: 160px;
+  height: 40px;
+  color: #fff;
+  background-color: #EE8F36;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 920px) {
+
+  .container {
+    width: 90%;
+  }
+
+  .form-content {
+    display: block;
+  }
+
+  .label {
+    padding-bottom: 15px;
+  }
+
+  .label {
+    min-width: auto;
+  }
+
+  .input-box {
+    width: 100%;
+  }
+
+}
+
