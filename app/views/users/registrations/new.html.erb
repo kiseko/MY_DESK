@@ -4,49 +4,57 @@
 
   <%= form_with model: @user, url: user_registration_path, id: "new_user", class: "new_user", local: true do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
+    <div class="form">
 
-    <div class="form-content">
-      <div class="label">
-        <div class="marker"></div>
-        <%= f.label :unique_name, "ユーザーID", class: "label-text" %>
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :unique_name, "ユーザーID", class: "label-text" %>
+        </div>
+        <%= f.text_field :unique_name, autofocus: true, class: "input-box" %>
       </div>
-      <%= f.text_field :unique_name, autofocus: true, class: "input-box" %>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :hundle_name, "ユーザーネーム", class: "label-text" %>
+        </div>
+        <%= f.text_field :hundle_name, class: "input-box" %>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :email, "メールアドレス", class: "label-text" %>
+        </div>
+        <%= f.email_field :email, autocomplete: "email", class: "input-box" %>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :password, "パスワード", class: "label-text" %>
+        </div>
+        <%= f.password_field :password, autocomplete: "new-password", class: "input-box" %>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :password_confirmation, "パスワード(確認用)", class: "label-text" %>
+        </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-box" %>
+      </div>
+
     </div>
 
-    <div class="form-content">
-      <div class="label">
-        <div class="marker"></div>
-        <%= f.label :hundle_name, "ユーザーネーム", class: "label-text" %>
-      </div>
-      <%= f.text_field :hundle_name, class: "input-box" %>
+    <div class="center-button">
+      <%= f.submit "作成", class: "form-button" %>
     </div>
-
-    <div class="form-content">
-      <div class="label">
-        <div class="marker"></div>
-        <%= f.label :email, "メールアドレス", class: "label-text" %>
-      </div>
-      <%= f.email_field :email, autocomplete: "email", class: "input-box" %>
-    </div>
-
-    <div class="form-content">
-      <div class="label">
-        <div class="marker"></div>
-        <%= f.label :password, "パスワード", class: "label-text" %>
-      </div>
-      <%= f.password_field :password, autocomplete: "new-password", class: "input-box" %>
-    </div>
-
-    <div class="form-content">
-      <div class="label">
-        <div class="marker"></div>
-        <%= f.label :password_confirmation, "パスワード(確認用)", class: "label-text" %>
-      </div>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-box" %>
-    </div>
-
-    <div class="submit"><%= f.submit "作成", class: "form-button" %></div>
-
   <% end %>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", :back, class: "back" %>
+  </div>
 
 </div>
