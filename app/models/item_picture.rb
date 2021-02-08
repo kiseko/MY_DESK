@@ -2,8 +2,8 @@ class ItemPicture < ApplicationRecord
 
   belongs_to :item
 
-  validates :item_id, presense: true
-  validates :image, presense: true
+  validates_presence_of :item
+  validates :image, presence: true
 
   attachment :image
 

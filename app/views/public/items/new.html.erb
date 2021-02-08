@@ -1,0 +1,51 @@
+<div class="container">
+
+  <p class=title>アイテムの作成</p>
+
+  <%= form_with(model: @item, url: user_items_path, local: true) do |f| %>
+    <div class="form">
+
+      <div class="form-picture-content">
+        <div class="label">
+          <div class="marker"></div>
+          <p class="label-text">アイテム画像</p>
+        </div>
+        <div class="item-image-box">
+          <%= f.fields_for :item_pictures do |i| %>
+            <%= i.attachment_field :image %>
+          <% end %>
+          <div class="image-select">
+            <i class="fas fa-image image-icon"></i>
+            <p class="underline-button">画像の選択</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :brand, "ブランド", class: "label-text" %>
+        </div>
+        <%= f.text_field :brand, class: "input-box" %>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :name, "アイテム名", class: "label-text" %>
+        </div>
+        <%= f.text_field :name, class: "input-box" %>
+      </div>
+
+    </div>
+
+    <div class="center-button">
+      <%= f.submit "作成", class: "form-button" %>
+    </div>
+  <% end %>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", :back, class: "underline-button" %>
+  </div>
+
+</div>

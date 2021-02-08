@@ -10,8 +10,12 @@ class Item < ApplicationRecord
   has_one :amazon_link, dependent: :destroy
   belongs_to :user
 
-  validates :user_id, presense: true
-  validates :name, presense: true
-  validates :comment_status, presense: true
+  validates :user_id, presence: true
+  validates :name, presence: true
+  validates :comment_status, presence: true
+
+  attachment :image
+
+  accepts_nested_attributes_for :item_pictures
 
 end

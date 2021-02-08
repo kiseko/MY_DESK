@@ -21,4 +21,8 @@ class User < ApplicationRecord
 
   attachment :image
 
+  def to_param
+    unique_name
+  end
+
 end
