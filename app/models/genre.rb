@@ -2,7 +2,7 @@ class Genre < ApplicationRecord
 
   belongs_to :item
 
-  validates :item_id, presense: true
-  validates :name, presense: true
+  validates :item_id, presence: true
+  validates :name, presence: true
 
 end

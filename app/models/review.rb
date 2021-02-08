@@ -2,8 +2,8 @@ class Review < ApplicationRecord
 
   belongs_to :item
 
-  validates :item_id, presense: true
-  validates :rating, presense: true
-  validates :description, presense: true
+  validates :item_id, presence: true
+  validates :rating, presence: true
+  validates :description, presence: true
 
 end

@@ -4,8 +4,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :item
 
-  validates :user_id, presense: true
-  validates :item_id, presense: true
-  validates :description, presense: true
+  validates :user_id, presence: true
+  validates :item_id, presence: true
+  validates :description, presence: true
 
 end

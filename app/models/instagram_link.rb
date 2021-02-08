@@ -4,6 +4,6 @@ class InstagramLink < ApplicationRecord
 
   validates :user_id, presence: true
   validates :url, presence: true
-  validates :status, presense: true
+  validates :status, presence: true
 
 end
