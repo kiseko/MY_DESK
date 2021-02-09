@@ -2,7 +2,7 @@
 
   <p class=title>アイテムの作成</p>
 
-  <%= form_with(model: @item, url: user_items_path, local: true) do |f| %>
+  <%= form_with model: @item, url: items_path, local: true do |f| %>
     <div class="form">
 
       <div class="form-picture-content">
@@ -40,7 +40,7 @@
     </div>
 
     <div class="center-button">
-      <%= f.submit "作成", class: "form-button" %>
+      <%= f.submit "作成", class: "form-data link-button" %>
     </div>
   <% end %>
 

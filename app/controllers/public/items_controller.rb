@@ -8,7 +8,7 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to user_item_path(id: @item.id)
+      redirect_to item_path(@item.id)
     else
       render :new
     end
@@ -19,6 +19,8 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    @item_pictures = @item.item_pictures
   end
 
   def edit

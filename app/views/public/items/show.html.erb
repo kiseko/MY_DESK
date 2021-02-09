@@ -1,0 +1,64 @@
+<div class="container">
+
+  <div class="show-item">
+
+    <div class="item-visual">
+
+      <% @item_pictures.each do |item_picture| %>
+        <%= attachment_image_tag item_picture, :image, :fill, 600, 600, format: "jpg", class: "zoom-picture" %>
+        <%= link_to "アイテム画像の変更", edit_item_item_picture_path(@item.id, item_picture.id), class: "edit-picture-link" %>
+      <% end %>
+
+      <div class="thumbnail-area">
+        <% @item_pictures.each do |item_picture| %>
+          <div class="top-thumb">
+            <%= attachment_image_tag item_picture, :image, :fill, 125, 125, format: "jpg", class: "thumbnail" %>
+          </div>
+        <% end %>
+        <%= link_to new_item_item_picture_path(@item.id), class: "new-picture-link" do %>
+          <div class=plus-mark></div>
+          <div class="center-button">
+            <i class="fas fa-image image-icon"></i>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="item-information">
+
+      <div class="item-information-content">
+        <h3><%= @item.brand %></h3>
+        <h2><%= @item.name %></h2>
+        <%= form_with model: @genre, url: item_genres_path(@item.id), local: true do |f| %>
+          <div class="genre-form">
+            <%= f.text_field :name, class: "genre-input-box" %>
+            <div class="link-layout">
+              <button type="submit" class="genre-create-button">
+                <div class="plus-mark-mini"></div>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="item-information-content center-button">
+        <%= link_to new_item_review_path(@item.id) do %>
+          <button type="button" class="link-button">レビューを作成</button>
+        <% end %>
+      </div>
+
+      <div class="item-information-content">
+      </div>
+
+      <div class="center-button">
+        <%= link_to :back do %>
+          <button type="button" class="back link-button">戻る</button>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
