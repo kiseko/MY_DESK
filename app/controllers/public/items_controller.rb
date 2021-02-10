@@ -21,6 +21,8 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_pictures = @item.item_pictures
+    @genre = Genre.new
+    @genres = @item.genres
   end
 
   def edit

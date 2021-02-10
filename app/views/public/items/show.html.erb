@@ -30,6 +30,22 @@
       <div class="item-information-content">
         <h3><%= @item.brand %></h3>
         <h2><%= @item.name %></h2>
+        <div class="genre-index">
+          <% @genres.each do |genre| %>
+            <div class="genre-content">
+              <div class="genre-frame">
+                <p class="genre-name"><%= genre.name %></p>
+              </div>
+              <div class="link-layout">
+                <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
+                  <button type="button" class="genre-delete-button">
+                    <div class="cross-mark"></div>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
         <%= form_with model: @genre, url: item_genres_path(@item.id), local: true do |f| %>
           <div class="genre-form">
             <%= f.text_field :name, class: "genre-input-box" %>

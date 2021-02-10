@@ -290,29 +290,107 @@
   background-color: #FAFAFA;
 }
 
+.genre-index {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.genre-content {
+  padding: 0 10px 10px 0;
+  display: flex;
+}
+
+.genre-frame {
+  height: 30px;
+  padding: 2px 5px 0 10px;
+  border: 1px solid #5EA1A9;
+  border-right: 0;
+  border-radius: 15px 0 0 15px;
+}
+
+.genre-name {
+  color: #5EA1A9;
+}
+
+.link-layout {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #5EA1A9;
+  border-left: 0;
+  border-radius: 0 15px 15px 0;
+  position: relative;
+}
+
+.genre-delete-button {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 15px;
+  position: absolute;
+  top: -1px;
+}
+
+.genre-delete-button:hover {
+  background-color: #B3B3B3;
+  outline: none;
+}
+
+.genre-delete-button:focus {
+  outline: none;
+}
+
+.cross-mark {
+  width : 2px;
+  height: 16px;
+  margin: 0 14px;
+  background-color: #FFF;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.cross-mark::after {
+  content: "";
+	width: 16px;
+	height: 2px;
+	background-color: #fff;
+	position: absolute;
+	top: 7px;
+	left: -7px;
+}
+
 .genre-form {
   display: flex;
   align-items: center;
 }
 
 .genre-input-box {
-  width: 330px;
+  width: 510px;
   height: 30px;
   display: block;
-  padding: 0 15px;
+  padding: 0 10px 0 15px;
   border: 2px solid #EE8F36;
   border-right: 0;
-  border-radius: 17px 0 0 17px;
+  border-radius: 15px 0 0 15px;
   font-size: 18px;
 }
 
-.link-layout {
+.genre-input-box:hover {
+  outline: none;
+}
+
+.genre-input-box:focus {
+  outline: none;
+}
+
+.genre-form .link-layout {
   width: 30px;
   height: 30px;
   background-color: #fff;
   border: 2px solid #EE8F36;
   border-left: 0;
-  border-radius: 0 17px 17px 0;
+  border-radius: 0 15px 15px 0;
   position: relative;
 }
 
@@ -332,31 +410,26 @@
   outline: none;
 }
 
-.genre-create-button:active {
-  background-color: #EA7304;
-  outline: none;
-}
-
 .genre-create-button:focus {
   outline: none;
 }
 
 .plus-mark-mini {
-  position: relative;
   width : 2px;
   height: 16px;
   margin: 0 14px;
   background-color: #FFF;
+  position: relative;
 }
 
 .plus-mark-mini::after {
   content: "";
-	position: absolute;
-	top: 7px;
-	left: -7px;
 	width: 16px;
 	height: 2px;
 	background-color: #FFF;
+	position: absolute;
+	top: 7px;
+	left: -7px;
 }
 
 .back.link-button {
