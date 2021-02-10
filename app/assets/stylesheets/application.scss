@@ -70,7 +70,7 @@
 }
 
 .label-text {
-  padding-top: 2px;
+  padding-top: 3px;
   font-size: 20px;
 }
 
@@ -445,9 +445,60 @@
 	left: -7px;
 }
 
+.rating-star {
+  padding-bottom: 15px;
+}
+
+.star {
+  color: #E6B86F;
+  font-size: 24px;
+}
+
+.gray-star {
+  color: #CCC;
+  font-size: 24px;
+}
+
+.description-text {
+  font-size: 18px;
+}
+
 .back.link-button {
   width: 60px;
   height: 35px;
   font-size: 16px;
   border-radius: 5px;
+}
+
+.item-picture {
+  margin: 0 auto 50px;
+  display: block;
+  border-radius: 10px;
+}
+
+#select-star {
+  width: 260px;
+  height: 40px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+#select-star i {
+  color: #ccc;
+  font-size: 30px;
+}
+
+.description.form-content{
+  align-items: flex-start;
+}
+
+.description .label {
+  padding-top: 5px;
+}
+
+.description .input-box {
+  height: 300px;
+  padding: 10px 20px;
+  resize: none;
+  font-size: 18px;
 }

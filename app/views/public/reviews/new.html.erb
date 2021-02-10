@@ -1,0 +1,48 @@
+<div class="container">
+
+  <p class=title>レビューの作成</p>
+
+  <%= form_with model: @review, url: item_reviews_path(@item_picture.item_id), local: true do |f| %>
+    <div class="form">
+
+      <%= attachment_image_tag @item_picture, :image, :fill, 100, 100,  format: "jpg", class: "item-picture" %>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :brand, "評価", class: "label-text" %>
+        </div>
+        <div id="select-star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <%= f.radio_button :rating, "1" %>
+        <%= f.radio_button :rating, "2" %>
+        <%= f.radio_button :rating, "3" %>
+        <%= f.radio_button :rating, "4" %>
+        <%= f.radio_button :rating, "5" %>
+      </div>
+
+      <div class="description form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :description, "レビュー文", class: "label-text" %>
+        </div>
+        <%= f.text_area :description, class: "input-box" %>
+      </div>
+
+    </div>
+
+    <div class="center-button">
+      <%= f.submit "作成", class: "form-data link-button" %>
+    </div>
+  <% end %>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", :back, class: "underline-button" %>
+  </div>
+
+</div>

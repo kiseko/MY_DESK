@@ -66,11 +66,52 @@
 
       </div>
 
-      <div class="item-information-content center-button">
-        <%= link_to new_item_review_path(@item.id) do %>
-          <button type="button" class="link-button">レビューを作成</button>
-        <% end %>
-      </div>
+      <% if @review.present? %>
+        <div class="item-information-content">
+          <div class="rating-star">
+            <% if @review.rating == 1 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 2 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-stargray- star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 3 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 4 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 5 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+            <% end %>
+          </div>
+          <p class="description-text">
+            <%= @review.description %>
+          </p>
+        </div>
+      <% else %>
+        <div class="item-information-content center-button">
+          <%= link_to new_item_review_path(@item.id) do %>
+            <button type="button" class="link-button">レビューを作成</button>
+          <% end %>
+        </div>
+      <% end %>
 
       <div class="item-information-content">
       </div>
