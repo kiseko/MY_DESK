@@ -23,7 +23,7 @@ class Public::ItemsController < ApplicationController
     @item_pictures = @item.item_pictures
     @genre = Genre.new
     @genres = @item.genres
-    @review = Review.find_by(item_id: @item.id)
+    @review = @item.review
   end
 
   def edit

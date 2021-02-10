@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :users, path: '/', only: [:show, :edit, :update]
     resources :items do
       resources :item_pictures, path: "/pictures", except: [:index, :show]
-      resources :reviews, except: [:index, :show]
+      resource :review, except: [:index, :show]
       resources :genres, only: [:create, :destroy]
     end
   end

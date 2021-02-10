@@ -17,9 +17,18 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find_by(item_id: params[:item_id])
+    @item_picture = ItemPicture.find_by(item_id: params[:item_id])
   end
 
   def update
+    @review = Review.find_by(item_id: params[:item_id])
+    if @review.update(review_params)
+      redirect_to item_path(params[:item_id])
+    else
+      @item_picture = ItemPicture.find_by(item_id: params[:item_id])
+      render :edit
+    end
   end
 
   def destroy

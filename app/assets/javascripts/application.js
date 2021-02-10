@@ -18,7 +18,7 @@
 
 $(function(){
 
-  $(".image-select").on("click",function(event){
+  $(".image-select").on("click",function(){
     $("#item_item_pictures_attributes_0_image").click();
   });
 
@@ -36,7 +36,15 @@ $(function(){
 
 $(function(){
 
-  $("#select-star i").on("click",function(event){
+  $(document).ready(function() {
+    var rating = $('input:radio[name="review[rating]"]:checked').val();
+    if (rating>= 1 && rating <= 5){
+      $("#select-star i").slice(0, rating).css("color", "#E6B86F");
+    }else{}
+  });
+
+
+  $("#select-star i").on("click",function(){
     $("#select-star i").css("color", "#CCC");
     $(this).css("color", "#E6B86F");
     $(this).prevAll().css("color", "#E6B86F");

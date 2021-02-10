@@ -103,6 +103,9 @@
           </div>
           <p class="description-text">
             <%= @review.description %>
+             <div class="right-button">
+              <%= link_to "レビューの編集", edit_item_review_path(@item.id), class: "underline-button" %>
+            </div>
           </p>
         </div>
       <% else %>

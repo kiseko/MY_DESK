@@ -1,6 +1,6 @@
 <div class="container">
 
-  <p class=title>レビューの作成</p>
+  <p class=title>レビューの編集</p>
 
   <%= form_with model: @review, url: item_review_path(@item_picture.item_id), local: true do |f| %>
     <div class="form">
@@ -37,7 +37,7 @@
     </div>
 
     <div class="center-button">
-      <%= f.submit "作成", class: "form-data link-button" %>
+      <%= f.submit "変更", class: "form-data link-button" %>
     </div>
   <% end %>
 
