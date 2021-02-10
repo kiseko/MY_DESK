@@ -122,6 +122,10 @@
   text-align: center;
 }
 
+.right-button {
+  text-align: right;
+}
+
 .link-button {
   width: 180px;
   height: 40px;
@@ -155,6 +159,10 @@
   color: #EE8F36;
   font-size: 18px;
   text-decoration : underline;
+}
+
+.underline-button:hover {
+  color: #EA7304;
 }
 
 .image-select .underline-button {
@@ -221,6 +229,11 @@
   font-size: 20px;
   text-decoration: none;
   border: 3px solid #EE8F36;
+}
+
+.edit-picture-link:hover {
+  color: #EA7304;
+  border-color: #EA7304;
 }
 
 .thumbnail-area {
@@ -361,8 +374,8 @@
 }
 
 .genre-form {
+  padding-bottom: 20px;
   display: flex;
-  align-items: center;
 }
 
 .genre-input-box {

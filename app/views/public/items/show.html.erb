@@ -28,8 +28,10 @@
     <div class="item-information">
 
       <div class="item-information-content">
+
         <h3><%= @item.brand %></h3>
         <h2><%= @item.name %></h2>
+
         <div class="genre-index">
           <% @genres.each do |genre| %>
             <div class="genre-content">
@@ -46,6 +48,7 @@
             </div>
           <% end %>
         </div>
+
         <%= form_with model: @genre, url: item_genres_path(@item.id), local: true do |f| %>
           <div class="genre-form">
             <%= f.text_field :name, class: "genre-input-box" %>
@@ -56,6 +59,11 @@
             </div>
           </div>
         <% end %>
+
+        <div class="right-button">
+          <%= link_to "アイテム情報の編集", edit_item_path(@item.id), class: "underline-button" %>
+        </div>
+
       </div>
 
       <div class="item-information-content center-button">

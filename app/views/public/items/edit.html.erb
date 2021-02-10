@@ -1,0 +1,35 @@
+<div class="container">
+
+  <p class=title>アイテムの編集</p>
+
+  <%= form_with model: @item, url: item_path(@item.id), local: true do |f| %>
+    <div class="form">
+      
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :brand, "ブランド", class: "label-text" %>
+        </div>
+        <%= f.text_field :brand, class: "input-box" %>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :name, "アイテム名", class: "label-text" %>
+        </div>
+        <%= f.text_field :name, class: "input-box" %>
+      </div>
+
+    </div>
+
+    <div class="center-button">
+      <%= f.submit "変更", class: "form-data link-button" %>
+    </div>
+  <% end %>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", :back, class: "underline-button" %>
+  </div>
+
+</div>
