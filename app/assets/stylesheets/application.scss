@@ -210,9 +210,17 @@
   width: 600px;
 }
 
+.zoom-picture-area {
+  display :none
+}
+
 .zoom-picture {
   border-radius: 15px 15px 0 0;
   vertical-align: bottom;
+}
+
+.zoom-picture-area:first-child {
+  display :block;
 }
 
 .item-picture-link {
@@ -236,13 +244,28 @@
   display: flex;
 }
 
-.top-thumb:first-child {
+.thumb-box {
   width: 145px;
   height: 145px;
-  margin: 10px 10px 0;
-  padding: 10px;
+  margin-top: 10px;
+  padding: 8px;
+}
+
+.thumb-box:first-child {
+  margin-left: 10px;
   background-color: #AED0D4;
   border-radius: 10px;
+}
+
+.thumb-border {
+  width: 129px;
+  height: 129px;
+  padding: 2px;
+  border-radius: 7px;
+}
+
+.thumb-box:first-child .thumb-border {
+  background-color: #EE8F36;
 }
 
 .thumbnail {

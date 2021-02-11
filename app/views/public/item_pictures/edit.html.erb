@@ -4,7 +4,7 @@
 
     <div class="item-visual">
 
-      <%= form_with model: @item_picture, url: item_item_picture_path(@item_picture.item_id, @item_picture.id), local: true do |f| %>
+      <%= form_with model: @item_picture, url: item_item_picture_path(@item.id, @item_picture.id), local: true do |f| %>
         <div class="item-image-box">
           <%= attachment_image_tag @item_picture, :image, :fill, 600, 600, format: "jpg", class: "zoom-picture" %>
           <%= f.attachment_field :image, id: "item_image" %>
@@ -17,7 +17,7 @@
       <% end %>
 
       <div class="center-button">
-        <%= link_to "キャンセル", item_path(@item_picture.item_id), class: "underline-button" %>
+        <%= link_to "キャンセル", item_path(@item.id), data: {"turbolinks" => false}, class: "underline-button" %>
       </div>
 
     </div>

@@ -41,7 +41,7 @@ $(function(){
     var rating = $('input:radio[name="review[rating]"]:checked').val();
     if (rating>= 1 && rating <= 5){
       $("#select-star i").slice(0, rating).css("color", "#E6B86F");
-    }else{}
+    }
   });
 
 
@@ -52,6 +52,19 @@ $(function(){
     var index = $("#select-star i").index(this);
     var rating = Number(index) + 1
     $('input:radio[name="review[rating]"]').val([`${rating}`]);
+  });
+
+});
+
+
+$(function(){
+
+  $(".thumbnail").on("click",function(){
+    $(".zoom-picture-area").css("display", "none");
+    $(".thumb-border").css("background-color", "transparent");
+    var index = $(".thumbnail").index(this);
+    $(".thumb-border").eq(index).css("background-color", "#EE8F36");
+    $(".zoom-picture-area").eq(index).css("display", "block");
   });
 
 });

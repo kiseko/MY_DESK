@@ -42,7 +42,7 @@
   <% end %>
 
   <div class="center-button">
-    <%= link_to "キャンセル", item_path(@item_picture.item_id), class: "underline-button" %>
+    <%= link_to "キャンセル", data: {"turbolinks" => false}, item_path(@item_picture.item_id), class: "underline-button" %>
   </div>
 
 </div>

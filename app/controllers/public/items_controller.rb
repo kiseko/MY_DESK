@@ -20,7 +20,7 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @item_pictures = @item.item_pictures
+    @item_pictures = @item.item_pictures.limit(4)
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
