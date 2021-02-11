@@ -1,0 +1,129 @@
+<div class="container">
+
+  <div class="show-item">
+
+    <div class="item-visual">
+
+      <%= form_with model: @item_picture, url: item_item_picture_path(@item_picture.item_id, @item_picture.id), local: true do |f| %>
+        <div class="item-image-box">
+          <%= attachment_image_tag @item_picture, :image, :fill, 600, 600, format: "jpg", class: "zoom-picture" %>
+          <%= f.attachment_field :image, id: "item_image" %>
+          <div class="image-select">
+            <i class="fas fa-image image-icon"></i>
+            <p class="underline-button">画像の選択</p>
+          </div>
+        </div>
+        <%= f.submit "変更", class: "form-item-picture-link" %>
+      <% end %>
+
+      <div class="center-button">
+        <%= link_to "キャンセル", item_path(@item_picture.item_id), class: "underline-button" %>
+      </div>
+
+    </div>
+
+    <div class="item-information">
+
+      <div class="item-information-content">
+
+        <h3><%= @item.brand %></h3>
+        <h2><%= @item.name %></h2>
+
+        <div class="genre-index">
+          <% @genres.each do |genre| %>
+            <div class="genre-content">
+              <div class="genre-frame">
+                <p class="genre-name"><%= genre.name %></p>
+              </div>
+              <div class="link-layout">
+                <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
+                  <button type="button" class="genre-delete-button">
+                    <div class="cross-mark"></div>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <%= form_with model: @genre, url: item_genres_path(@item.id), local: true do |f| %>
+          <div class="genre-form">
+            <%= f.text_field :name, class: "genre-input-box" %>
+            <div class="link-layout">
+              <button type="submit" class="genre-create-button">
+                <div class="plus-mark-mini"></div>
+              </button>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="right-button">
+          <%= link_to "アイテム情報の編集", edit_item_path(@item.id), class: "underline-button" %>
+        </div>
+
+      </div>
+
+      <% if @review.present? %>
+        <div class="item-information-content">
+          <div class="rating-star">
+            <% if @review.rating == 1 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 2 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-stargray- star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 3 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 4 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star gray-star"></i>
+            <% elsif @review.rating == 5 %>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+              <i class="fas fa-star star"></i>
+            <% end %>
+          </div>
+          <p class="description-text">
+            <%= @review.description %>
+             <div class="right-button">
+              <%= link_to "レビューの編集", edit_item_review_path(@item.id), data: {"turbolinks" => false}, class: "underline-button" %>
+            </div>
+          </p>
+        </div>
+      <% else %>
+        <div class="item-information-content center-button">
+          <%= link_to new_item_review_path(@item.id) do %>
+            <button type="button" class="link-button">レビューを作成</button>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="item-information-content">
+      </div>
+
+      <div class="center-button">
+        <%= link_to :back do %>
+          <button type="button" class="back link-button">戻る</button>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

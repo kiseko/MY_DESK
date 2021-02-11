@@ -12,7 +12,7 @@
         </div>
         <div class="item-image-box">
           <%= f.fields_for :item_pictures do |i| %>
-            <%= i.attachment_field :image %>
+            <%= i.attachment_field :image, id: "item_image" %>
           <% end %>
           <div class="image-select">
             <i class="fas fa-image image-icon"></i>

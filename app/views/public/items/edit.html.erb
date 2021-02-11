@@ -4,7 +4,7 @@
 
   <%= form_with model: @item, url: item_path(@item.id), local: true do |f| %>
     <div class="form">
-      
+
       <div class="form-content">
         <div class="label">
           <div class="marker"></div>
@@ -29,7 +29,7 @@
   <% end %>
 
   <div class="center-button">
-    <%= link_to "キャンセル", :back, class: "underline-button" %>
+    <%= link_to "キャンセル", item_path(@item.id), class: "underline-button" %>
   </div>
 
 </div>
