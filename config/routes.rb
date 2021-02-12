@@ -4,8 +4,13 @@ Rails.application.routes.draw do
     resources :users, path: '/', only: [:show, :edit, :update]
     resources :items do
       resources :item_pictures, path: "/pictures", except: [:index, :show]
+      resource :homepage_link, only: [:create, :update, :destroy]
+       resource :amazon_link, only: [:create, :update, :destroy]
       resource :review, except: [:index, :show]
       resources :genres, only: [:create, :destroy]
+      member do
+        get 'link'
+      end
     end
   end
 

@@ -1,0 +1,83 @@
+<div class="container">
+
+  <p class=title>アイテムリンクの設定</p>
+
+    <div class="form">
+
+      <div class="link-title">
+        <i class="fas fa-home link-icon"></i>
+        <h2>ホームページ</h2>
+      </div>
+      <% if @homepage_link.present? %>
+        <%= form_with model: @homepage_link, url: item_homepage_link_path(@item.id), method: :putch, local: true do |f| %>
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <div class="set-url">
+              <%= f.text_field :url, class: "input-box" %>
+              <%= f.submit "更新", class: "link-button" %>
+              <%= link_to item_homepage_link_path(@item.id), method: :delete, class: "icon-link-button" do %>
+                <i class="fas fa-trash-alt link-icon"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with model: @new_homepage_link, url: item_homepage_link_path(@item.id), method: :post, local: true do |f| %>
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <div class="set-url">
+              <%= f.text_field :url, class: "input-box" %>
+              <%= f.submit "追加", class: "link-button" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="link-title">
+        <i class="fab fa-amazon link-icon"></i>
+        <h2>Amazon</h2>
+      </div>
+      <% if @amazon_link.present? %>
+        <%= form_with model: @amazon_link, url: item_amazon_link_path(@item.id), method: :putch, local: true do |f| %>
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <div class="set-url">
+              <%= f.text_field :url, class: "input-box" %>
+              <%= f.submit "更新", class: "link-button" %>
+              <%= link_to item_amazon_link_path(@item.id), method: :delete, class: "delete-link-button" do %>
+                <i class="fas fa-trash-alt link-icon"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with model: @new_amazon_link, url: item_amazon_link_path(@item.id), method: :post, local: true do |f| %>
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <div class="set-url">
+              <%= f.text_field :url, class: "input-box" %>
+              <%= f.submit "追加", class: "link-button" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", item_path(@item.id), data: {"turbolinks" => false}, class: "underline-button" %>
+  </div>
+
+</div>

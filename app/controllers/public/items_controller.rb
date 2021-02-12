@@ -21,6 +21,8 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_pictures = @item.item_pictures.limit(4)
+    @homepage_link = @item.homepage_link
+    @amazon_link = @item.amazon_link
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
@@ -37,11 +39,17 @@ class Public::ItemsController < ApplicationController
     else
       render :edit
     end
-
-
   end
 
   def destroy
+  end
+
+  def link
+    @item = Item.find(params[:id])
+    @new_homepage_link = HomepageLink.new
+    @homepage_link = HomepageLink.find_by(item_id: params[:id])
+    @new_amazon_link = AmazonLink.new
+    @amazon_link = AmazonLink.find_by(item_id: params[:id])
   end
 
 

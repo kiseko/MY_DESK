@@ -6,9 +6,10 @@ class Public::GenresController < ApplicationController
     if @genre.save
       redirect_to item_path(params[:item_id])
     else
+      @item = Item.find(params[:item_id])
       @item_pictures = @item.item_pictures
       @genres = @item.genres
-      render template: "items/show"
+      render template: "public/items/show"
     end
   end
 

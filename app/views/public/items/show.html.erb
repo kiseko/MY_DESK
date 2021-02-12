@@ -66,8 +66,30 @@
           </div>
         <% end %>
 
-        <div class="right-button">
+        <div class="item-edit-link right-button">
           <%= link_to "アイテム情報の編集", edit_item_path(@item.id), class: "underline-button" %>
+        </div>
+
+        <% if @homepage_link.present? %>
+          <%= link_to @homepage_link.url, class: "icon-link-button" do %>
+            <div class="item-link">
+              <i class="fas fa-home link-icon"></i>
+              <p><%= @homepage_link.url %></p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @amazon_link.present? %>
+          <%= link_to @amazon_link.url, class: "icon-link-button" do %>
+            <div class="item-link">
+              <i class="fab fa-amazon link-icon"></i>
+              <p><%= @amazon_link.url %></p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="item-link-set right-button">
+          <%= link_to "アイテムリンクの設定", link_item_path(@item.id), class: "underline-button" %>
         </div>
 
       </div>
@@ -125,11 +147,13 @@
       <div class="item-information-content">
       </div>
 
-      <div class="center-button">
-        <%= link_to :back do %>
-          <button type="button" class="back link-button">戻る</button>
-        <% end %>
-      </div>
+      <% if current_user.id =! @item.user_id %>
+        <div class="center-button">
+          <%= link_to :back do %>
+            <button type="button" class="back link-button">戻る</button>
+          <% end %>
+        </div>
+      <% end %>
 
     </div>
 
