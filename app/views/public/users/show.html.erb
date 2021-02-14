@@ -1,0 +1,44 @@
+ <div class="container">
+
+  <div class="user-desk">
+
+    <div class="desk-visual">
+
+      <div class="user-information">
+        <div class="profile">
+          <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
+          <div class="identification">
+            <h3 class="user-id">@<%= @user.unique_name %></h3>
+            <h3 class="user-name"><%= @user.hundle_name %></h3>
+          </div>
+        </div>
+      </div>
+
+      <% if @scenes.present? %>
+      <% @scenes.each do |scene| %>
+        <%= attachment_image_tag scene, :image, :fill, 1200, 675, class: "desk-picture" %>
+        <%= link_to "アイテム画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
+      <% end %>
+      <% else %>
+      <div class="desk-icon"></div>
+      <% end %>
+
+    </div>
+
+    <div class="scene-select">
+      <div class="left-adjustment"></div>
+      <% while @scene_counter < @scenes.count do %>
+        <div class="buble"></div>
+        <% @scene_counter += 1 %>
+      <% end %>
+
+      <%=link_to new_user_scene_path(current_user) do %>
+        <button type="button" class="circle-plus-button">
+          <div class="plus-mark-mini"></div>
+        </button>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

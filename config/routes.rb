@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   scope module: :public do
-    resources :users, path: '/', only: [:show, :edit, :update]
+    resources :users, path: '/', only: [:show, :edit, :update] do
+      resources :scenes, except: [:index, :show]
+    end
     resources :items do
       resources :item_pictures, path: "/pictures", except: [:index, :show]
       resource :homepage_link, only: [:create, :update, :destroy]

@@ -3,6 +3,8 @@ class Public::ItemPicturesController < ApplicationController
   def new
     @item_picture = ItemPicture.new
     @item = Item.find(params[:item_id])
+    @homepage_link = @item.homepage_link
+    @amazon_link = @item.amazon_link
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
@@ -25,6 +27,8 @@ class Public::ItemPicturesController < ApplicationController
   def edit
     @item_picture = ItemPicture.find(params[:id])
     @item = Item.find(params[:item_id])
+    @homepage_link = @item.homepage_link
+    @amazon_link = @item.amazon_link
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review

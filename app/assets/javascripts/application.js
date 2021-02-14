@@ -13,19 +13,34 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
 $(function(){
 
-  $(".image-select").on("click",function(){
-    $("#item_image").click();
+  $(window).scroll(function(){
+    var scroll = $(window).scrollTop();
+    if (scroll > 0) {
+      $(".user-information").addClass("fade-out");
+    }
+    else {
+      $(".user-information").removeClass("fade-out");
+    }
   });
 
-  $("#item_image").on("change", function (event) {
+});
+
+
+$(function(){
+
+  $(".image-select").on("click",function(){
+    $("#image").click();
+  });
+
+  $("#image").on("change", function (event) {
     var reader = new FileReader();
     reader.onload = function(event){
-      $(".item-image-box").css({
+      $(".image-box").css({
         backgroundImage: `url(${event.target.result})`
       });
       $(".zoom-picture").css("display", "none");

@@ -5,14 +5,14 @@
     <div class="item-visual">
 
       <%= form_with model: @item_picture, url: item_item_pictures_path(@item.id), local: true do |f| %>
-        <div class="item-image-box">
-          <%= f.attachment_field :image, id: "item_image" %>
+        <div class="image-box">
+          <%= f.attachment_field :image, id: "image" %>
           <div class="image-select">
             <i class="fas fa-image image-icon"></i>
             <p class="underline-button">画像の選択</p>
           </div>
         </div>
-        <%= f.submit "追加", class: "form-item-picture-link" %>
+        <%= f.submit "追加", class: "decision set-picture-link" %>
       <% end %>
 
       <div class="center-button">
@@ -49,15 +49,37 @@
           <div class="genre-form">
             <%= f.text_field :name, class: "genre-input-box" %>
             <div class="link-layout">
-              <button type="submit" class="genre-create-button">
+              <button type="submit" class="circle-plus-button">
                 <div class="plus-mark-mini"></div>
               </button>
             </div>
           </div>
         <% end %>
 
-        <div class="right-button">
+        <div class="item-edit-link right-button">
           <%= link_to "アイテム情報の編集", edit_item_path(@item.id), class: "underline-button" %>
+        </div>
+
+        <% if @homepage_link.present? %>
+          <%= link_to @homepage_link.url, class: "icon-link-button" do %>
+            <div class="item-link">
+              <i class="fas fa-home link-icon"></i>
+              <p><%= @homepage_link.url %></p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @amazon_link.present? %>
+          <%= link_to @amazon_link.url, class: "icon-link-button" do %>
+            <div class="item-link">
+              <i class="fab fa-amazon link-icon"></i>
+              <p><%= @amazon_link.url %></p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="item-link-set right-button">
+          <%= link_to "アイテムリンクの設定", link_item_path(@item.id), class: "underline-button" %>
         </div>
 
       </div>
@@ -115,11 +137,13 @@
       <div class="item-information-content">
       </div>
 
-      <div class="center-button">
-        <%= link_to :back do %>
-          <button type="button" class="back link-button">戻る</button>
-        <% end %>
-      </div>
+      <% if current_user.id =! @item.user_id %>
+        <div class="center-button">
+          <%= link_to :back do %>
+            <button type="button" class="back link-button">戻る</button>
+          <% end %>
+        </div>
+      <% end %>
 
     </div>
 

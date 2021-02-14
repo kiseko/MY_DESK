@@ -1,6 +1,9 @@
 class Public::UsersController < ApplicationController
 
   def show
+    @user = User.find_by(unique_name: params[:id])
+    @scenes = @user.scenes
+    @scene_counter = 0
   end
 
   def edit
