@@ -1,12 +1,12 @@
 <div class="container">
 
-  <div class="show-item">
+  <div class="item-detail">
 
     <div class="item-visual">
 
       <% @item_pictures.each do |item_picture| %>
-        <div class="zoom-picture-area">
-          <%= attachment_image_tag item_picture, :image, :fill, 600, 600, format: "jpg", class: "zoom-picture" %>
+        <div class="main-picture-area">
+          <%= attachment_image_tag item_picture, :image, :fill, 600, 600, format: "jpg", class: "main-picture" %>
           <%= link_to "アイテム画像の変更", edit_item_item_picture_path(@item.id, item_picture.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
         </div>
       <% end %>

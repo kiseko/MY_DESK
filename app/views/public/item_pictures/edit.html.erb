@@ -6,7 +6,7 @@
 
       <%= form_with model: @item_picture, url: item_item_picture_path(@item.id, @item_picture.id), local: true do |f| %>
         <div class="image-box">
-          <%= attachment_image_tag @item_picture, :image, :fill, 600, 600, format: "jpg", class: "zoom-picture" %>
+          <%= attachment_image_tag @item_picture, :image, :fill, 600, 600, format: "jpg", class: "main-picture" %>
           <%= f.attachment_field :image, id: "image" %>
           <div class="image-select">
             <i class="fas fa-image image-icon"></i>

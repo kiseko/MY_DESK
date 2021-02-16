@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :users, path: '/', only: [:show, :edit, :update] do
       resources :scenes, except: [:index, :show]
     end
+    resources :scene_items, path: "scene/:scene_id/scene_items/", only: [:new, :create, :destroy]
     resources :items do
       resources :item_pictures, path: "/pictures", except: [:index, :show]
       resource :homepage_link, only: [:create, :update, :destroy]

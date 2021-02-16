@@ -28,6 +28,20 @@ $(function(){
     }
   });
 
+  $(function(){
+
+  $(".bubble").on("click",function(){
+    $(".main-picture-area").css("display", "none");
+    $(".desk-item").css("display", "none");
+    $(".bubble").css("background-color", "transparent");
+    $(this).css("background-color", "#5EA1A9");
+    var index = $(".bubble").index(this);
+    $(".main-picture-area").eq(index).css("display", "block");
+    $(".desk-item").eq(index).css("display", "block");
+  });
+
+});
+
 });
 
 
@@ -43,7 +57,7 @@ $(function(){
       $(".image-box").css({
         backgroundImage: `url(${event.target.result})`
       });
-      $(".zoom-picture").css("display", "none");
+      $(".main-picture").css("display", "none");
     };
     reader.readAsDataURL(event.target.files[0]);
   });
@@ -75,11 +89,11 @@ $(function(){
 $(function(){
 
   $(".thumbnail").on("click",function(){
-    $(".zoom-picture-area").css("display", "none");
+    $(".main-picture-area").css("display", "none");
     $(".thumb-border").css("background-color", "transparent");
     var index = $(".thumbnail").index(this);
     $(".thumb-border").eq(index).css("background-color", "#EE8F36");
-    $(".zoom-picture-area").eq(index).css("display", "block");
+    $(".main-picture-area").eq(index).css("display", "block");
   });
 
 });
