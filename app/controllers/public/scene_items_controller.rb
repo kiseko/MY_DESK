@@ -20,6 +20,9 @@ class Public::SceneItemsController < ApplicationController
   end
 
   def destroy
+     @scene_item = SceneItem.find(params[:id])
+     @scene_item.destroy
+     redirect_to user_path(current_user)
   end
 
 

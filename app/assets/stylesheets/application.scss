@@ -201,7 +201,7 @@
 .card-shadow {
   margin: 0 30px 30px 0;
   width: 300px;
-  height: 530px;
+  height: 540px;
   background-color: #E6E6E6;
   border-radius: 5px;
   position: relative;
@@ -209,7 +209,7 @@
 
 .new-scene-item-link {
   width: 300px;
-  height: 530px;
+  height: 540px;
   padding: 20px;
   display: block;
   background-color: #EE8F36;
@@ -245,7 +245,7 @@
 
 .item-card {
   width: 300px;
-  height: 530px;
+  height: 540px;
   background-color: #FAFAFA;
   border-radius: 5px;
   text-decoration: none;
@@ -261,6 +261,7 @@
 
 .item-card-information {
   padding: 15px 10px 10px;
+  position: relative;
 }
 
 .rating-star {
@@ -321,6 +322,61 @@
   width: 35px;
   color : #EE8F36;
   font-size: 30px;
+}
+
+.card-bottom {
+  display: flex;
+}
+
+.created-at {
+  padding-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.delete-button {
+  width: 30px;
+  height: 30px;
+  background-color: #CCC;
+  border: none;
+  border-radius: 15px;
+  position: absolute;
+  top: -1px;
+  cursor: pointer;
+}
+
+.item-card-information .delete-button {
+  border-radius: 5px 0 5px 0;
+  top: 210px;
+  right: 0;
+}
+
+.delete-button:hover {
+  background-color: #B3B3B3;
+  outline: none;
+}
+
+.delete-button:focus {
+  outline: none;
+}
+
+.cross-mark {
+  width : 2px;
+  height: 16px;
+  margin: 0 14px;
+  background-color: #FFF;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.cross-mark::after {
+  content: "";
+	width: 16px;
+	height: 2px;
+	background-color: #FFF;
+	position: absolute;
+	top: 7px;
+	left: -7px;
 }
 
 
@@ -639,31 +695,11 @@
   margin: 0;
 }
 
-.delete-button {
-  width: 30px;
-  height: 30px;
-  background-color: #CCC;
-  border: none;
-  border-radius: 15px;
-  position: absolute;
-  top: -1px;
-  cursor: pointer;
-}
-
 .thumb-box .delete-button {
   border-radius: 5px 0 5px 0;
   top : 99px;
   right: 0px;
   display: none;
-}
-
-.delete-button:hover {
-  background-color: #B3B3B3;
-  outline: none;
-}
-
-.delete-button:focus {
-  outline: none;
 }
 
 .new-picture-link {
@@ -744,25 +780,6 @@
   border-left: 0;
   border-radius: 0 15px 15px 0;
   position: relative;
-}
-
-.cross-mark {
-  width : 2px;
-  height: 16px;
-  margin: 0 14px;
-  background-color: #FFF;
-  position: relative;
-  transform: rotate(45deg);
-}
-
-.cross-mark::after {
-  content: "";
-	width: 16px;
-	height: 2px;
-	background-color: #FFF;
-	position: absolute;
-	top: 7px;
-	left: -7px;
 }
 
 .genre-form {
