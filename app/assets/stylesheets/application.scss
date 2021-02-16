@@ -589,18 +589,30 @@
   outline: none;
 }
 
-.item-visual .image-box {
-  width: 600px;
-  height: 600px;
+.image-box {
+  width: 260px;
+  height: 260px;
   background-color: #FAFAFA;
-  border-radius: 15px 15px 0 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
   text-align: center;
   position: relative;
 }
 
-.item-visual .image-select {
-  padding: 0;
+.item-visual .image-box {
+  width: 600px;
+  height: 600px;
+  border-radius: 15px 15px 0 0;
+}
+
+.image-select {
   position: absolute;
+  top : 100px;
+  left: 85px;
+}
+
+.item-visual .image-select {
   top : 270px;
   left: 255px;
 }

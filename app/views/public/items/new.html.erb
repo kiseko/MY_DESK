@@ -10,9 +10,9 @@
           <div class="marker"></div>
           <p class="label-text">アイテム画像</p>
         </div>
-        <div class="item-image-box">
+        <div class="image-box">
           <%= f.fields_for :item_pictures do |i| %>
-            <%= i.attachment_field :image, id: "item_image" %>
+            <%= i.attachment_field :image, id: "image" %>
           <% end %>
           <div class="image-select">
             <i class="fas fa-image image-icon"></i>
