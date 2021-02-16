@@ -26,6 +26,7 @@ class Public::ItemsController < ApplicationController
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
+    @user = @item.user
   end
 
   def edit

@@ -62,7 +62,7 @@
 }
 
 .identification {
-  padding-left: 15px;
+  padding: 0 0 2px 15px;
 }
 
 .desk-icon {
@@ -837,12 +837,16 @@
 	left: -7px;
 }
 
-.item-edit-link.right-button, .item-link-set.right-button {
+.set-link.right-button {
   padding: 10px 0 10px 0;
 }
 
 .description-text {
   font-size: 18px;
+}
+
+.item-information-content .link-icon {
+  padding-top: 10px;
 }
 
 .back.link-button {
@@ -851,6 +855,7 @@
   font-size: 16px;
   border-radius: 5px;
 }
+
 
 .item-picture {
   margin: 0 auto 50px;
@@ -883,6 +888,11 @@
   padding: 10px 20px;
   resize: none;
   font-size: 18px;
+}
+
+.desk-link {
+  display: inline-block;
+  text-decoration: none;
 }
 
 
@@ -936,7 +946,7 @@
   margin-right: 10px;
 }
 
-.set-url .link-icon {
+.fa-trash-alt.link-icon {
   margin: 0;
   color: #ccc;
 }
