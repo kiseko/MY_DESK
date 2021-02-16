@@ -428,6 +428,7 @@
   border-radius: 10px;
   color: #FFF;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .item-list .link-button {
@@ -857,6 +858,16 @@
   font-size: 18px;
 }
 
+.fa-trash-alt.link-icon {
+  margin: 0;
+  color: #ccc;
+}
+
+.fa-trash-alt.link-icon:hover {
+  margin: 0;
+  color: #B3B3B3;
+}
+
 .item-information-content .link-icon {
   padding-top: 10px;
 }
@@ -880,6 +891,7 @@
   height: 40px;
   padding-top: 5px;
   text-align: center;
+  cursor: pointer;
 }
 
 #select-star i {
@@ -956,11 +968,6 @@
   width: 60px;
   min-width: 60px;
   margin-right: 10px;
-}
-
-.fa-trash-alt.link-icon {
-  margin: 0;
-  color: #ccc;
 }
 
 

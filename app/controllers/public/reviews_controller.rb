@@ -32,6 +32,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find_by(item_id: params[:item_id])
+    @review.destroy
+    redirect_to item_path(params[:item_id])
   end
 
 
