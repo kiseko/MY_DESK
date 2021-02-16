@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="show-item">
+  <div class="item-detail">
 
     <div class="item-visual">
 
@@ -37,7 +37,7 @@
               </div>
               <div class="link-layout">
                 <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
-                  <button type="button" class="genre-delete-button">
+                  <button type="button" class="delete-button">
                     <div class="cross-mark"></div>
                   </button>
                 <% end %>

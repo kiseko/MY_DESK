@@ -90,10 +90,14 @@ $(function(){
 
   $(".thumbnail").on("click",function(){
     $(".main-picture-area").css("display", "none");
+    $(".thumb-box .delete-button").css("display", "none");
     $(".thumb-border").css("background-color", "transparent");
     var index = $(".thumbnail").index(this);
     $(".thumb-border").eq(index).css("background-color", "#EE8F36");
     $(".main-picture-area").eq(index).css("display", "block");
+    if (index != 0) {
+      $(".thumb-box .delete-button").eq(index).css("display", "block");
+    }
   });
 
 });

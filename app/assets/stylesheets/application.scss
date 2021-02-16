@@ -628,6 +628,7 @@
   height: 129px;
   padding: 2px;
   border-radius: 7px;
+  position: relative;
 }
 
 .thumb-box:first-child .thumb-border {
@@ -638,11 +639,38 @@
   margin: 0;
 }
 
+.delete-button {
+  width: 30px;
+  height: 30px;
+  background-color: #CCC;
+  border: none;
+  border-radius: 15px;
+  position: absolute;
+  top: -1px;
+  cursor: pointer;
+}
+
+.thumb-box .delete-button {
+  border-radius: 5px 0 5px 0;
+  top : 99px;
+  right: 0px;
+  display: none;
+}
+
+.delete-button:hover {
+  background-color: #B3B3B3;
+  outline: none;
+}
+
+.delete-button:focus {
+  outline: none;
+}
+
 .new-picture-link {
   width: 125px;
   height: 125px;
-  margin-top: 20px;
   padding: 10px;
+  display: block;
   background-color: #EE8F36;
   border-radius: 5px;
   text-decoration: none;
@@ -716,26 +744,6 @@
   border-left: 0;
   border-radius: 0 15px 15px 0;
   position: relative;
-}
-
-.genre-delete-button {
-  width: 30px;
-  height: 30px;
-  background-color: #CCC;
-  border: none;
-  border-radius: 15px;
-  position: absolute;
-  top: -1px;
-  cursor: pointer;
-}
-
-.genre-delete-button:hover {
-  background-color: #B3B3B3;
-  outline: none;
-}
-
-.genre-delete-button:focus {
-  outline: none;
 }
 
 .cross-mark {

@@ -16,16 +16,25 @@
           <div class="thumb-box">
             <div class="thumb-border">
               <%= attachment_image_tag item_picture, :image, :fill, 125, 125, format: "jpg", class: "thumbnail" %>
+              <%= link_to item_item_picture_path(@item.id, item_picture.id), method: :delete do %>
+              <button type="button" class="delete-button">
+                <div class="cross-mark"></div>
+              </button>
+            <% end %>
             </div>
           </div>
         <% end %>
           <% if @item_pictures.count < 4 %>
-          <%= link_to new_item_item_picture_path(@item.id), data: {"turbolinks" => false}, class: "new-picture-link" do %>
-            <div class=plus-mark></div>
-            <div class="center-button">
-              <i class="fas fa-image image-icon"></i>
+          <div class="thumb-box">
+            <div class="thumb-border">
+              <%= link_to new_item_item_picture_path(@item.id), data: {"turbolinks" => false}, class: "new-picture-link" do %>
+                <div class=plus-mark></div>
+                <div class="center-button">
+                  <i class="fas fa-image image-icon"></i>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
 
@@ -46,7 +55,7 @@
               </div>
               <div class="link-layout">
                 <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
-                  <button type="button" class="genre-delete-button">
+                  <button type="button" class="delete-button">
                     <div class="cross-mark"></div>
                   </button>
                 <% end %>

@@ -17,6 +17,8 @@ class Public::ItemPicturesController < ApplicationController
       redirect_to item_path(params[:item_id])
     else
       @item = Item.find(params[:item_id])
+      @homepage_link = @item.homepage_link
+      @amazon_link = @item.amazon_link
       @genre = Genre.new
       @genres = @item.genres
       @review = @item.review
@@ -32,7 +34,6 @@ class Public::ItemPicturesController < ApplicationController
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
-
   end
 
   def update
@@ -41,16 +42,19 @@ class Public::ItemPicturesController < ApplicationController
       redirect_to item_path(params[:item_id])
     else
       @item = Item.find(params[:item_id])
+      @homepage_link = @item.homepage_link
+      @amazon_link = @item.amazon_link
       @genre = Genre.new
       @genres = @item.genres
       @review = @item.review
       render :edit
     end
-
-
   end
 
   def destroy
+    @item_picture = ItemPicture.find(params[:id])
+    @item_picture.destroy
+    redirect_to item_path(params[:item_id])
   end
 
 
