@@ -66,39 +66,41 @@
                     <%= attachment_image_tag item_picture, :image, :fill, 300, 300, class: "card-picture" %>
                     <div class="item-card-information">
 
-                      <div class="rating-star">
-                        <% if item.review.rating == 1 %>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                        <% elsif item.review.rating == 2 %>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                          <i class="fas fa-stargray- star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                        <% elsif item.review.rating == 3 %>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                        <% elsif item.review.rating == 4 %>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star gray-star"></i>
-                        <% elsif item.review.rating == 5 %>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                          <i class="fas fa-star star"></i>
-                        <% end %>
-                      </div>
+                      <% if item.review.present? %>
+                        <div class="rating-star">
+                          <% if item.review.rating == 1 %>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                          <% elsif item.review.rating == 2 %>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                            <i class="fas fa-stargray- star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                          <% elsif item.review.rating == 3 %>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                          <% elsif item.review.rating == 4 %>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star gray-star"></i>
+                          <% elsif item.review.rating == 5 %>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                          <% end %>
+                        </div>
+                      <% end %>
 
                       <h4><%= item.brand %></h4>
                       <h3><%= item.name %></h3>
@@ -123,7 +125,7 @@
                       </div>
 
                       <p class="created-at">
-                        <%= scene_item.created_at.strftime("%Y年%m月%d日") %>
+                        <%= scene_item.created_at.strftime("%Y/%m/%d") %>
                       </p>
 
                       <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete do %>
