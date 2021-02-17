@@ -48,9 +48,9 @@ class Public::ItemsController < ApplicationController
   def link
     @item = Item.find(params[:id])
     @new_homepage_link = HomepageLink.new
-    @homepage_link = HomepageLink.find_by(item_id: params[:id])
+    @homepage_link = @item.homepage_link
     @new_amazon_link = AmazonLink.new
-    @amazon_link = AmazonLink.find_by(item_id: params[:id])
+    @amazon_link = @item.amazon_link
   end
 
 

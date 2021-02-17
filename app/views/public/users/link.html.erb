@@ -1,0 +1,123 @@
+<div class="container">
+
+  <p class=title>SNSリンクの設定</p>
+
+    <div class="form">
+
+      <div class="link-title">
+        <i class="fab fa-instagram link-icon"></i>
+        <h2>Instagram</h2>
+      </div>
+      <% if @instagram_link.present? %>
+        <%= form_with model: @instagram_link, url: user_instagram_link_path(@user), method: :putch, local: true do |f| %>
+          <div class="form-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <%= f.text_field :url, class: "input-box" %>
+          </div>
+
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "公開範囲", class: "label-text" %>
+            </div>
+            <div class="set-url">
+              <div class="status-select">
+                <%= f.select :status, [ ["全員に公開",0], ["フォロー先のみ公開", 1], ["お気に入りのみ公開", 2] ] %>
+              </div>
+              <%= f.submit "更新", class: "link-button" %>
+              <%= link_to user_instagram_link_path(@user), method: :delete, class: "icon-link-button" do %>
+                <i class="fas fa-trash-alt link-icon"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with model: @new_instagram_link, url: user_instagram_link_path(@user), method: :post, local: true do |f| %>
+          <div class="form-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <%= f.text_field :url, class: "input-box" %>
+          </div>
+
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "公開範囲", class: "label-text" %>
+            </div>
+            <div class="set-url">
+               <div class="status-select">
+                <%= f.select :status, [ ["全員に公開",0], ["フォロー先のみ公開", 1], ["お気に入りのみ公開", 2] ] %>
+              </div>
+              <%= f.submit "追加", class: "link-button" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="link-title">
+        <i class="fab fa-twitter link-icon"></i>
+        <h2>Twitter</h2>
+      </div>
+      <% if @twitter_link.present? %>
+        <%= form_with model: @twitter_link, url: user_twitter_link_path(@user), method: :putch, local: true do |f| %>
+          <div class="form-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <%= f.text_field :url, class: "input-box" %>
+          </div>
+
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "公開範囲", class: "label-text" %>
+            </div>
+            <div class="set-url">
+              <div class="status-select">
+                <%= f.select :status, [ ["全員に公開",0], ["フォロー先のみ公開", 1], ["お気に入りのみ公開", 2] ] %>
+              </div>
+              <%= f.submit "更新", class: "link-button" %>
+              <%= link_to user_instagram_link_path(@user), method: :delete, class: "icon-link-button" do %>
+                <i class="fas fa-trash-alt link-icon"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with model: @new_twitter_link, url: user_twitter_link_path(@user), method: :post, local: true do |f| %>
+          <div class="form-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "リンク先URL", class: "label-text" %>
+            </div>
+            <%= f.text_field :url, class: "input-box" %>
+          </div>
+
+          <div class="form-link-content">
+            <div class="label">
+              <div class="marker"></div>
+              <%= f.label :url, "公開範囲", class: "label-text" %>
+            </div>
+            <div class="set-url">
+               <div class="status-select">
+                <%= f.select :status, [ ["全員に公開",0], ["フォロー先のみ公開", 1], ["お気に入りのみ公開", 2] ] %>
+              </div>
+              <%= f.submit "追加", class: "link-button" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", user_path(@user), data: {"turbolinks" => false}, class: "underline-button" %>
+  </div>
+
+</div>
