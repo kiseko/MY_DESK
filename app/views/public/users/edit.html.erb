@@ -1,0 +1,58 @@
+　　<div class="container">
+
+  <p class=title>プロフィールの編集</p>
+
+  <%= form_with model: @user, url: items_path, local: true do |f| %>
+    <div class="form">
+
+      <div class="form-picture-content">
+        <div class="label">
+          <div class="marker"></div>
+          <p class="label-text">プロフィール画像</p>
+        </div>
+        <div class="user-icon image-box">
+           <%= attachment_image_tag @user, :image, :fill, 260, 260, format: "jpg", class: "user_icon_large" %>
+          <%= f.attachment_field :image, id: "image" %>
+          <div class="image-select">
+            <i class="fas fa-image image-icon"></i>
+            <p class="underline-button">画像の選択</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :unique_name, "ユーザーID", class: "label-text" %>
+        </div>
+        <%= f.text_field :unique_name, class: "input-box" %>
+      </div>
+
+      <div class="form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :hundle_name, "ユーザーネーム", class: "label-text" %>
+        </div>
+        <%= f.text_field :hundle_name, class: "input-box" %>
+      </div>
+
+       <div class="description form-content">
+        <div class="label">
+          <div class="marker"></div>
+          <%= f.label :introduction, "自己紹介", class: "label-text" %>
+        </div>
+        <%= f.text_area :introduction, class: "input-box" %>
+      </div>
+
+    </div>
+
+    <div class="center-button">
+      <%= f.submit "変更", class: "form-data link-button" %>
+    </div>
+  <% end %>
+
+  <div class="center-button">
+    <%= link_to "キャンセル", user_path(current_user), class: "underline-button" %>
+  </div>
+
+</div>

@@ -12,6 +12,10 @@
             <h3 class="user-name"><%= @user.hundle_name %></h3>
           </div>
         </div>
+        <p class="description-text"><%= @user.introduction %></p>
+        <div class="set-link right-button">
+            <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
+          </div>
       </div>
 
       <% if @scenes.present? %>

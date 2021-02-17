@@ -57,6 +57,10 @@
   align-items: flex-end;
 }
 
+.user-icon {
+  border-radius: 40px;
+}
+
 .user-name {
   font-size: 20px;
 }
@@ -386,27 +390,6 @@
 	left: -7px;
 }
 
-
-.desk-visual .image-box {
-  width: 1200px;
-  height: 675px;
-  background-color: #FAFAFA;
-  background-size: cover;
-  background-position: center;
-
-  border-radius: 15px 15px 0 0;
-  text-align: center;
-
-  position: relative;
-}
-
-.desk-visual .image-select {
-  padding: 0;
-  position: absolute;
-  top : 310px;
-  left: 555px;
-}
-
 .image-icon {
   color: #EE8F36;
   font-size: 35px;
@@ -608,6 +591,20 @@
   position: relative;
 }
 
+.desk-visual .image-box {
+  width: 1200px;
+  height: 675px;
+  border-radius: 15px 15px 0 0;
+}
+
+.user-icon.image-box {
+  border-radius: 130px;
+}
+
+.user_icon_large {
+   border-radius: 130px;
+}
+
 .item-visual .image-box {
   width: 600px;
   height: 600px;
@@ -618,6 +615,12 @@
   position: absolute;
   top : 100px;
   left: 85px;
+}
+
+.desk-visual .image-select {
+  padding: 0;
+  top : 310px;
+  left: 555px;
 }
 
 .item-visual .image-select {
@@ -862,7 +865,11 @@
 }
 
 .description-text {
-  font-size: 18px;
+  font-size: 20px;
+}
+
+.user-information .description-text {
+  padding-top: 10px;
 }
 
 .fa-trash-alt.link-icon {
@@ -918,7 +925,6 @@
   height: 300px;
   padding: 10px 20px;
   resize: none;
-  font-size: 18px;
 }
 
 .desk-link {
