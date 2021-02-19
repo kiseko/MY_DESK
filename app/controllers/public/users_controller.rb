@@ -29,6 +29,10 @@ class Public::UsersController < ApplicationController
     @twitter_link = @user.twitter_link
   end
 
+  def followers
+    @followings = Following.where(following_user_id: current_user.id).where.not(status: 3)
+  end
+
   def leave
   end
 

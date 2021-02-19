@@ -63,6 +63,7 @@ $(function(){
 
 });
 
+
 $(function(){
 
   $(".image-select").on("click",function(){
@@ -75,12 +76,13 @@ $(function(){
       $(".image-box").css({
         backgroundImage: `url(${event.target.result})`
       });
-      $(".main-picture").css("display", "none");
+      $(".main-picture").css("opacity", "0");
     };
     reader.readAsDataURL(event.target.files[0]);
   });
 
 });
+
 
 $(function(){
 

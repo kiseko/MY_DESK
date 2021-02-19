@@ -11,7 +11,7 @@
           <p class="label-text">プロフィール画像</p>
         </div>
         <div class="user-icon image-box">
-           <%= attachment_image_tag @user, :image, :fill, 260, 260, format: "jpg", class: "user_icon_large" %>
+           <%= attachment_image_tag @user, :image, :fill, 260, 260, format: "jpg", class: "main-picture user_icon_large" %>
           <%= f.attachment_field :image, id: "image" %>
           <div class="image-select">
             <i class="fas fa-image image-icon"></i>

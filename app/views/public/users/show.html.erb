@@ -46,7 +46,9 @@
       <% end %>
 
       <div class="scene-select">
-        <div class="left-adjustment"></div>
+        <% if @scenes.present? %>
+          <div class="left-adjustment"></div>
+        <% end %>
         <% while @scene_counter < @scenes.count do %>
           <div class="bubble"></div>
           <% @scene_counter += 1 %>

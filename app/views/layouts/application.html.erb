@@ -75,7 +75,7 @@
             </li>
 
             <li class="square-panel">
-              <%= attachment_image_tag current_user, :image, :fill, 56, 56, class: "thumb-user-icon" %>
+              <%= attachment_image_tag current_user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
             </li>
             <li class="rectangle-panel">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "session log-out" %>
@@ -92,7 +92,7 @@
           </ul>
         </nav>
       <% else %>
-        <nav class="main-header">
+        <nav class="header">
           <ul class="header-info">
             <li class="my-desk">
               <%= image_tag "logo.png" %>
@@ -100,46 +100,53 @@
             <li class="square-panel">
               <%= attachment_image_tag current_user, :image, :fill, 56, 56, class: "thumb-user-icon" %>
             </li>
+
             <li class="main-panel">
-              <p>検索する <i class="fas fa-search"></i><p>
-              <div class="two-line-icon">
-                <span></span>
-                <span></span>
+              <div class="header-search">
+
+                <div class="search-trigger">
+                  <p>検索する <i class="fas fa-search"></i><p>
+                  <div class="two-line-icon">
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+
+                <div class="desker-search">
+                  <div class="search-target">
+                    <div class="target-desker">
+                      <p>DESKer</p>
+                    </div>
+                    <div class="target-item">
+                      <p>アイテム</p>
+                    </div>
+                  </div>
+                  <div class="search-box">
+                  </div>
+                </div>
+
+                 <div class="item-search">
+                  <div class="search-target">
+                    <div class="target-desker">
+                      <p>DESKer</p>
+                    </div>
+                    <div class="target-item">
+                      <p>アイテム</p>
+                    </div>
+                  </div>
+                  <div class="search-box">
+                  </div>
+                </div>
+
               </div>
             </li>
+
             <li class="rectangle-panel">
               <%= link_to "会員登録", new_user_registration_path, class: "session log-in" %>
               <%= link_to "ログイン", new_user_session_path, class: "session sign-up" %>
             </li>
           </ul>
         </nav>
-
-        <div class="desker-search">
-          <div class="search-target">
-            <div class="target-desker">
-              <p>DESKer</p>
-            </div>
-            <div class="target-item">
-              <p>アイテム</p>
-            </div>
-          </div>
-          <div class="search-box">
-
-          </div>
-        </div>
-
-        <div class="item-search">
-          <div class="search-target">
-            <div class="target-desker">
-              <p>DESKer</p>
-            </div>
-            <div class="target-item">
-              <p>アイテム</p>
-            </div>
-          </div>
-          <div class="search-box">
-          </div>
-        </div>
       <% end %>
     </header>
     <%= yield %>

@@ -23,6 +23,14 @@
   color: #666;
 }
 
+h3 {
+  font-size: 18px;
+}
+
+.header {
+  margin-bottom: 104px;
+}
+
 .main-header-info, .header-info {
   display: flex;
   list-style: none;
@@ -187,8 +195,11 @@
 }
 
 .thumb-user-icon {
-  margin: 9px;
-  border-radius: 28px;
+  border-radius: 30px;
+}
+
+.square-panel .thumb-user-icon {
+  margin: 7px;
 }
 
 .rectangle-panel {
@@ -444,6 +455,7 @@
 .bubble {
   width: 20px;
   height: 20px;
+  margin-right: 15px;
   background-color: #5EA1A9;
   border: 1px solid #5EA1A9;
   border-radius: 10px;
@@ -453,7 +465,6 @@
 .bubble:nth-child(n+3) {
   background-color: transparent;
   border: 1px solid #5EA1A9;
-  margin-left: 15px;
 }
 
 .circle-plus-button {
@@ -464,10 +475,6 @@
   border-radius: 20px;
   cursor: pointer;
   outline: none;
-}
-
-.scene-select .circle-plus-button {
-  margin-left: 15px;
 }
 
 .circle-plus-button:hover {
@@ -794,6 +801,114 @@
   background-color: #CCC;
   border-radius: 1px;
 }
+
+
+.followings {
+  width: 804px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.side-line {
+  width: 2px;
+  height: auto;
+  background-color: #EA7304;
+}
+
+.followings-list{
+  width: 800px;
+}
+
+.following {
+  padding: 0 30px;
+}
+
+.following-information {
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.following-information .profile {
+  width: 370px;
+}
+
+.follow-button-field {
+  width: 160px;
+  height: 30px;
+  position: relative;
+}
+
+.follow-flame {
+  width: 150px;
+  height: 30px;
+  padding-top: 1px;
+  border-radius: 20px;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+}
+
+.follow-button {
+  background-color: #FFF;
+  border: 2px solid #EE8F36;
+  color: #EE8F36;
+}
+
+.follow-button:hover {
+  background-color: #EE8F36;
+  color: #FFF;
+}
+
+.following-button {
+  background-color: #EA7304;
+  border: none;
+  color: #FFF;
+  position: absolute;
+  z-index: 20;
+}
+
+.following-button:hover {
+  opacity: 0;
+}
+
+.unfollow-button {
+  background-color: #C00;
+  border: none;
+  color: #FFF;
+  position: absolute;
+  z-index: 10;
+}
+
+.favorite-button-field {
+  width: 45px;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.following-information .link-icon {
+  padding-top: 2px;
+}
+
+.following-introduction {
+  padding-bottom: 15px;
+}
+
+.following-introduction p {
+  font-size: 18px;
+}
+
+.followings-list .bar {
+  margin: 0 auto 15px;
+  width: 760px;
+}
+
+
 
 
 .form {
