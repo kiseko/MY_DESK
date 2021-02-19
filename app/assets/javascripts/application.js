@@ -18,6 +18,29 @@
 
 $(function(){
 
+  $(".my-desk-login").on("click",function(){
+    $(".three-line-icon").toggleClass("active");
+    $(".my-desk-info").toggleClass("active");
+  });
+
+  $(".search-trigger, .desker-search, .item-search").hover(function(){
+    $(".desker-search, .item-search").toggleClass("in");
+  });
+
+  $(".target-item").on("click",function(){
+    $(".desker-search").css("display", "none");
+    $(".item-search").css("display", "block");
+  });
+  $(".target-desker").on("click",function(){
+    $(".item-search").css("display", "none");
+    $(".desker-search").css("display", "block");
+  });
+
+});
+
+
+$(function(){
+
   $(window).scroll(function(){
     var scroll = $(window).scrollTop();
     if (scroll > 0) {
@@ -27,8 +50,6 @@ $(function(){
       $(".user-information").removeClass("fade-out");
     }
   });
-
-  $(function(){
 
   $(".bubble").on("click",function(){
     $(".main-picture-area").css("display", "none");
@@ -41,9 +62,6 @@ $(function(){
   });
 
 });
-
-});
-
 
 $(function(){
 

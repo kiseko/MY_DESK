@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   scope module: :public do
+    root to: "homes#top"
     resources :users, path: '/', only: [:show, :edit, :update] do
       resources :scenes, except: [:index, :show]
       resource :instagram_link, only: [:create, :update, :destroy]
