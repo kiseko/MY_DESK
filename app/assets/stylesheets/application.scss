@@ -66,14 +66,14 @@ h3 {
   z-index: 50;
 }
 
-.three-line-icon {
+.desk-line-icon {
   width: 38px;
   height: 38px;
   margin-left: 27px;
   position: relative;
 }
 
-.three-line-icon span {
+.desk-line-icon span {
   width: 38px;
   height: 3px;
   background-color: #EE8F36;
@@ -82,28 +82,28 @@ h3 {
   transition: all 400ms;
 }
 
-.three-line-icon span:first-child {
+.desk-line-icon span:first-child {
   top: 10px;
 }
 
-.three-line-icon span:nth-child(2) {
+.desk-line-icon span:nth-child(2) {
   top: 25px;
 }
 
-.three-line-icon span:last-child {
+.desk-line-icon span:last-child {
   top: 25px;
 }
 
-.three-line-icon.active span:first-child {
-  transform: translateY(-5px)
+.desk-line-icon.active span:first-child {
+  transform: translateY(-4px)
 }
 
-.three-line-icon.active span:nth-child(2) {
-  transform: translateY(-4px) rotate(-45deg);
+.desk-line-icon.active span:nth-child(2) {
+  transform: scale(1, 0.7) translate(14px, -6px) rotate(-90deg);
 }
 
-.three-line-icon.active span:last-child {
-  transform: translateY(-4px) rotate(45deg);
+.desk-line-icon.active span:last-child {
+  transform: scale(1, 0.7) translate(-14px, -6px) rotate(90deg);
 }
 
 .my-desk-info {
@@ -112,7 +112,6 @@ h3 {
   top: 0;
   left: 0;
   transition: all 400ms;
-  pointer-events: none;
   z-index: 40;
 }
 
@@ -225,10 +224,15 @@ h3 {
   display: block;
   background-color: #FFF;
   border-radius: 20px;
-  color: #EA7304;
+  color: #EE8F36;
   font-size: 18px;
   text-align: center;
   text-decoration: none;
+}
+
+.session:hover {
+  background-color: #FEFBF8;
+  color: #EA7304;
 }
 
 .log-out {
@@ -289,7 +293,7 @@ h3 {
 
 .search-box {
   width: 100%;
-  height: 49px;
+  height: 44px;
   border-radius: 0 0 30px 30px;
 }
 
@@ -316,8 +320,10 @@ h3 {
 .sub-panel {
   width: 25%;
   height: 74px;
+  padding-top: 12px;
   border: solid #E6E6E6;
-  border-width: 2px 2px 2px 0;
+  border-width: 0 2px 2px 0;
+  text-align: center;
 }
 
 .left-panel.sub-panel {
@@ -327,6 +333,31 @@ h3 {
 
 .right-panel.sub-panel {
   border-radius: 0 0 35px 0;
+}
+
+.sub-panel p {
+  color: #EE8F36;
+  font-size: 18px;
+}
+
+.sub-panel h3 {
+  color: #EE8F36;
+  font-size: 20px;
+}
+
+.sub-panel .link-icon {
+  margin-right: 0;
+  font-size: 24px;
+}
+
+.sub-panel:hover {
+  background-color: #EE8F36;
+}
+
+.sub-panel:hover p,
+.sub-panel:hover h3,
+.sub-panel:hover .link-icon {
+  color: #FFF;
 }
 
 

@@ -85,42 +85,48 @@
                   <div class="item-card">
                     <%= attachment_image_tag item_picture, :image, :fill, 300, 300, class: "card-picture" %>
                     <div class="item-card-information">
-
-                      <% if item.review.present? %>
-                        <div class="rating-star">
-                          <% if item.review.rating == 1 %>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                          <% elsif item.review.rating == 2 %>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                            <i class="fas fa-stargray- star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                          <% elsif item.review.rating == 3 %>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                          <% elsif item.review.rating == 4 %>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star gray-star"></i>
-                          <% elsif item.review.rating == 5 %>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                            <i class="fas fa-star star"></i>
-                          <% end %>
-                        </div>
-                      <% end %>
+                      <div class="card-head">
+                        
+                        <% if item.review.present? %>
+                          <div class="rating-star">
+                            <% if item.review.rating == 1 %>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                            <% elsif item.review.rating == 2 %>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                              <i class="fas fa-stargray- star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                            <% elsif item.review.rating == 3 %>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                            <% elsif item.review.rating == 4 %>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star gray-star"></i>
+                            <% elsif item.review.rating == 5 %>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                              <i class="fas fa-star star"></i>
+                            <% end %>
+                          </div>
+                        <% end %>
+                        
+                        
+                        
+                        
+                      </div>
 
                       <h4><%= item.brand %></h4>
                       <h3><%= item.name %></h3>

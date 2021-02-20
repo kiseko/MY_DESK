@@ -18,7 +18,7 @@
             <li class="my-desk-login">
               <div class="logo">
                 <%= image_tag "logo-login.png" %>
-                <div class="three-line-icon">
+                <div class="desk-line-icon">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -26,7 +26,9 @@
               </div>
               <ul class="my-desk-info">
                 <li class="desk-info-panel">
+                  <%= link_to user_path(current_user), class: "icon-link-button" do %>
                   <p>デスクチェック</p>
+                  <% end %>
                 </li>
                 <li class="desk-info-panel">
                   <p>アイテム一覧</p>
@@ -85,10 +87,26 @@
 
         <nav class="sub-header">
           <ul class="sub-header-info">
-            <li class="left-panel sub-panel"></li>
-            <li class="sub-panel"></li>
-            <li class="sub-panel"></li>
-            <li class="right-panel sub-panel"></li>
+            <li class="left-panel sub-panel">
+              <p>タイムライン</p>
+              <i class="far fa-clock link-icon"></i>
+            </li>
+            <li class="sub-panel">
+              <%= link_to user_followings_path(current_user), class: "icon-link-button" do %>
+                <p>フォロー中</p>
+                <h3><%= current_user.followings.count %></h3>
+              <% end %>
+            </li>
+            <li class="sub-panel">
+              <%= link_to followers_user_path(current_user), class: "icon-link-button" do %>
+                <p>フォロワー</p>
+                <h3><%= Following.where(following_user_id: current_user).count %></h3>
+              <% end %>
+            </li>
+            <li class="right-panel sub-panel">
+              <p>クリップ</p>
+              <i class="fas fa-paperclip link-icon"></i>
+            </li>
           </ul>
         </nav>
       <% else %>

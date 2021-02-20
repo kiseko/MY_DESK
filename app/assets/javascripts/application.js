@@ -18,9 +18,8 @@
 
 $(function(){
 
-  $(".my-desk-login").on("click",function(){
-    $(".three-line-icon").toggleClass("active");
-    $(".my-desk-info").toggleClass("active");
+  $(".my-desk-login").hover(function(){
+    $(".desk-line-icon, .my-desk-info").toggleClass("active");
   });
 
   $(".search-trigger, .desker-search, .item-search").hover(function(){
