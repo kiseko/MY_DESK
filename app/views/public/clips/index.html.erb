@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="clips">
+
+    <% if @clips.present? %>
+      <% @clips.each do |clip| %>
+        <% item = clip.item %>
+        <% item_picture = item.item_pictures.first %>
+
+        <div class="card-shadow">
+          <%= link_to item_path(item.id), class: "item-detail-link" do %>
+            <div class="item-card">
+              <%= attachment_image_tag item_picture, :image, :fill, 300, 300, class: "card-picture" %>
+              <div class="item-card-information">
+
+                <% if item.review.present? %>
+                  <div class="rating-star">
+                    <% if item.review.rating == 1 %>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                    <% elsif item.review.rating == 2 %>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                      <i class="fas fa-stargray- star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                    <% elsif item.review.rating == 3 %>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                    <% elsif item.review.rating == 4 %>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star gray-star"></i>
+                    <% elsif item.review.rating == 5 %>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                      <i class="fas fa-star star"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+
+                <h4><%= item.brand %></h4>
+                <h3><%= item.name %></h3>
+                
+                <div class="genre-index">
+                  <% item.genres.each do |genre| %>
+                    <div class="genre-content">
+                      <div class="genre-frame">
+                        <p class="genre-name"><%= genre.name %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+
+                <div class="card-item-link">
+                  <% if item.homepage_link.present? %>
+                    <i class="fas fa-home link-icon"></i>
+                  <% end %>
+
+                  <% if item.amazon_link.present? %>
+                    <i class="fab fa-amazon link-icon"></i>
+                  <% end %>
+                </div>
+
+                <p class="created-at">
+                  <%= item.created_at.strftime("%Y/%m/%d") %>
+                </p>
+
+                <div class="clip-link">
+                  <div id="clip-buttons-<%= item.id %>">
+                    <%= render partial: "public/clips/clip", locals: { item: item } %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      <% end %>
+    <% else %>
+      <p><%= @clips.count %></p>
+    <% end %>
+
+  </div>
+</div>

@@ -104,8 +104,10 @@
               <% end %>
             </li>
             <li class="right-panel sub-panel">
-              <p>クリップ</p>
-              <i class="fas fa-paperclip link-icon"></i>
+              <%= link_to user_clips_path(current_user), class: "icon-link-button" do %>
+                <p>クリップ</p>
+                <i class="fas fa-paperclip link-icon"></i>
+              <% end %>
             </li>
           </ul>
         </nav>

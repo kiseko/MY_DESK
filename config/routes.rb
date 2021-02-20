@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, path: '/', only: [:show, :edit, :update] do
       resources :scenes, except: [:index, :show]
       resources :followings, except: [:new, :edit, :show]
+      resources :clips , only: [:index]
       resource :instagram_link, only: [:create, :update, :destroy]
       resource :twitter_link, only: [:create, :update, :destroy]
       member do
@@ -15,10 +16,11 @@ Rails.application.routes.draw do
     resources :scene_items, path: "scene/:scene_id/scene_items/", only: [:new, :create, :destroy]
     resources :items do
       resources :item_pictures, path: "/pictures", except: [:index, :show]
+      resources :genres, only: [:create, :destroy]
+      resources :clips , only: [:create, :destroy]
       resource :homepage_link, only: [:create, :update, :destroy]
       resource :amazon_link, only: [:create, :update, :destroy]
       resource :review, except: [:index, :show]
-      resources :genres, only: [:create, :destroy]
       member do
         get 'link'
       end

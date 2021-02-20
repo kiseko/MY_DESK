@@ -1,0 +1,10 @@
+<% clip = item.clips.find_by(user_id: current_user.id) %>
+  <% if clip.present? %>
+    <%= link_to item_clip_path(item.id, clip.id), method: :delete, remote: true, class: "icon-link-button" do %>
+      <i class="fas fa-paperclip clip-button active"></i>
+    <% end %>
+  <% else %>
+    <%= link_to item_clips_path(item.id), method: :post, remote: true, class: "icon-link-button" do %>
+      <i class="fas fa-paperclip clip-button"></i>
+    <% end %>
+  <% end %>

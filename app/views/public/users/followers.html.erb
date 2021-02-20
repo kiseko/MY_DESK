@@ -9,21 +9,27 @@
 
           <div class="following-information">
 
-            <div class="profile">
-              <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
-              <div class="identification">
-                <h4>@<%= user.unique_name %></h4>
-                <h3><%= user.hundle_name %></h3>
-              </div>
+            <div class="profile-field">
+              <%= link_to user_path(user), class: "desk-link" do %>
+                <div class="profile">
+                  <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                  <div class="identification">
+                    <h4>@<%= user.unique_name %></h4>
+                    <h3><%= user.hundle_name %></h3>
+                  </div>
+                </div>
+              <% end %>
             </div>
 
             <div id="follow-flames-<%= user.id %>">
               <%= render partial: "public/followings/follow", locals: { user: user } %>
             </div>
 
-            <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
-              <%= render partial: "public/followings/favorite", locals: { user: user } %>
-            </div>
+            <% if current_user.followings.find_by(following_user_id: user.id).present? %>
+              <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
+                <%= render partial: "public/followings/favorite", locals: { user: user } %>
+              </div>
+            <% end %>
 
             <% if user.instagram_link.present? %>
               <%= link_to user.instagram_link.url, class: "icon-link-button" do %>

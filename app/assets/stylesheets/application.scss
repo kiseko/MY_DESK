@@ -346,6 +346,7 @@ h3 {
 }
 
 .sub-panel .link-icon {
+  width: 100%;
   margin-right: 0;
   font-size: 24px;
 }
@@ -612,6 +613,39 @@ h3 {
   position: relative;
 }
 
+.card-head {
+  display: flex;
+}
+
+.clip-count {
+  margin-left: auto;
+  color: #EE8F36;
+  font-size: 20px;
+}
+
+.clip-count-icon {
+  margin-left: 5px;
+  padding-top: 1px;
+  color: #EE8F36;
+  font-size: 25px;
+}
+
+.clip-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.clip-button {
+  color: #CCC;
+  font-size: 30px;
+}
+
+.clip-button.active {
+  color: #EE8F36;
+  font-size: 30px;
+}
+
 .rating-star {
   padding-bottom: 10px;
 }
@@ -659,13 +693,9 @@ h3 {
   overflow: hidden;
 }
 
-.item-card-information .link-icon {
+.card-item-link .link-icon {
   margin-right: 5px;
   margin-top: 5px;
-}
-
-.card-bottom {
-  display: flex;
 }
 
 .created-at {
@@ -860,7 +890,7 @@ h3 {
   align-items: center;
 }
 
-.following-information .profile {
+.profile-field {
   width: 370px;
 }
 
@@ -939,6 +969,12 @@ h3 {
   width: 760px;
 }
 
+
+
+.clips {
+  width: 1300px;
+  margin: 0 auto;
+}
 
 
 
@@ -1205,6 +1241,10 @@ h3 {
 
 .item-information-content:first-child {
   padding-bottom: 10px;
+}
+
+.item-information-head {
+  display: flex;
 }
 
 .item-information .genre-index {

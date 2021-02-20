@@ -9,12 +9,16 @@
 
           <div class="following-information">
 
-            <div class="profile">
-              <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
-              <div class="identification">
-                <h4>@<%= user.unique_name %></h4>
-                <h3><%= user.hundle_name %></h3>
-              </div>
+            <div class="profile-field">
+              <%= link_to user_path(user), class: "desk-link" do %>
+                <div class="profile">
+                  <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                  <div class="identification">
+                    <h4>@<%= user.unique_name %></h4>
+                    <h3><%= user.hundle_name %></h3>
+                  </div>
+                </div>
+              <% end %>
             </div>
 
             <div id="follow-flames-<%= user.id %>">
