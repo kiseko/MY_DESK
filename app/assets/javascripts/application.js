@@ -87,6 +87,17 @@ $(function(){
 
 $(function(){
 
+  $(".three-dots").on("click",function(){
+    var index = $(".three-dots").index(this);
+    $(".mute-icon").eq(index).toggleClass("appearance");
+    $(".block-icon").eq(index).toggleClass("appearance");
+  });
+
+});
+
+
+$(function(){
+
   $(document).on("ready page:load", function() {
     var rating = $('input:radio[name="review[rating]"]:checked').val();
     if (rating>= 1 && rating <= 5){

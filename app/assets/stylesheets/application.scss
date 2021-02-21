@@ -1090,9 +1090,48 @@ h3 {
   color: #B3B3B3;
 }
 
-p.gray-link-icon {
-  margin-left: auto;
+.red.gray-link-icon {
   font-size: 24px;
+}
+
+.red.gray-link-icon:hover {
+  color: #c00;
+}
+
+.red.gray-link-icon.active {
+  color: #c00;
+}
+
+p.gray-link-icon {
+  font-size: 22px;
+}
+
+.mute-block-form {
+  height: 0px;
+}
+
+.mute-block {
+  margin: 0 5px 0 auto;
+  position: relative;
+}
+
+.mute-icon {
+  display: none;
+  position: absolute;
+  top: -14px;
+  right: -32px;
+}
+
+.block-icon {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: -32px;
+}
+
+.mute-icon.appearance,
+.block-icon.appearance {
+  display: block;
 }
 
 .following .description-text {

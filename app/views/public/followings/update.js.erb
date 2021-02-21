@@ -1,1 +1,2 @@
 $("#favorite-users-<%= @user.id %>").html("<%= j(render partial: "public/followings/favorite", locals: { user: @user }) %>");
+$("#mute-users-<%= @user.id %>").html("<%= j(render partial: "public/followings/mute", locals: { user: @user }) %>");
