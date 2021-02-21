@@ -19,7 +19,7 @@
               <%= f.text_field :url, class: "input-box" %>
               <%= f.submit "更新", class: "link-button" %>
               <%= link_to item_homepage_link_path(@item.id), method: :delete, class: "icon-link-button" do %>
-                <i class="fas fa-trash-alt link-icon"></i>
+                <i class="fas fa-trash-alt gray-link-icon"></i>
               <% end %>
             </div>
           </div>
@@ -54,7 +54,7 @@
               <%= f.text_field :url, class: "input-box" %>
               <%= f.submit "更新", class: "link-button" %>
               <%= link_to item_amazon_link_path(@item.id), method: :delete, class: "delete-link-button" do %>
-                <i class="fas fa-trash-alt link-icon"></i>
+                <i class="fas fa-trash-alt gray-link-icon"></i>
               <% end %>
             </div>
           </div>

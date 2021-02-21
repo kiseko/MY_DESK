@@ -474,7 +474,35 @@ h3 {
 }
 
 .identification {
+  margin-right: auto;
   padding: 0 0 2px 15px;
+}
+
+.form-icon {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.close-button {
+  margin: 0 0 59px auto;
+  color: #EA7304;
+  font-size: 20px;
+}
+
+.close-button:hover {
+  color: #B3B3B3;
+}
+
+.open-button {
+  margin: 0 0 59px auto;
+  color: #CCC;
+  font-size: 20px;
+}
+
+.open-button:hover {
+  color: #EE8F36;
 }
 
 .description-text p {
@@ -1045,15 +1073,26 @@ h3 {
   width: 45px;
 }
 
-.favorite-button {
-  background: none;
-  border: none;
-  outline: none;
+.following-information .link-icon {
+  padding-top: 2px;
+}
+
+.gray-link-icon {
+  width: 35px;
+  margin: 0;
+  text-align: center;
+  color: #ccc;
+  font-size: 30px;
   cursor: pointer;
 }
 
-.following-information .link-icon {
-  padding-top: 2px;
+.gray-link-icon:hover {
+  color: #B3B3B3;
+}
+
+p.gray-link-icon {
+  margin-left: auto;
+  font-size: 24px;
 }
 
 .following .description-text {
@@ -1424,16 +1463,6 @@ h3 {
 
 .set-link.right-button {
   padding: 10px 0 10px 0;
-}
-
-.fa-trash-alt.link-icon {
-  margin: 0;
-  color: #ccc;
-}
-
-.fa-trash-alt.link-icon:hover {
-  margin: 0;
-  color: #B3B3B3;
 }
 
 .delete-review.link-icon {

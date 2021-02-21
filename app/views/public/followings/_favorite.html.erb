@@ -2,11 +2,15 @@
 <% if following.status == 0 %>
   <%= form_with model: following, url: user_following_path(user, following.id), remote: true do |f| %>
     <%= f.hidden_field :status, value: 1 %>
-    <button type="submit" class="favorite-button"><i class="far fa-bookmark link-icon"></i></button>
+    <button type="submit" class="form-icon">
+      <i class="far fa-bookmark link-icon"></i>
+    </button>
   <% end %>
 <% elsif following.status == 1 %>
   <%= form_with model: following, url: user_following_path(user, following.id), remote: true do |f| %>
     <%= f.hidden_field :status, value: 0 %>
-    <button type="submit" class="favorite-button"><i class="fas fa-bookmark link-icon"></i></button>
+    <button type="submit" class="form-icon">
+      <i class="fas fa-bookmark link-icon"></i>
+    </button>
   <% end %>
 <% end %>

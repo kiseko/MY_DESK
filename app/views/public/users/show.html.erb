@@ -11,6 +11,23 @@
             <h3 class="user-id">@<%= @user.unique_name %></h3>
             <h3 class="user-name"><%= @user.hundle_name %></h3>
           </div>
+
+          <% if @user.status == 0 %>
+            <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+              <%= f.hidden_field :status, value: 1 %>
+              <button type="submit" class="form-icon">
+                <i class="fas fa-door-open close-button"></i>
+              </button>
+            <% end %>
+          <% elsif  @user.status == 1 %>
+            <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+              <%= f.hidden_field :status, value: 0 %>
+              <button type="submit" class="form-icon">
+                <i class="fas fa-door-closed open-button"></i>
+              </button>
+            <% end %>
+          <% end %>
+
         </div>
         <div class="description-text">
           <%= simple_format(@user.introduction) %>
