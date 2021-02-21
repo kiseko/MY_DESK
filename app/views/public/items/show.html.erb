@@ -52,7 +52,7 @@
           </div>
 
           <% if @item.user_id == current_user.id %>
-            <h3 class="clip-count"><%= @item.clips.count %></h3><i class="fas fa-paperclip clip-count-icon"></i>
+            <h3 class="clip-count"><%= @item.clips.count %></h3><i class="fas fa-paperclip nomal-icon"></i>
           <% end %>
 
         </div>
@@ -148,8 +148,8 @@
               <i class="fas fa-star star"></i>
             <% end %>
           </div>
-          <p class="description-text">
-            <%= @review.description %>
+          <div class="description-text">
+            <%= simple_format(@review.description) %>
           </p>
           <div class="set-link right-button">
             <%= link_to "レビューの編集", edit_item_review_path(@item.id), data: {"turbolinks" => false}, class: "underline-button" %>

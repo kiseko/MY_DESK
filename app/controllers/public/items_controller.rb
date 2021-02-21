@@ -53,6 +53,12 @@ class Public::ItemsController < ApplicationController
     @amazon_link = @item.amazon_link
   end
 
+  def search
+     @search_items = Item.search(params[:search])
+     @scene_items = SceneItem.where(item_id: @search_items.ids)
+     @search_value = (params[:search])
+  end
+
 
   private
 

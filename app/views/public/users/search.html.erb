@@ -1,0 +1,49 @@
+<div class="container">
+  
+  <div class="title-panel"><p>Desker</p></div>
+  
+  <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+    <div class="search-form">
+      <%= f.text_field :search, value: @search_value, class: "search-input-box" %>
+      <div class="link-layout">
+        <button type="submit" class="circle-search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>  
+
+  <div class="search-result desker-result">
+
+    <% if @users.present? %>
+      <% @users.each do |user| %>
+        <% scene = user.scenes.first %>
+
+        <div class="card-shadow">
+          <%= link_to user_path(user), class: "item-detail-link" do %>
+
+            <div class="card">
+              <%= attachment_image_tag scene, :image, :fill, 300, 170, fallback: "desk-icon.png", size: "300x170", class: "card-picture" %>
+              <div class="card-information">
+
+              <div class="profile">
+                <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                <div class="identification">
+                  <h4>@<%= user.unique_name %></h4>
+                  <h3><%= user.hundle_name %></h3>
+                </div>
+              </div>
+
+              <div class="description-text">
+                <%= simple_format(user.introduction) %>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+
+      <% end %>
+    <% end %>
+
+  </div>
+</div>

@@ -150,10 +150,18 @@ h3 {
   width: 800px;
   height: 74px;
   padding-top: 14px;
-  background-color: #EA5504;
+  background-color: #EC661D;
   text-align: center;
   position: absolute;
   z-index: 30;
+}
+
+.search-trigger:hover {
+  background-color: #EA5504;
+}
+
+.search-trigger.active {
+  background-color: #EA5504;
 }
 
 .main-panel p,
@@ -175,6 +183,7 @@ h3 {
   background-color: #FFF;
   position: absolute;
   left: 0;
+  transition: all 400ms;
 }
 
 .two-line-icon span:first-child {
@@ -183,6 +192,14 @@ h3 {
 
 .two-line-icon span:last-child {
   top: 19px;
+}
+
+.two-line-icon.active span:first-child {
+   transform: translateY(3px) rotate(45deg);
+}
+
+.two-line-icon.active span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .square-panel {
@@ -294,6 +311,7 @@ h3 {
 .search-box {
   width: 100%;
   height: 44px;
+  padding-top: 7px;
   border-radius: 0 0 30px 30px;
 }
 
@@ -304,6 +322,56 @@ h3 {
 .item-search .search-box {
   background-color: #EE8F36;
 }
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input-box {
+  width: 570px;
+  height: 30px;
+  display: block;
+  padding: 0 10px 0 15px;
+  border: 2px solid #6EAAB1;
+  border-right: 0;
+  border-radius: 15px 0 0 15px;
+  font-size: 18px;
+  outline: none;
+}
+
+.search-form .link-layout {
+  width: 30px;
+  height: 30px;
+  background-color: #FFF;
+  border: 2px solid #6EAAB1;
+  border-left: 0;
+  border-radius: 0 15px 15px 0;
+  position: relative;
+}
+
+.circle-search-button {
+  width: 30px;
+  height: 30px;
+  background-color: #6EAAB1;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  top: -2px;
+}
+
+.circle-search-button:hover {
+  background-color:  #5EA1A9;
+}
+
+.circle-search-button i {
+  color: #FFF;
+  font-size: 18px;
+}
+
+
 
 .sub-header {
   min-width: 1244px;
@@ -376,7 +444,8 @@ h3 {
 
 .user-information {
   width: 580px;
-  height: 338px;
+  min-height: 317px;
+  max-height: 634px;
   padding: 20px;
   background-color: #FAFAFA;
   opacity: 0.98;
@@ -406,6 +475,16 @@ h3 {
 
 .identification {
   padding: 0 0 2px 15px;
+}
+
+.description-text p {
+  font-size: 18px;
+}
+
+.user-information .description-text {
+  max-height: 351px;
+  padding-top: 5px;
+  overflow: hidden;
 }
 
 .link-icon {
@@ -591,7 +670,7 @@ h3 {
   cursor: pointer;
 }
 
-.item-card {
+.card {
   width: 300px;
   height: 510px;
   background-color: #FAFAFA;
@@ -607,23 +686,18 @@ h3 {
   vertical-align: bottom;
 }
 
-.item-card-information {
+.card-information {
   height: 210px;
   padding: 15px 10px 10px;
   position: relative;
 }
 
-.card-head {
-  display: flex;
-}
-
 .clip-count {
-  margin-left: auto;
   color: #EE8F36;
   font-size: 20px;
 }
 
-.clip-count-icon {
+.nomal-icon {
   margin-left: 5px;
   padding-top: 1px;
   color: #EE8F36;
@@ -631,6 +705,7 @@ h3 {
 }
 
 .clip-link {
+  display: flex;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -667,7 +742,7 @@ h3 {
   align-content: flex-start;
 }
 
-.item-card .genre-index {
+.card .genre-index {
   height: 35px;
   overflow: hidden;
 }
@@ -693,17 +768,22 @@ h3 {
   overflow: hidden;
 }
 
-.card-item-link .link-icon {
-  margin-right: 5px;
-  margin-top: 5px;
+.card-item-link .nomal-icon {
+  margin: 10px 10px 0 0;
+  font-size: 30px;
 }
 
 .created-at {
-  width: 280px;
-  font-size: 14px;
+  width: 300px;
   text-align: center;
   position: absolute;
-  top: 179px;
+  top: 0;
+  left: 0;
+  padding: 179px 0 10px;
+}
+
+.created-at p {
+  font-size: 14px;
 }
 
 .delete-button {
@@ -712,16 +792,16 @@ h3 {
   background-color: #CCC;
   border: none;
   border-radius: 15px;
+  cursor: pointer;
+  outline: none;
   position: absolute;
   top: -1px;
-  cursor: pointer;
 }
 
-.item-card-information .delete-button {
+.card-information .delete-button {
   border-radius: 5px 0 5px 0;
   top: 180px;
   right: 0;
-  outline: none;
 }
 
 .delete-button:hover {
@@ -956,12 +1036,11 @@ h3 {
   padding-top: 2px;
 }
 
-.following-introduction {
+.following .description-text {
+  max-height: 69px;
   padding-bottom: 15px;
-}
+  overflow: hidden;
 
-.following-introduction p {
-  font-size: 18px;
 }
 
 .followings-list .bar {
@@ -974,6 +1053,8 @@ h3 {
 .clips {
   width: 1300px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 
@@ -1247,6 +1328,10 @@ h3 {
   display: flex;
 }
 
+.item-information-head .clip-count {
+  margin-left: auto;
+}
+
 .item-information .genre-index {
   padding-top: 10px;
 }
@@ -1295,13 +1380,9 @@ h3 {
 }
 
 .genre-form .link-layout {
-  width: 30px;
-  height: 30px;
   background-color: #FFF;
   border: 2px solid #EE8F36;
   border-left: 0;
-  border-radius: 0 15px 15px 0;
-  position: relative;
 }
 
 .genre-form .circle-plus-button {
@@ -1327,14 +1408,6 @@ h3 {
 
 .set-link.right-button {
   padding: 10px 0 10px 0;
-}
-
-.description-text {
-  font-size: 20px;
-}
-
-.user-information .description-text {
-  padding-top: 10px;
 }
 
 .fa-trash-alt.link-icon {
@@ -1482,6 +1555,66 @@ right: 10px;
 	appearance: none;
 }
 
+
+
+.title-panel {
+  width: 160px;
+  height: 35px;
+  margin: 0 auto;
+  padding-top: 5px;
+  background-color: #6EAAB1;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.title-panel p {
+  color: white;
+  font-size: 18px;
+}
+
+.container .search-form {
+  margin-top: 5px;
+}
+
+.search-result {
+  width: 1300px;
+  margin: 0 auto;
+  padding-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.desker-result .card-shadow {
+  margin: 0 30px 30px 0;
+  width: 300px;
+  height: 350px;
+  background-color: #E6E6E6;
+  border-radius: 5px;
+  position: relative;
+}
+
+.desker-result .card {
+  width: 300px;
+  height: 350px;
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  text-decoration: none;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+}
+
+.desker-result .card-information {
+  height: 170px;
+  padding: 15px 10px 10px;
+  position: relative;
+}
+
+.card .description-text {
+  padding-top: 5px;
+  max-height: 81px;
+  overflow: hidden;
+}
 
 
 

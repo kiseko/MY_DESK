@@ -22,7 +22,9 @@ $(function(){
     $(".desk-line-icon, .my-desk-info").toggleClass("active");
   });
 
-  $(".search-trigger, .desker-search, .item-search").hover(function(){
+  $(".search-trigger").on("click",function(){
+    $(this).toggleClass("active");
+    $(".two-line-icon").toggleClass("active");
     $(".desker-search, .item-search").toggleClass("in");
   });
 

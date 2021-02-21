@@ -12,8 +12,13 @@ Rails.application.routes.draw do
         get 'link'
         get "followers"
       end
+      collection do
+        get "search"
+      end
     end
+
     resources :scene_items, path: "scene/:scene_id/scene_items/", only: [:new, :create, :destroy]
+
     resources :items do
       resources :item_pictures, path: "/pictures", except: [:index, :show]
       resources :genres, only: [:create, :destroy]
@@ -23,6 +28,9 @@ Rails.application.routes.draw do
       resource :review, except: [:index, :show]
       member do
         get 'link'
+      end
+      collection  do
+        get "search"
       end
     end
   end

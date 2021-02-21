@@ -25,4 +25,8 @@ class User < ApplicationRecord
     unique_name
   end
 
+  def self.search(search)
+    User.where(["unique_name LIKE? or hundle_name LIKE? or introduction LIke ?", "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
+
 end

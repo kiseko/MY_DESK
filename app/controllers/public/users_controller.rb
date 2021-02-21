@@ -39,6 +39,11 @@ class Public::UsersController < ApplicationController
   def resign
   end
 
+  def search
+     @users = User.search(params[:search])
+     @search_value = (params[:search])
+  end
+
 
   private
 

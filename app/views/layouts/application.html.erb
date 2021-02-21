@@ -57,6 +57,16 @@
                     </div>
                   </div>
                   <div class="search-box">
+                    <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+                      <div class="search-form">
+                        <%= f.text_field :search, class: "search-input-box" %>
+                        <div class="link-layout">
+                          <button type="submit" class="circle-search-button">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
 
@@ -70,6 +80,16 @@
                     </div>
                   </div>
                   <div class="search-box">
+                    <%= form_with url: search_items_path, method: :get, local: true do |f| %>
+                      <div class="search-form">
+                        <%= f.text_field :search, class: "search-input-box" %>
+                        <div class="link-layout">
+                          <button type="submit" class="circle-search-button">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
 
