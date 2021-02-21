@@ -16,6 +16,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
+    @items = current_user.items
   end
 
   def show
@@ -43,6 +44,9 @@ class Public::ItemsController < ApplicationController
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to items_path
   end
 
   def link

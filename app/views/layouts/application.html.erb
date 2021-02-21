@@ -27,11 +27,13 @@
               <ul class="my-desk-info">
                 <li class="desk-info-panel">
                   <%= link_to user_path(current_user), class: "icon-link-button" do %>
-                  <p>デスクチェック</p>
+                    <p>デスクチェック</p>
                   <% end %>
                 </li>
                 <li class="desk-info-panel">
-                  <p>アイテム一覧</p>
+                  <%= link_to items_path, class: "icon-link-button" do %>
+                    <p>アイテム一覧</p>
+                  <% end %>
                 </li>
               </ul>
             </li>

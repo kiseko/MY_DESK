@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    resources :users, path: '/', only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       resources :scenes, except: [:index, :show]
       resources :followings, except: [:new, :edit, :show]
       resources :clips , only: [:index]

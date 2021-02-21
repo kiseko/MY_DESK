@@ -16,7 +16,7 @@
 
       <div class="list-item">
 
-        <%= attachment_image_tag item_picture, :image, :fill, 150, 150, class: "thumbnail" %>
+        <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
         <div class="list-item-information">
           <h4><%= item.brand %></h4>
           <h3><%= item.name %></h3>
@@ -33,7 +33,7 @@
 
         <div class="list-item-link">
           <% if homepage_link.present? %>
-            <div class="pt-0 item-link">
+            <div class="item-link">
               <i class="fas fa-home link-icon"></i>
               <p><%= homepage_link.url %></p>
             </div>
