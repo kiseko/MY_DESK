@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       collection do
         get "search"
       end
+      get "timeline/scenes" => "timelines#scene", as: "timeline_scenes"
+      get "timeline/items" => "timelines#item", as: "timeline_items"
+      get "timeline/reviews" => "timelines#review", as: "timeline_reviews"
     end
 
     resources :scene_items, path: "scene/:scene_id/scene_items/", only: [:new, :create, :destroy]

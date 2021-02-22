@@ -2,10 +2,12 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find_by(unique_name: params[:id])
-    @instagram_link = @user.instagram_link
-    @twitter_link = @user.twitter_link
-    @scenes = @user.scenes
-    @scene_counter = 0
+    if @user.present?
+      @instagram_link = @user.instagram_link
+      @twitter_link = @user.twitter_link
+      @scenes = @user.scenes
+      @scene_counter = 0
+    end
   end
 
   def edit

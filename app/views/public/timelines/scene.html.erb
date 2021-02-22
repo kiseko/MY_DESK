@@ -1,24 +1,29 @@
 <div class="container">
 
-  <div class="title-panel"><p>Desker</p></div>
-
-  <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-    <div class="search-form">
-      <%= f.text_field :search, value: @search_value, class: "search-input-box" %>
-      <div class="link-layout">
-        <button type="submit" class="circle-search-button">
-          <i class="fas fa-search"></i>
-        </button>
+  <div class="timeline-select">
+    <%= link_to user_timeline_scenes_path(current_user), class: "icon-link-button" do %>
+      <div class="left-panel timeline-panel active">
+        <p>シーン</p>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+    <%= link_to user_timeline_items_path(current_user), class: "icon-link-button" do %>
+      <div class="timeline-panel">
+        <p>アイテム</p>
+      </div>
+    <% end %>
+    <%= link_to user_timeline_reviews_path(current_user), class: "icon-link-button" do %>
+      <div class="right-panel timeline-panel">
+        <p>レビュー</p>
+      </div>
+    <% end %>
+  </div>
 
-  <div class="search-result">
-    <div  class="desker-result">
+  <div class="timeline">
+    <div class="tl-scene-list">
 
-      <% if @users.present? %>
-        <% @users.each do |user| %>
-          <% scene = user.scenes.first %>
+      <% if @scenes.present? %>
+        <% @scenes.each do |scene| %>
+          <% user = scene.user %>
 
           <div class="card-shadow">
             <%= link_to user_path(user), class: "item-detail-link" do %>
@@ -35,12 +40,12 @@
                     </div>
                   </div>
 
-                  <div class="description-text">
-                    <%= simple_format(user.introduction) %>
+                  <div class="timeline-information">
+                    <p>シーンを追加しました</p>
                   </div>
 
                   <div class="created-at">
-                    <p><%= user.created_at.strftime("%Y/%m/%d") %></p>
+                    <p><%= scene.created_at.strftime("%Y/%m/%d") %></p>
                   </div>
 
                 </div>
@@ -49,8 +54,8 @@
             <% end %>
           </div>
 
+        <% end %>
       <% end %>
-    <% end %>
 
   </div>
 </div>
