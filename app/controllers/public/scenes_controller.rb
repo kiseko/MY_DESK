@@ -1,7 +1,6 @@
 class Public::ScenesController < ApplicationController
 
   def new
-    @user = current_user
     @scene = Scene.new
   end
 
@@ -10,27 +9,28 @@ class Public::ScenesController < ApplicationController
     if @scene.save
       redirect_to user_path(current_user)
     else
-      @user = current_user
       render :new
     end
   end
 
   def edit
-    @user = current_user
-    @scene = Scene.find(params[:id])
+    @scene = current_user.scenes.find(params[:id])
   end
 
   def update
-    @scene = Scene.find(params[:id])
+    @scene = current_user.scenes.find(params[:id])
     if @scene.update(scene_params)
       redirect_to user_path(current_user)
     else
-      @user = current_user
       render :edit
     end
   end
 
   def destroy
+    @scene = current_user.scenes.find(params[:id])
+    @scene.destroy
+    redirect_to user_path(current_user)
+
   end
 
 

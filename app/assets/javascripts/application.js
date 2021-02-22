@@ -54,11 +54,13 @@ $(function(){
 
   $(".bubble").on("click",function(){
     $(".main-picture-area").css("display", "none");
+    $(".scene-delete").css("display", "none");
     $(".desk-item").css("display", "none");
     $(".bubble").css("background-color", "transparent");
     $(this).css("background-color", "#5EA1A9");
     var index = $(".bubble").index(this);
     $(".main-picture-area").eq(index).css("display", "block");
+    $(".scene-delete").eq(index).css("display", "block");
     $(".desk-item").eq(index).css("display", "block");
   });
 
