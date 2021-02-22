@@ -1,0 +1,35 @@
+<div class="container">
+
+  <p class="top-title">MY DESK へようこそ</p>
+
+  <div class="top-page">
+
+    <% @users.each do |user| %>
+      <% scene = user.scenes.first %>
+
+      <div class="card-shadow">
+        <%= link_to user_path(user), class: "item-detail-link" do %>
+
+          <div class="card">
+            <%= attachment_image_tag scene, :image, :fill, 300, 170, fallback: "desk-icon.png", size: "300x170", class: "card-picture" %>
+            <div class="card-information">
+
+              <div class="profile">
+                <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                <div class="identification">
+                  <h4>@<%= user.unique_name %></h4>
+                  <h3><%= user.hundle_name %></h3>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>

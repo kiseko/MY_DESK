@@ -436,6 +436,34 @@ h3 {
 
 
 
+.top-page {
+  width: 1300px;
+  margin: 0 auto;
+  padding-top: 55px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.top-title {
+    text-align: center;
+    color: #EA7304;
+    font-size: 60px
+}
+
+.top-page .card-shadow {
+  height: 260px;
+}
+
+.top-page .card {
+  height: 260px;
+}
+
+.top-page .card-information {
+  height: 90px;
+}
+
+
+
 .user-desk {
   width: 1300px;
   margin: 0 auto;
