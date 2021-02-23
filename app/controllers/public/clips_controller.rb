@@ -7,7 +7,7 @@ class Public::ClipsController < ApplicationController
   end
 
   def index
-    @clips = current_user.clips
+    @clips = current_user.clips.order(id: "DESC")
   end
 
   def destroy

@@ -926,7 +926,8 @@ h3 {
   font-size: 30px;
 }
 
-.created-at {
+.created-at,
+.updated-at {
   width: 300px;
   padding: 179px 0 10px;
   text-align: center;
@@ -1759,15 +1760,15 @@ right: 10px;
 }
 
 .desker-result .card-shadow {
-  height: 370px;
+  height: 340px;
 }
 
 .desker-result .card {
-  height: 370px;
+  height: 340px;
 }
 
 .desker-result .card-information {
-  height: 190px;
+  height: 170px;
 }
 
 .card .description-text {

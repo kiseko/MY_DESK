@@ -106,7 +106,7 @@
                 <% end %>
               </div>
 
-              <% scene.scene_items.each do |scene_item| %>
+              <% scene.scene_items.order(id: "DESC").each do |scene_item| %>
                 <% item = scene_item.item %>
                 <% item_picture = item.item_pictures.first %>
 
@@ -178,7 +178,7 @@
                         </div>
 
                         <div class="created-at">
-                          <p><%= item.created_at.strftime("%Y/%m/%d") %></p>
+                          <p><%= scene_item.created_at.strftime("%Y/%m/%d") %></p>
                         </div>
 
                         <div class="clip-link">

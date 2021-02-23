@@ -50,7 +50,7 @@ class Public::UsersController < ApplicationController
   end
 
   def search
-     @users = User.search(params[:search])
+     @users = User.search(params[:search]).order(updated_at: "DESC")
      @search_value = (params[:search])
   end
 

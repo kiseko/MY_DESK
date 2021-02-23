@@ -4,6 +4,12 @@
 
     <div class="title-panel"><p>アイテム一覧</p></div>
 
+    <div class="left-button">
+      <%= link_to new_item_path do %>
+        <button type="button" class="link-button">アイテムの作成</button>
+      <% end %>
+    </div>
+
     <% @items.each do |item| %>
       <% item_picture = item.item_pictures.first %>
       <% homepage_link = item.homepage_link %>

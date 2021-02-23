@@ -16,7 +16,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = current_user.items
+    @items = current_user.items.order(updated_at: "DESC")
   end
 
   def show
@@ -59,7 +59,7 @@ class Public::ItemsController < ApplicationController
 
   def search
      @search_items = Item.search(params[:search])
-     @scene_items = SceneItem.where(item_id: @search_items.ids)
+     @scene_items = SceneItem.where(item_id: @search_items.ids).order(updated_at: "DESC")
      @search_value = (params[:search])
   end
 
