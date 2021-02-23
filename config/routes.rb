@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         get 'link'
         get "followers"
         get "mail_setting"
+        get "leave"
+        patch "resign"
       end
       collection do
         get "search"

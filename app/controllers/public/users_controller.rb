@@ -40,9 +40,13 @@ class Public::UsersController < ApplicationController
   end
 
   def leave
+    @user = current_user
   end
 
   def resign
+    @user = current_user
+    @user.status = 2
+    redirect_to user_path(current_user)
   end
 
   def search

@@ -1922,6 +1922,22 @@ right: 10px;
   padding-bottom: 50px;
 }
 
+.user-setting-form.resign {
+  text-align: center;
+}
+
+.resign p {
+  padding: 10px 0 31px;
+}
+
+.resign .link-button {
+  background-color: #CCC;
+}
+
+.resign .link-button:hover {
+  background-color: #C00;
+}
+
 
 
 @media screen and (max-width: 965px) {
