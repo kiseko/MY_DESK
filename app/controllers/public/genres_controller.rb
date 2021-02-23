@@ -1,5 +1,13 @@
 class Public::GenresController < ApplicationController
 
+  before_action :ensure_current_user
+  def ensure_current_user
+    @item = Item.find(params[:item_id])
+    if current_user.id != @item.user_id
+      redirect_to item_path(params[:item_id])
+    end
+  end
+
   def create
     @genre = Genre.new(genre_params)
     @genre.item_id = params[:item_id]

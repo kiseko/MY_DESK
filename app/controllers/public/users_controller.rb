@@ -1,5 +1,13 @@
 class Public::UsersController < ApplicationController
 
+  before_action :ensure_current_user, {except: [:show]}
+  def ensure_current_user
+    @user = User.find_by(unique_name: params[:id])
+    if current_user.id != @user.id
+      redirect_to user_path(@user)
+    end
+  end
+
   def show
     @user = User.find_by(unique_name: params[:id])
     if @user.present?

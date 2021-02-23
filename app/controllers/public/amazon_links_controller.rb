@@ -1,5 +1,13 @@
 class Public::AmazonLinksController < ApplicationController
 
+  before_action :ensure_current_user
+  def ensure_current_user
+    @item = Item.find(params[:item_id])
+    if current_user.id != @item.user_id
+      redirect_to item_path(params[:item_id])
+    end
+  end
+
   def create
     @new_amazon_link = AmazonLink.new(amazon_link_params)
      @new_amazon_link.item_id = params[:item_id]

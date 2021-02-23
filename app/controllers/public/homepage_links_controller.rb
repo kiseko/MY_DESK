@@ -1,5 +1,13 @@
 class Public::HomepageLinksController < ApplicationController
 
+  before_action :ensure_current_user
+  def ensure_current_user
+    @item = Item.find(params[:item_id])
+    if current_user.id != @item.user_id
+      redirect_to item_path(params[:item_id])
+    end
+  end
+
   def create
     @new_homepage_link = HomepageLink.new(homepage_link_params)
     @new_homepage_link.item_id = params[:item_id]

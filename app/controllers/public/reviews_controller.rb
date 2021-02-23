@@ -1,5 +1,13 @@
 class Public::ReviewsController < ApplicationController
 
+  before_action :ensure_current_user
+  def ensure_current_user
+    @item = Item.find(params[:item_id])
+    if current_user.id != @item.user_id
+      redirect_to item_path(params[:item_id])
+    end
+  end
+
   def new
     @review = Review.new
     @item_picture = ItemPicture.find_by(item_id: params[:item_id])

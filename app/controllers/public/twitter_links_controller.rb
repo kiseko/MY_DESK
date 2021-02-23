@@ -1,4 +1,12 @@
 class Public::TwitterLinksController < ApplicationController
+  
+  before_action :ensure_current_user
+  def ensure_current_user
+    @user = User.find_by(unique_name: params[:user_id])
+    if current_user.id != @user.id
+      redirect_to user_path(@user)
+    end
+  end
 
   def create
     @user = current_user

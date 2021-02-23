@@ -1,5 +1,13 @@
 class Public::ItemsController < ApplicationController
 
+  before_action :ensure_current_user, {except: [:show]}
+  def ensure_current_user
+    @item = Item.find(params[:id])
+    if current_user.id != @item.user_id
+      redirect_to item_path(params[:id])
+    end
+  end
+
   def new
     @item = Item.new
     @item.item_pictures.build
