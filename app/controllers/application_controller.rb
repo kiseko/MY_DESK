@@ -9,9 +9,4 @@ class ApplicationController < ActionController::Base
     Following.where(following_user_id: current_user.id).count
   end
 
-
-  def after_sign_in_path_for(resource)
-    user_path(current_user)
-  end
-
 end

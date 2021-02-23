@@ -35,6 +35,10 @@ class Public::UsersController < ApplicationController
     @followings = Following.where(following_user_id: current_user.id).where.not(status: 3)
   end
 
+  def mail_setting
+    @user = current_user
+  end
+
   def leave
   end
 
@@ -50,6 +54,6 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:unique_name, :hundle_name, :email, :encrypted_password, :image, :introduction, :status)
+    params.require(:user).permit(:unique_name, :hundle_name, :email, :image, :introduction, :status)
   end
 end

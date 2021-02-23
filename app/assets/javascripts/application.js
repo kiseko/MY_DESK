@@ -22,6 +22,10 @@ $(function(){
     $(".desk-line-icon, .my-desk-info").toggleClass("active");
   });
 
+  $(".square-panel, .rectangle-panel").hover(function(){
+    $(".user-setting-link").toggleClass("active");
+  });
+
   $(".search-trigger").on("click",function(){
     $(this).toggleClass("active");
     $(".two-line-icon").toggleClass("active");

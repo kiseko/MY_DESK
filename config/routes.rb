@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       member do
         get 'link'
         get "followers"
+        get "mail_setting"
       end
       collection do
         get "search"

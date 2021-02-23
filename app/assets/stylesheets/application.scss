@@ -124,8 +124,13 @@ h3 {
   height: 35px;
   padding: 4px 0 0 35px;
   background-color: #FFFFF5;
-  border-bottom: 2px solid #EE8F36;
-  border-right: 10px solid #EE8F36;
+  border: solid #EE8F36;
+  border-width: 0 10px 2px 0;
+}
+
+.desk-info-panel:hover {
+  border: solid #EA7304;
+  border-width: 0 10px 2px 0;
 }
 
 .desk-info-panel p {
@@ -208,6 +213,37 @@ h3 {
   height: 74px;
   background-color: #EE8F36;
   border-right: 1px solid #EA7304;
+  position: relative;
+}
+
+.user-setting-link {
+  width: 222px;
+  height: 35px;
+  background-color: #FEFBF8;
+  border: solid #FAE3CC;
+  border-width: 0 10px 2px 10px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 74px;
+  left: 0;
+  transition: all 200ms;
+}
+
+.user-setting-link.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.user-setting-link:hover {
+  border: solid #F6C79A;
+  border-width: 0 10px 2px 10px;
+}
+
+.user-setting-link p {
+  padding-top: 3px;
+  line-height: 32px;
 }
 
 .thumb-user-icon {
@@ -1840,6 +1876,50 @@ right: 10px;
 
 .tl-item-list .created-at {
   padding: 289px 0 10px;
+}
+
+
+
+.user-setting {
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.user-setting-info {
+  list-style: none;
+}
+
+.setting-info-panel {
+  width: 290px;
+  height: 35px;
+  margin-right: 30px;
+  padding: 3px 0 0 50px;
+  border: solid #FAE3CC;
+  border-width: 0 10px 2px 0;
+}
+
+.setting-info-panel.active {
+  border: solid #F6C79A;
+  border-width: 0 10px 2px 0;
+}
+
+
+.setting-info-panel p {
+  line-height: 32px;
+
+}
+
+.user-setting-form {
+  width: 580px;
+}
+
+.user-setting-form .label {
+  padding-bottom: 15px;
+}
+
+.form-input {
+  padding-bottom: 50px;
 }
 
 
