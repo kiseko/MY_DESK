@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
 
-  before_action :ensure_current_user, {except: [:show]}
+  before_action :ensure_current_user, {except: [:show, :search]}
   def ensure_current_user
     @user = User.find_by(unique_name: params[:id])
     if current_user.id != @user.id

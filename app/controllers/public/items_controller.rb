@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
 
-  before_action :ensure_current_user, {except: [:show]}
+  before_action :ensure_current_user, {only: [:edit, :update, :destroy, :link]}
   def ensure_current_user
     @item = Item.find(params[:id])
     if current_user.id != @item.user_id
