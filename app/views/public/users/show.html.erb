@@ -2,241 +2,251 @@
 
   <div class="user-desk">
     <% if @user.present? %>
+      <% if @user.id == current_user.id || @user.status == 0 %>
 
-      <div class="desk-visual">
+        <div class="desk-visual">
+          <% if @user.id == current_user.id %>
+            <div class="mydesk-panel">
+              <p>マイデスク</p>
+            </div>
+          <% else %>
+            <div id="follow-flames-<%= @user.id %>" class="top-follow-button" >
+              <%= render partial: "public/followings/follow", locals: { user: @user } %>
+            </div>
+          <% end %>
 
-        <div class="user-information">
+          <div class="user-information">
 
-          <div class="profile">
-            <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
-            <div class="identification">
-              <h3 class="user-id">@<%= @user.unique_name %></h3>
-              <h3 class="user-name"><%= @user.hundle_name %></h3>
+            <div class="profile">
+              <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
+              <div class="identification">
+                <h3 class="user-id">@<%= @user.unique_name %></h3>
+                <h3 class="user-name"><%= @user.hundle_name %></h3>
+              </div>
+
+              <% if @user.id == current_user.id %>
+                <% if @user.status == 0 %>
+                  <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+                    <%= f.hidden_field :status, value: 1 %>
+                    <button type="submit" class="form-icon">
+                      <i class="fas fa-door-open close-button"></i>
+                    </button>
+                  <% end %>
+                <% elsif  @user.status == 1 %>
+                  <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+                    <%= f.hidden_field :status, value: 0 %>
+                    <button type="submit" class="form-icon">
+                      <i class="fas fa-door-closed open-button"></i>
+                    </button>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+            </div>
+
+            <div class="description-text">
+              <%= simple_format(@user.introduction) %>
             </div>
 
             <% if @user.id == current_user.id %>
-              <% if @user.status == 0 %>
-                <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-                  <%= f.hidden_field :status, value: 1 %>
-                  <button type="submit" class="form-icon">
-                    <i class="fas fa-door-open close-button"></i>
-                  </button>
-                <% end %>
-              <% elsif  @user.status == 1 %>
-                <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-                  <%= f.hidden_field :status, value: 0 %>
-                  <button type="submit" class="form-icon">
-                    <i class="fas fa-door-closed open-button"></i>
-                  </button>
-                <% end %>
+              <div class="set-link right-button">
+                <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
+              </div>
+            <% end %>
+
+            <% if @instagram_link.present? %>
+              <%= link_to @instagram_link.url, class: "icon-link-button" do %>
+                <i class="fab fa-instagram link-icon"></i>
               <% end %>
             <% end %>
 
-          </div>
-
-          <div class="description-text">
-            <%= simple_format(@user.introduction) %>
-          </div>
-
-          <% if @user.id == current_user.id %>
-            <div class="set-link right-button">
-              <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-            </div>
-          <% end %>
-
-          <% if @instagram_link.present? %>
-            <%= link_to @instagram_link.url, class: "icon-link-button" do %>
-              <i class="fab fa-instagram link-icon"></i>
+            <% if @twitter_link.present? %>
+              <%= link_to @twitter_link.url, class: "icon-link-button" do %>
+                <i class="fab fa-twitter link-icon"></i>
+              <% end %>
             <% end %>
-          <% end %>
 
-          <% if @twitter_link.present? %>
-            <%= link_to @twitter_link.url, class: "icon-link-button" do %>
-              <i class="fab fa-twitter link-icon"></i>
-            <% end %>
-          <% end %>
-
-          <% if @user.id == current_user.id %>
-            <div class="set-link right-button">
-              <%= link_to "SNSリンクの設定", link_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-            </div>
-          <% end %>
-
-        </div>
-
-        <% if @scenes.present? %>
-          <div>
-            <% @scenes.each do |scene| %>
-              <div class="main-picture-area">
-                <%= attachment_image_tag scene, :image, :fill, 1200, 675, class: "main-picture" %>
-                <% if @user.id == current_user.id %>
-                  <%= link_to "シーン画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
-                <% end %>
+            <% if @user.id == current_user.id %>
+              <div class="set-link right-button">
+                <%= link_to "SNSリンクの設定", link_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
               </div>
             <% end %>
-          </div>
-        <% else %>
-          <div class="desk-icon"></div>
-        <% end %>
 
-        <div class="scene-select">
+          </div>
 
           <% if @scenes.present? %>
-            <% if @user.id == current_user.id %>
-              <div class="scene-delete-field">
-                <% @scenes.each do |scene| %>
-                  <div class="scene-delete">
-                    <%=link_to user_scene_path(current_user, scene.id), method: :delete, data: {confirm: "シーンを削除してもよろしいですか？"} do %>
-                      <button type="button" class="delete-button">
-                        <div class="cross-mark"></div>
-                      </button>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          <% end %>
-
-          <% while @scene_counter < @scenes.count do %>
-            <div class="bubble"></div>
-            <% @scene_counter += 1 %>
-          <% end %>
-
-          <% if @user.id == current_user.id %>
-            <%=link_to new_user_scene_path(current_user) do %>
-              <button type="button" class="circle-plus-button">
-                <div class="plus-mark-mini"></div>
-              </button>
-            <% end %>
-          <% end %>
-
-        </div>
-
-      </div>
-
-
-      <div>
-        <% @scenes.each do |scene| %>
-
-          <div class="desk-item">
-            <div class="item-card-list">
-
-              <% if @user.id == current_user.id %>
-                <div class="card-shadow">
-                  <%= link_to new_scene_item_path(scene.id), class: "new-scene-item-link" do %>
-                    <div class=plus-mark></div>
-                    <p>アイテムの追加</p>
+            <div>
+              <% @scenes.each do |scene| %>
+                <div class="main-picture-area">
+                  <%= attachment_image_tag scene, :image, :fill, 1200, 675, class: "main-picture" %>
+                  <% if @user.id == current_user.id %>
+                    <%= link_to "シーン画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
                   <% end %>
                 </div>
               <% end %>
+            </div>
+          <% else %>
+            <div class="desk-icon"></div>
+          <% end %>
 
-              <% scene.scene_items.order(id: "DESC").each do |scene_item| %>
-                <% item = scene_item.item %>
-                <% item_picture = item.item_pictures.first %>
+          <div class="scene-select">
 
-                <div class="card-shadow">
-                  <%= link_to item_path(item.id), class: "item-detail-link" do %>
-                    <div class="card">
-                      <%= attachment_image_tag item_picture, :image, :fill, 300, 300, class: "card-picture" %>
-                      <div class="card-information">
-
-                        <% if item.review.present? %>
-                          <div class="rating-star">
-                            <% if item.review.rating == 1 %>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                            <% elsif item.review.rating == 2 %>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                              <i class="fas fa-stargray- star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                            <% elsif item.review.rating == 3 %>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                            <% elsif item.review.rating == 4 %>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star gray-star"></i>
-                            <% elsif item.review.rating == 5 %>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                              <i class="fas fa-star star"></i>
-                            <% end %>
-                          </div>
-                        <% end %>
-
-                        <h4><%= item.brand %></h4>
-                        <h3><%= item.name %></h3>
-
-                        <% if item.genres.present? %>
-                          <div class="genre-index">
-                            <% item.genres.each do |genre| %>
-                              <div class="genre-content">
-                                <div class="genre-frame">
-                                  <p class="genre-name"><%= genre.name %></p>
-                                </div>
-                              </div>
-                            <% end %>
-                          </div>
-                        <% end %>
-
-                        <div class="card-item-link">
-                          <% if item.homepage_link.present? %>
-                            <i class="fas fa-home normal-icon"></i>
-                          <% end %>
-
-                          <% if item.amazon_link.present? %>
-                            <i class="fab fa-amazon normal-icon"></i>
-                          <% end %>
-                        </div>
-
-                        <div class="created-at">
-                          <p><%= scene_item.created_at.strftime("%Y/%m/%d") %></p>
-                        </div>
-
-                        <div class="clip-link">
-                          <% if item.user_id == current_user.id %>
-                            <h3 class="clip-count"><%= item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
-                          <% else %>
-                            <div id="clip-buttons-<%= item.id %>">
-                              <%= render partial: "public/clips/clip", locals: { item: item } %>
-                            </div>
-                          <% end %>
-                        </div>
-
-                        <% if @user.id == current_user.id %>
-                          <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete do %>
-                            <button type="button" class="delete-button">
-                              <div class="cross-mark"></div>
-                            </button>
-                          <% end %>
-                        <% end %>
-
-                      </div>
+            <% if @scenes.present? %>
+              <% if @user.id == current_user.id %>
+                <div class="scene-delete-field">
+                  <% @scenes.each do |scene| %>
+                    <div class="scene-delete">
+                      <%=link_to user_scene_path(current_user, scene.id), method: :delete, data: {confirm: "シーンを削除してもよろしいですか？"} do %>
+                        <button type="button" class="delete-button">
+                          <div class="cross-mark"></div>
+                        </button>
+                      <% end %>
                     </div>
                   <% end %>
                 </div>
-
               <% end %>
+            <% end %>
 
-            </div>
+            <% while @scene_counter < @scenes.count do %>
+              <div class="bubble"></div>
+              <% @scene_counter += 1 %>
+            <% end %>
+
+            <% if @user.id == current_user.id %>
+              <%=link_to new_user_scene_path(current_user) do %>
+                <button type="button" class="circle-plus-button">
+                  <div class="plus-mark-mini"></div>
+                </button>
+              <% end %>
+            <% end %>
+
           </div>
 
-        <% end %>
-      </div>
+        </div>
 
 
+        <div>
+          <% @scenes.each do |scene| %>
+
+            <div class="desk-item">
+              <div class="item-card-list">
+
+                <% if @user.id == current_user.id %>
+                  <div class="card-shadow">
+                    <%= link_to new_scene_item_path(scene.id), class: "new-scene-item-link" do %>
+                      <div class=plus-mark></div>
+                      <p>アイテムの追加</p>
+                    <% end %>
+                  </div>
+                <% end %>
+
+                <% scene.scene_items.order(id: "DESC").each do |scene_item| %>
+                  <% item = scene_item.item %>
+                  <% item_picture = item.item_pictures.first %>
+
+                  <div class="card-shadow">
+                    <%= link_to item_path(item.id), class: "item-detail-link" do %>
+                      <div class="card">
+                        <%= attachment_image_tag item_picture, :image, :fill, 300, 300, class: "card-picture" %>
+                        <div class="card-information">
+
+                          <% if item.review.present? %>
+                            <div class="rating-star">
+                              <% if item.review.rating == 1 %>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                              <% elsif item.review.rating == 2 %>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                                <i class="fas fa-stargray- star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                              <% elsif item.review.rating == 3 %>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                              <% elsif item.review.rating == 4 %>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star gray-star"></i>
+                              <% elsif item.review.rating == 5 %>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                              <% end %>
+                            </div>
+                          <% end %>
+
+                          <h4><%= item.brand %></h4>
+                          <h3><%= item.name %></h3>
+
+                          <% if item.genres.present? %>
+                            <div class="genre-index">
+                              <% item.genres.each do |genre| %>
+                                <div class="genre-content">
+                                  <div class="genre-frame">
+                                    <p class="genre-name"><%= genre.name %></p>
+                                  </div>
+                                </div>
+                              <% end %>
+                            </div>
+                          <% end %>
+
+                          <div class="card-item-link">
+                            <% if item.homepage_link.present? %>
+                              <i class="fas fa-home normal-icon"></i>
+                            <% end %>
+
+                            <% if item.amazon_link.present? %>
+                              <i class="fab fa-amazon normal-icon"></i>
+                            <% end %>
+                          </div>
+
+                          <div class="created-at">
+                            <p><%= scene_item.created_at.strftime("%Y/%m/%d") %></p>
+                          </div>
+
+                          <div class="clip-link">
+                            <% if item.user_id == current_user.id %>
+                              <h3 class="clip-count"><%= item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
+                            <% else %>
+                              <div id="clip-buttons-<%= item.id %>">
+                                <%= render partial: "public/clips/clip", locals: { item: item } %>
+                              </div>
+                            <% end %>
+                          </div>
+
+                          <% if @user.id == current_user.id %>
+                            <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete do %>
+                              <button type="button" class="delete-button">
+                                <div class="cross-mark"></div>
+                              </button>
+                            <% end %>
+                          <% end %>
+
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+
+                <% end %>
+
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+
+      <% end %>
     <% end %>
   </div>
 

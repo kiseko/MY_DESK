@@ -511,6 +511,26 @@ h3 {
   position: relative;
 }
 
+.mydesk-panel {
+  width: 150px;
+  height: 30px;
+  margin: 0 0 5px auto;
+  padding-top: 1px;
+  background-color: #5EA1A9;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.mydesk-panel p {
+  color: #FFF;
+  line-height: 29px;
+}
+
+.desk-visual .follow-button-field {
+  width: 150px;
+  margin: 0 0 5px auto;
+}
+
 .user-information {
   width: 580px;
   min-height: 317px;
@@ -519,7 +539,7 @@ h3 {
   background-color: #FAFAFA;
   opacity: 0.98;
   position: absolute;
-  top: 20px;
+  top: 55px;
   left: 20px;
   transition: opacity 400ms;
 }
@@ -604,7 +624,6 @@ h3 {
 .desk-icon {
   width: 1200px;
   height: 675px;
-  margin-top: 10px;
   background-image: url("desk-icon.png");
 }
 
@@ -1228,8 +1247,8 @@ p.gray-link-icon {
 }
 
 .following .description-text {
-  max-height: 69px;
-  padding-bottom: 15px;
+  max-height: 54px;
+  margin-bottom: 15px;
   overflow: hidden;
 
 }
