@@ -6,6 +6,7 @@
       <div class="desk-visual">
 
         <div class="user-information">
+
           <div class="profile">
             <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
             <div class="identification">
@@ -13,29 +14,36 @@
               <h3 class="user-name"><%= @user.hundle_name %></h3>
             </div>
 
-            <% if @user.status == 0 %>
-              <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-                <%= f.hidden_field :status, value: 1 %>
-                <button type="submit" class="form-icon">
-                  <i class="fas fa-door-open close-button"></i>
-                </button>
-              <% end %>
-            <% elsif  @user.status == 1 %>
-              <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-                <%= f.hidden_field :status, value: 0 %>
-                <button type="submit" class="form-icon">
-                  <i class="fas fa-door-closed open-button"></i>
-                </button>
+            <% if @user.id == current_user.id %>
+              <% if @user.status == 0 %>
+                <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+                  <%= f.hidden_field :status, value: 1 %>
+                  <button type="submit" class="form-icon">
+                    <i class="fas fa-door-open close-button"></i>
+                  </button>
+                <% end %>
+              <% elsif  @user.status == 1 %>
+                <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+                  <%= f.hidden_field :status, value: 0 %>
+                  <button type="submit" class="form-icon">
+                    <i class="fas fa-door-closed open-button"></i>
+                  </button>
+                <% end %>
               <% end %>
             <% end %>
 
           </div>
+
           <div class="description-text">
             <%= simple_format(@user.introduction) %>
           </div>
-          <div class="set-link right-button">
-            <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-          </div>
+
+          <% if @user.id == current_user.id %>
+            <div class="set-link right-button">
+              <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
+            </div>
+          <% end %>
+
           <% if @instagram_link.present? %>
             <%= link_to @instagram_link.url, class: "icon-link-button" do %>
               <i class="fab fa-instagram link-icon"></i>
@@ -47,9 +55,13 @@
               <i class="fab fa-twitter link-icon"></i>
             <% end %>
           <% end %>
-          <div class="set-link right-button">
-            <%= link_to "SNSリンクの設定", link_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-          </div>
+
+          <% if @user.id == current_user.id %>
+            <div class="set-link right-button">
+              <%= link_to "SNSリンクの設定", link_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
+            </div>
+          <% end %>
+
         </div>
 
         <% if @scenes.present? %>
@@ -57,7 +69,9 @@
             <% @scenes.each do |scene| %>
               <div class="main-picture-area">
                 <%= attachment_image_tag scene, :image, :fill, 1200, 675, class: "main-picture" %>
-                <%= link_to "シーン画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
+                <% if @user.id == current_user.id %>
+                  <%= link_to "シーン画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -66,32 +80,40 @@
         <% end %>
 
         <div class="scene-select">
+
           <% if @scenes.present? %>
-            <div class="scene-delete-field">
-              <% @scenes.each do |scene| %>
-                <div class="scene-delete">
-                  <%=link_to user_scene_path(current_user, scene.id), method: :delete, data: {confirm: "シーンを削除してもよろしいですか？"} do %>
-                    <button type="button" class="delete-button">
-                      <div class="cross-mark"></div>
-                    </button>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+            <% if @user.id == current_user.id %>
+              <div class="scene-delete-field">
+                <% @scenes.each do |scene| %>
+                  <div class="scene-delete">
+                    <%=link_to user_scene_path(current_user, scene.id), method: :delete, data: {confirm: "シーンを削除してもよろしいですか？"} do %>
+                      <button type="button" class="delete-button">
+                        <div class="cross-mark"></div>
+                      </button>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
+
           <% while @scene_counter < @scenes.count do %>
             <div class="bubble"></div>
             <% @scene_counter += 1 %>
           <% end %>
 
-          <%=link_to new_user_scene_path(current_user) do %>
-            <button type="button" class="circle-plus-button">
-              <div class="plus-mark-mini"></div>
-            </button>
+          <% if @user.id == current_user.id %>
+            <%=link_to new_user_scene_path(current_user) do %>
+              <button type="button" class="circle-plus-button">
+                <div class="plus-mark-mini"></div>
+              </button>
+            <% end %>
           <% end %>
+
         </div>
 
       </div>
+
 
       <div>
         <% @scenes.each do |scene| %>
@@ -99,12 +121,14 @@
           <div class="desk-item">
             <div class="item-card-list">
 
-              <div class="card-shadow">
-                <%= link_to new_scene_item_path(scene.id), class: "new-scene-item-link" do %>
-                  <div class=plus-mark></div>
-                  <p>アイテムの追加</p>
-                <% end %>
-              </div>
+              <% if @user.id == current_user.id %>
+                <div class="card-shadow">
+                  <%= link_to new_scene_item_path(scene.id), class: "new-scene-item-link" do %>
+                    <div class=plus-mark></div>
+                    <p>アイテムの追加</p>
+                  <% end %>
+                </div>
+              <% end %>
 
               <% scene.scene_items.order(id: "DESC").each do |scene_item| %>
                 <% item = scene_item.item %>
@@ -191,10 +215,12 @@
                           <% end %>
                         </div>
 
-                        <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete do %>
-                          <button type="button" class="delete-button">
-                            <div class="cross-mark"></div>
-                          </button>
+                        <% if @user.id == current_user.id %>
+                          <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete do %>
+                            <button type="button" class="delete-button">
+                              <div class="cross-mark"></div>
+                            </button>
+                          <% end %>
                         <% end %>
 
                       </div>
@@ -209,6 +235,7 @@
 
         <% end %>
       </div>
+
 
     <% end %>
   </div>

@@ -2,11 +2,16 @@ class Public::ItemsController < ApplicationController
 
   before_action :ensure_current_user, {only: [:edit, :update, :destroy, :link]}
   def ensure_current_user
-    @item = Item.find(params[:id])
-    if current_user.id != @item.user_id
-      redirect_to item_path(params[:id])
+    @item = Item.find_by(id: params[:id])
+    if @item.present?
+      if current_user.id != @item.user_id
+        redirect_to item_path(params[:id])
+      end
+    else
+      redirect_to root_path
     end
   end
+
 
   def new
     @item = Item.new
@@ -28,14 +33,16 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @item_pictures = @item.item_pictures.limit(4)
-    @homepage_link = @item.homepage_link
-    @amazon_link = @item.amazon_link
-    @genre = Genre.new
-    @genres = @item.genres
-    @review = @item.review
-    @user = @item.user
+    @item = Item.find_by(id: params[:id])
+    if @item.present?
+      @item_pictures = @item.item_pictures.limit(4)
+      @homepage_link = @item.homepage_link
+      @amazon_link = @item.amazon_link
+      @genre = Genre.new
+      @genres = @item.genres
+      @review = @item.review
+      @user = @item.user
+    end
   end
 
   def edit

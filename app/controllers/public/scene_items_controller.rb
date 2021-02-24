@@ -2,12 +2,17 @@ class Public::SceneItemsController < ApplicationController
 
   before_action :ensure_current_user
   def ensure_current_user
-    @scene = Scene.find(params[:scene_id])
-    @user = User.find(@scene.user_id)
-    if current_user.id != @user.id
-      redirect_to user_path(@user)
+    @scene = Scene.find_by(id: params[:scene_id])
+    if @scene.present?
+      @user = User.find(@scene.user_id)
+      if current_user.id != @user.id
+        redirect_to user_path(@user)
+      end
+    else
+      redirect_to root_path
     end
   end
+
 
   def new
     @scene_item = SceneItem.new

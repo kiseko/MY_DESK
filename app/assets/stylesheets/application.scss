@@ -1513,6 +1513,10 @@ p.gray-link-icon {
   display: flex;
 }
 
+.clip-button-field {
+  margin-left: auto;
+}
+
 .item-information .genre-index {
   padding-top: 10px;
 }
@@ -1521,11 +1525,16 @@ p.gray-link-icon {
   padding: 0 10px 10px 0;
 }
 
-.item-information .genre-frame {
+.genre-frame-large {
   max-width: 510px;
   height: 30px;
-  padding: 2px 5px 0 10px;
+  padding: 2px 10px 0;
   border: 1px solid #5EA1A9;
+  border-radius: 15px;
+}
+
+.genre-frame-large.deleteble {
+  padding: 2px 5px 0 10px;
   border-radius: 15px 0 0 15px;
   border-right: 0;
 }
