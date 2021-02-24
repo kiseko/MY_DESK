@@ -22,44 +22,69 @@
 
     </div>
 
+
     <div class="item-information">
 
       <div class="item-information-content">
 
-        <h3><%= @item.brand %></h3>
-        <h2><%= @item.name %></h2>
+        <div class="item-information-head">
+
+          <div>
+            <h3><%= @item.brand %></h3>
+            <h2><%= @item.name %></h2>
+          </div>
+
+          <% if @item.user_id == current_user.id %>
+            <h3 class="clip-count"><%= @item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
+          <% else %>
+            <div id="clip-buttons-<%= @item.id %>" class="clip-button-field">
+              <%= render partial: "public/clips/clip", locals: { item: @item } %>
+            </div>
+          <% end %>
+
+        </div>
 
         <div class="genre-index">
           <% @genres.each do |genre| %>
             <div class="genre-content">
-              <div class="genre-frame">
-                <p class="genre-name"><%= genre.name %></p>
-              </div>
-              <div class="link-layout">
-                <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
-                  <button type="button" class="delete-button">
-                    <div class="cross-mark"></div>
-                  </button>
-                <% end %>
-              </div>
+              <% if @user.id == current_user.id %>
+                <div class="genre-frame-large deleteble">
+                  <p class="genre-name"><%= genre.name %></p>
+                </div>
+                <div class="link-layout">
+                  <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
+                    <button type="button" class="delete-button">
+                      <div class="cross-mark"></div>
+                    </button>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="genre-frame-large">
+                  <p class="genre-name"><%= genre.name %></p>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
 
-        <%= form_with model: @genre, url: item_genres_path(@item.id), local: true do |f| %>
-          <div class="genre-form">
-            <%= f.text_field :name, class: "genre-input-box" %>
-            <div class="link-layout">
-              <button type="submit" class="circle-plus-button">
-                <div class="plus-mark-mini"></div>
-              </button>
+        <% if @user.id == current_user.id %>
+          <%= form_with model: @genre, url: item_genres_path(@item.id), local: true do |f| %>
+            <div class="genre-form">
+              <%= f.text_field :name, class: "genre-input-box" %>
+              <div class="link-layout">
+                <button type="submit" class="circle-plus-button">
+                  <div class="plus-mark-mini"></div>
+                </button>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
 
-        <div class="item-edit-link right-button">
-          <%= link_to "アイテム情報の編集", edit_item_path(@item.id), class: "underline-button" %>
-        </div>
+        <% if @user.id == current_user.id %>
+          <div class="set-link right-button">
+            <%= link_to "アイテム情報の編集", edit_item_path(@item.id), class: "underline-button" %>
+          </div>
+        <% end %>
 
         <% if @homepage_link.present? %>
           <%= link_to @homepage_link.url, class: "icon-link-button" do %>
@@ -79,9 +104,11 @@
           <% end %>
         <% end %>
 
-        <div class="item-link-set right-button">
-          <%= link_to "アイテムリンクの設定", link_item_path(@item.id), class: "underline-button" %>
-        </div>
+        <% if @user.id == current_user.id %>
+          <div class="set-link right-button">
+            <%= link_to "アイテムリンクの設定", link_item_path(@item.id), class: "underline-button" %>
+          </div>
+        <% end %>
 
       </div>
 
@@ -120,25 +147,49 @@
               <i class="fas fa-star star"></i>
             <% end %>
           </div>
-          <p class="description-text">
-            <%= @review.description %>
-             <div class="right-button">
+
+          <div class="description-text">
+            <p>
+              <%= simple_format(@review.description) %>
+            </p>
+          </div>
+
+          <% if @user.id == current_user.id %>
+            <div class="set-link right-button">
               <%= link_to "レビューの編集", edit_item_review_path(@item.id), data: {"turbolinks" => false}, class: "underline-button" %>
             </div>
-          </p>
+
+            <div class="right-button">
+              <%= link_to item_review_path(@item.id), method: :delete do %>
+                <i class="fas fa-trash-alt delete-review gray-link-icon"></i>
+              <% end %>
+            </div>
+          <% end %>
+
         </div>
       <% else %>
-        <div class="item-information-content center-button">
-          <%= link_to new_item_review_path(@item.id) do %>
-            <button type="button" class="link-button">レビューを作成</button>
-          <% end %>
-        </div>
+        <% if @user.id == current_user.id %>
+          <div class="item-information-content center-button">
+            <%= link_to new_item_review_path(@item.id) do %>
+              <button type="button" class="link-button">レビューを作成</button>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
 
       <div class="item-information-content">
+        <%= link_to user_path(@user), class: "desk-link" do %>
+          <div class="profile">
+            <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
+            <div class="identification">
+              <h3 class="user-id">@<%= @user.unique_name %></h3>
+              <h3 class="user-name"><%= @user.hundle_name %></h3>
+            </div>
+          </div>
+        <% end %>
       </div>
 
-      <% if current_user.id =! @item.user_id %>
+      <% if @user.id != current_user.id %>
         <div class="center-button">
           <%= link_to :back do %>
             <button type="button" class="back link-button">戻る</button>

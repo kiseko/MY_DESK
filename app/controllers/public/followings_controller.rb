@@ -1,6 +1,6 @@
 class Public::FollowingsController < ApplicationController
 
-  before_action :ensure_current_user
+  before_action :ensure_current_user, {only: [:index]}
   def ensure_current_user
     @user = User.find_by(unique_name: params[:user_id])
     if @user.present?

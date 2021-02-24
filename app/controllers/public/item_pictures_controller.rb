@@ -21,6 +21,7 @@ class Public::ItemPicturesController < ApplicationController
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
+    @user = @item.user
   end
 
   def create
@@ -35,6 +36,7 @@ class Public::ItemPicturesController < ApplicationController
       @genre = Genre.new
       @genres = @item.genres
       @review = @item.review
+      @user = @item.user
       render :new
     end
   end
@@ -47,6 +49,7 @@ class Public::ItemPicturesController < ApplicationController
     @genre = Genre.new
     @genres = @item.genres
     @review = @item.review
+    @user = @item.user
   end
 
   def update
@@ -60,7 +63,8 @@ class Public::ItemPicturesController < ApplicationController
       @genre = Genre.new
       @genres = @item.genres
       @review = @item.review
-      render :edit
+      @user = @item.user
+        render :edit
     end
   end
 
