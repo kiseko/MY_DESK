@@ -13,9 +13,12 @@ class User < ApplicationRecord
   has_one :instagram_link, dependent: :destroy
   has_one :twitter_link, dependent: :destroy
 
-  validates :unique_name, presence: true, uniqueness: true
-  validates :hundle_name, presence: true
-  validates :email, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :unique_name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 15}
+  validates :hundle_name, presence: true, length: {minimum: 1, maximum: 10}
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :introduction, length: {maximum: 255}
   validates :encrypted_password, presence: true
   validates :status, presence: true
 

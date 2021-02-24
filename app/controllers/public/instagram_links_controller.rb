@@ -39,7 +39,8 @@ class Public::InstagramLinksController < ApplicationController
   end
 
   def destroy
-    @instagram_link = current_user.instagram_link
+    @user = current_user
+    @instagram_link = @user.instagram_link
     @instagram_link.destroy
     redirect_to user_path(@user)
   end

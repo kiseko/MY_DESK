@@ -39,8 +39,9 @@ class Public::TwitterLinksController < ApplicationController
   end
 
   def destroy
-    @instagram_link = current_user.instagram_link
-    @instagram_link.destroy
+    @user = current_user
+    @twitter_link = @user.twitter_link
+    @twitter_link.destroy
     redirect_to user_path(@user)
   end
 

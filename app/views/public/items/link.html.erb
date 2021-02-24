@@ -9,7 +9,7 @@
         <h2>ホームページ</h2>
       </div>
       <% if @homepage_link.present? %>
-        <%= form_with model: @homepage_link, url: item_homepage_link_path(@item.id), method: :putch, local: true do |f| %>
+        <%= form_with model: @homepage_link, url: item_homepage_link_path(@item.id), method: :patch, local: true do |f| %>
           <div class="form-link-content">
             <div class="label">
               <div class="marker"></div>
@@ -44,7 +44,7 @@
         <h2>Amazon</h2>
       </div>
       <% if @amazon_link.present? %>
-        <%= form_with model: @amazon_link, url: item_amazon_link_path(@item.id), method: :putch, local: true do |f| %>
+        <%= form_with model: @amazon_link, url: item_amazon_link_path(@item.id), method: :patch, local: true do |f| %>
           <div class="form-link-content">
             <div class="label">
               <div class="marker"></div>

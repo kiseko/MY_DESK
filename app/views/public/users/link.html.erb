@@ -8,8 +8,10 @@
         <i class="fab fa-instagram link-icon"></i>
         <h2>Instagram</h2>
       </div>
+
       <% if @instagram_link.present? %>
-        <%= form_with model: @instagram_link, url: user_instagram_link_path(@user), method: :putch, local: true do |f| %>
+
+        <%= form_with model: @instagram_link, url: user_instagram_link_path(@user), method: :patch, local: true do |f| %>
           <div class="form-content">
             <div class="label">
               <div class="marker"></div>
@@ -34,7 +36,9 @@
             </div>
           </div>
         <% end %>
+
       <% else %>
+
         <%= form_with model: @new_instagram_link, url: user_instagram_link_path(@user), method: :post, local: true do |f| %>
           <div class="form-content">
             <div class="label">
@@ -57,14 +61,17 @@
             </div>
           </div>
         <% end %>
+
       <% end %>
+
 
       <div class="link-title">
         <i class="fab fa-twitter link-icon"></i>
         <h2>Twitter</h2>
       </div>
       <% if @twitter_link.present? %>
-        <%= form_with model: @twitter_link, url: user_twitter_link_path(@user), method: :putch, local: true do |f| %>
+
+        <%= form_with model: @twitter_link, url: user_twitter_link_path(@user), method: :patch, local: true do |f| %>
           <div class="form-content">
             <div class="label">
               <div class="marker"></div>
@@ -83,13 +90,15 @@
                 <%= f.select :status, [ ["全員に公開",0], ["フォロー先のみ公開", 1], ["お気に入りのみ公開", 2] ] %>
               </div>
               <%= f.submit "更新", class: "link-button" %>
-              <%= link_to user_instagram_link_path(@user), method: :delete, class: "icon-link-button" do %>
+              <%= link_to user_twitter_link_path(@user), method: :delete, class: "icon-link-button" do %>
                 <i class="fas fa-trash-alt gray-link-icon"></i>
               <% end %>
             </div>
           </div>
         <% end %>
+
       <% else %>
+
         <%= form_with model: @new_twitter_link, url: user_twitter_link_path(@user), method: :post, local: true do |f| %>
           <div class="form-content">
             <div class="label">
@@ -112,6 +121,7 @@
             </div>
           </div>
         <% end %>
+
       <% end %>
 
     </div>
