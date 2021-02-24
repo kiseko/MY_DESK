@@ -21,7 +21,7 @@ class Public::FollowingsController < ApplicationController
   def index
     @following_user_ids = current_user.followings.pluck(:following_user_id)
     @user = User.where(id: @following_user_ids).where.not(status: 2)
-    @active_followings = current_user.followings.where(following_user_id: @user.ids)
+    @active_followings = current_user.followings.where(following_user_id: @user.ids).order(id: "DESC")
   end
 
   def update
