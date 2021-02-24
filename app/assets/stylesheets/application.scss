@@ -1656,6 +1656,11 @@ p.gray-link-icon {
   font-size: 30px;
 }
 
+.rating-radio-button {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .description.form-content{
   align-items: flex-start;
 }

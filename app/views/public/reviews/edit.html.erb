@@ -19,11 +19,13 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
         </div>
-        <%= f.radio_button :rating, "1" %>
-        <%= f.radio_button :rating, "2" %>
-        <%= f.radio_button :rating, "3" %>
-        <%= f.radio_button :rating, "4" %>
-        <%= f.radio_button :rating, "5" %>
+        <div class="rating-radio-button">
+          <%= f.radio_button :rating, "1" %>
+          <%= f.radio_button :rating, "2" %>
+          <%= f.radio_button :rating, "3" %>
+          <%= f.radio_button :rating, "4" %>
+          <%= f.radio_button :rating, "5" %>
+        </div>
       </div>
 
       <div class="description form-content">
