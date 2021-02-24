@@ -3,7 +3,7 @@
   <div class="followings">
     <div class="side-line"></div>
     <div class="followings-list">
-      <% @followings.each do |following| %>
+      <% @active_followings.each do |following| %>
         <% user = User.find(following.user_id) %>
         <div class="following">
 

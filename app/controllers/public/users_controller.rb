@@ -45,7 +45,8 @@ class Public::UsersController < ApplicationController
   end
 
   def followers
-    @followings = Following.where(following_user_id: current_user.id).where.not(status: 3)
+    @followings = Following.where(following_user_id: current_user.id)
+    @active_followings = @followings.includes(:user).where.not(users: {status: 2})
   end
 
   def mail_setting
