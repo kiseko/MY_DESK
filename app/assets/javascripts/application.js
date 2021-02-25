@@ -81,7 +81,7 @@ $(function(){
     var reader = new FileReader();
     reader.onload = function(event){
       $(".image-box").css({
-        backgroundImage: `url(${event.target.result})`
+        backgroundImage: `image-url(${event.target.result})`
       });
       $(".main-picture").css("opacity", "0");
     };
