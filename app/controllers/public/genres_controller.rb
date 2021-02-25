@@ -1,16 +1,7 @@
 class Public::GenresController < ApplicationController
 
-  before_action :ensure_current_user
-  def ensure_current_user
-    @item = Item.find_by(id: params[:item_id])
-    if @item.present?
-      if current_user.id != @item.user_id
-        redirect_to item_path(params[:item_id])
-      end
-    else
-      redirect_to root_path
-    end
-  end
+  before_action :ensure_current_user_item_nest
+
 
 
   def create

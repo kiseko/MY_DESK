@@ -1,16 +1,7 @@
 class Public::ScenesController < ApplicationController
 
-  before_action :ensure_current_user
-  def ensure_current_user
-    @user = User.find_by(unique_name: params[:user_id])
-    if @user.present?
-      if current_user.id != @user.id
-        redirect_to user_path(@user)
-      end
-    else
-      redirect_to root_path
-    end
-  end
+  before_action :ensure_current_user_nest
+  
 
   def new
     @scene = Scene.new

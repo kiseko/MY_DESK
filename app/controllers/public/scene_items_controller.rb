@@ -1,7 +1,7 @@
 class Public::SceneItemsController < ApplicationController
 
-  before_action :ensure_current_user
-  def ensure_current_user
+  before_action :ensure_current_user_scene_nest
+  def ensure_current_user_scene_nest
     @scene = Scene.find_by(id: params[:scene_id])
     if @scene.present?
       @user = User.find(@scene.user_id)
