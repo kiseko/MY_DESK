@@ -19,9 +19,9 @@
   </div>
 
   <div class="timeline">
-    <div class="tl-scene-list">
+    <% if @scenes.present? %>
+      <div class="tl-scene-list">
 
-      <% if @scenes.present? %>
         <% @scenes.each do |scene| %>
           <% user = scene.user %>
 
@@ -55,7 +55,14 @@
           </div>
 
         <% end %>
-      <% end %>
 
+      </div>
+    <%else %>
+      <div class="empty-content">
+        <i class="far fa-user"></i>
+        <p>趣味の合うユーザーをフォローしてみよう</p>
+      </div>
+    <% end %>
   </div>
+
 </div>

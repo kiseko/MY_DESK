@@ -1,74 +1,81 @@
 <div class="container">
 
-  <div class="followings">
-    <div class="side-line"></div>
-    <div class="followings-list">
-      <% @active_followings.each do |following| %>
-        <% user = User.find(following.user_id) %>
-        <div class="following">
+  <% if  @active_followings.present? %>
+    <div class="followings">
+      <div class="side-line"></div>
+      <div class="followings-list">
+        <% @active_followings.each do |following| %>
+          <% user = User.find(following.user_id) %>
+          <div class="following">
 
-          <div class="following-information">
+            <div class="following-information">
 
-            <div class="profile-field">
-              <%= link_to user_path(user), class: "desk-link" do %>
-                <div class="profile">
-                  <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
-                  <div class="identification">
-                    <h4>@<%= user.unique_name %></h4>
-                    <h3><%= user.hundle_name %></h3>
+              <div class="profile-field">
+                <%= link_to user_path(user), class: "desk-link" do %>
+                  <div class="profile">
+                    <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                    <div class="identification">
+                      <h4>@<%= user.unique_name %></h4>
+                      <h3><%= user.hundle_name %></h3>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+
+              <div id="follow-flames-<%= user.id %>">
+                <%= render partial: "public/followings/follow", locals: { user: user } %>
+              </div>
+
+              <% if current_user.followings.find_by(following_user_id: user.id).present? %>
+                <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
+                  <%= render partial: "public/followings/favorite", locals: { user: user } %>
+                </div>
+              <% end %>
+
+              <% if user.instagram_link.present? %>
+                <% if viewable_sns_link?(user, user.instagram_link) %>
+                  <%= link_to user.instagram_link.url, class: "icon-link-button" do %>
+                    <i class="fab fa-instagram link-icon"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+              <% if user.twitter_link.present? %>
+                <% if viewable_sns_link?(user, user.twitter_link) %>
+                  <%= link_to user.instagram_link.url, class: "icon-link-button" do %>
+                    <i class="fab fa-twitter link-icon"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+              <% if current_user.followings.find_by(following_user_id: user.id).present? %>
+                <div class="mute-block">
+                  <p class="gray-link-icon three-dots">･･･</p>
+
+                  <div id="mute-users-<%= user.id %>" class="mute-icon">
+                    <%= render partial: "public/followings/mute", locals: { user: user } %>
                   </div>
                 </div>
               <% end %>
+
             </div>
 
-            <div id="follow-flames-<%= user.id %>">
-              <%= render partial: "public/followings/follow", locals: { user: user } %>
+            <div class="description-text">
+              <%= simple_format(user.introduction) %>
             </div>
-
-            <% if current_user.followings.find_by(following_user_id: user.id).present? %>
-              <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
-                <%= render partial: "public/followings/favorite", locals: { user: user } %>
-              </div>
-            <% end %>
-
-            <% if user.instagram_link.present? %>
-              <% if viewable_sns_link?(user, user.instagram_link) %>
-                <%= link_to user.instagram_link.url, class: "icon-link-button" do %>
-                  <i class="fab fa-instagram link-icon"></i>
-                <% end %>
-              <% end %>
-            <% end %>
-
-            <% if user.twitter_link.present? %>
-              <% if viewable_sns_link?(user, user.twitter_link) %>
-                <%= link_to user.instagram_link.url, class: "icon-link-button" do %>
-                  <i class="fab fa-twitter link-icon"></i>
-                <% end %>
-              <% end %>
-            <% end %>
-
-            <% if current_user.followings.find_by(following_user_id: user.id).present? %>
-              <div class="mute-block">
-                <p class="gray-link-icon three-dots">･･･</p>
-
-                <div id="mute-users-<%= user.id %>" class="mute-icon">
-                  <%= render partial: "public/followings/mute", locals: { user: user } %>
-                </div>
-              </div>
-            <% end %>
 
           </div>
 
-          <div class="description-text">
-            <%= simple_format(user.introduction) %>
-          </div>
-
-        </div>
-
-        <div class="bar"></div>
-      <% end %>
+          <div class="bar"></div>
+        <% end %>
+      </div>
+      <div class="side-line"></div>
     </div>
-    <div class="side-line"></div>
-  </div>
+  <% else %>
+    <div class="empty-content">
+      <i class="far fa-user"></i>
+      <p>フォロワーはまだいません</p>
+    </div>
+  <% end %>
 
 </div>

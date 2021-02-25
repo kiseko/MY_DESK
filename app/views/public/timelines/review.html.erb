@@ -19,9 +19,9 @@
   </div>
 
   <div class="timeline">
-    <div class="tl-item-list">
-
-      <% if @items.present? %>
+    <% if @items.present? %>
+      <div class="tl-item-list">
+      
         <% @items.each do |item| %>
           <% user = item.user %>
 
@@ -122,7 +122,14 @@
             </div>
 
         <% end %>
-      <% end %>
 
+      </div>
+    <%else %>
+      <div class="empty-content">
+        <i class="far fa-user"></i>
+        <p>趣味の合うユーザーをフォローしてみよう</p>
+      </div>
+    <% end %>
   </div>
+  
 </div>
