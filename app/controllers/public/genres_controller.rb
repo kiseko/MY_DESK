@@ -3,7 +3,6 @@ class Public::GenresController < ApplicationController
   before_action :ensure_current_user_item_nest
 
 
-
   def create
     @genre = Genre.new(genre_params)
     @genre.item_id = params[:item_id]

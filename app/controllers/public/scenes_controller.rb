@@ -1,7 +1,7 @@
 class Public::ScenesController < ApplicationController
 
   before_action :ensure_current_user_nest
-  
+
 
   def new
     @scene = Scene.new

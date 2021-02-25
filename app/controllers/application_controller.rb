@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     sns_link.status == 1 && user.followings.find_by(following_user_id: current_user.id) ||
     sns_link.status == 2 && user.followings.find_by(following_user_id: current_user.id, status: 1).present?
   end
-  
+
 
   def ensure_current_user_item_nest
     @item = Item.find_by(id: params[:item_id])

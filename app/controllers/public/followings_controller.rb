@@ -1,7 +1,7 @@
 class Public::FollowingsController < ApplicationController
 
   before_action :ensure_current_user_nest, {only: [:index]}
-  
+
 
   def create
     @user = User.find_by(unique_name: params[:user_id])
