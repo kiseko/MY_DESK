@@ -1230,7 +1230,7 @@ p.gray-link-icon {
 .mute-icon {
   display: none;
   position: absolute;
-  top: -14px;
+  top: 2px;
   right: -32px;
 }
 
@@ -1976,6 +1976,17 @@ right: 10px;
 
 .resign .link-button:hover {
   background-color: #C00;
+}
+
+.empty-content {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.empty-content i,
+.empty-content p {
+  color: #CCC;
+  font-size: 40px;
 }
 
 

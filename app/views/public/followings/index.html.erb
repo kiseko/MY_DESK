@@ -46,16 +46,11 @@
             <% end %>
 
             <div class="mute-block">
-            <p class="gray-link-icon three-dots">･･･</p>
-            <div id="mute-users-<%= user.id %>" class="mute-icon">
-              <%= render partial: "public/followings/mute", locals: { user: user } %>
-            </div>
-              <%= form_with model: following, url: user_following_path(user, following.id), class: "mute-block-form", remote: true do |f| %>
-                <%= f.hidden_field :status, value: 3 %>
-                <button type="submit" class="form-icon">
-                  <i class="fas fa-ban red gray-link-icon block-icon"></i>
-                </button>
-              <% end %>
+              <p class="gray-link-icon three-dots">･･･</p>
+
+              <div id="mute-users-<%= user.id %>" class="mute-icon">
+                <%= render partial: "public/followings/mute", locals: { user: user } %>
+              </div>
             </div>
 
           </div>

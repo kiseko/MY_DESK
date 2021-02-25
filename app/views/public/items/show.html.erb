@@ -1,8 +1,9 @@
 <div class="container">
 
-  <div class="item-detail">
-    <% if @item.present? %>
-      <% if @user.id == current_user.id || @user.status == 0 %>
+  <% if @item.present? %>
+    <% if @user.id == current_user.id || @user.status == 0 %>
+
+      <div class="item-detail">
 
         <div class="item-visual">
 
@@ -231,8 +232,25 @@
 
         </div>
 
-      <% end %>
+      </div>
+
+    <% elsif @user.status == 2 %>
+      <div class="empty-content">
+        <i class="fas fa-cube"></i>
+        <p>アイテムが見つかりませんでした</p>
+      </div>
+    <% else %>
+      <div class="empty-content">
+        <i class="fas fa-door-closed"></i>
+        <p>模様替え中...</p>
+      </div>
     <% end %>
-  </div>
+
+  <% else %>
+    <div class="empty-content">
+      <i class="fas fa-cube"></i>
+      <p>アイテムは存在しません</p>
+    </div>
+  <% end %>
 
 </div>

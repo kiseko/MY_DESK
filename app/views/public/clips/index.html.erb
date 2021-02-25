@@ -2,9 +2,9 @@
 
   <div class="title-panel mb"><p>クリップ</p></div>
 
-  <div class="clips">
+  <% if @clips.present? %>
+    <div class="clips">
 
-    <% if @clips.present? %>
       <% @clips.each do |clip| %>
         <% item = clip.item %>
         <% item_picture = item.item_pictures.first %>
@@ -90,7 +90,13 @@
         </div>
 
       <% end %>
-    <% end %>
+    </div>
 
-  </div>
+  <% else %>
+    <div class="empty-content">
+      <i class="fas fa-paperclip"></i>
+      <p>気になるアイテムをクリップしてみよう</p>
+    </div>
+  <% end %>
+
 </div>

@@ -3,7 +3,7 @@
   <%= form_with model: following, url: user_following_path(user, following.id), class: "mute-block-form", remote: true do |f| %>
     <%= f.hidden_field :status, value: 0 %>
     <button type="submit" class="form-icon">
-      <i class="fas fa-volume-mute red gray-link-icon "></i>
+      <i class="fas fa-volume-mute red gray-link-icon active"></i>
     </button>
   <% end %>
 <% else %>

@@ -25,9 +25,9 @@ class Public::FollowingsController < ApplicationController
   end
 
   def update
-     @user = User.find_by(unique_name: params[:user_id])
-     @following = current_user.followings.find_by(following_user_id: @user.id)
-     @following.update(following_params)
+    @user = User.find_by(unique_name: params[:user_id])
+    @following = current_user.followings.find_by(following_user_id: @user.id)
+    @following.update(following_params)
   end
 
   def destroy
