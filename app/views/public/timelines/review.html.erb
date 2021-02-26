@@ -19,12 +19,12 @@
   </div>
 
   <div class="timeline">
-    <% if @items.present? %>
+    <% if @reviews.present? %>
       <div class="tl-item-list">
-      
-        <% @items.each do |item| %>
-          <% user = item.user %>
 
+        <% @reviews.each do |review| %>
+          <% item = review.item %>
+          <% user = item.user %>
           <% item_picture = item.item_pictures.first %>
 
             <div class="card-shadow">
@@ -131,5 +131,5 @@
       </div>
     <% end %>
   </div>
-  
+
 </div>

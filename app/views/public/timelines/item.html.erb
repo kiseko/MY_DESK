@@ -19,12 +19,12 @@
   </div>
 
   <div class="timeline">
-    <% if @items.present? %>
+    <% if @scene_items.present? %>
       <div class="tl-item-list">
 
-        <% @items.each do |item| %>
+        <% @scene_items.each do |scene_item| %>
+          <% item = scene_item.item %>
           <% user = item.user %>
-
           <% item_picture = item.item_pictures.first %>
 
             <div class="card-shadow">
