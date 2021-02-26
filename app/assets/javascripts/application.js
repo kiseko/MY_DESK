@@ -118,7 +118,7 @@ $(function(){
     $(this).prevAll().css("color", "#E6B86F");
     var index = $("#select-star i").index(this);
     var rating = Number(index) + 1
-    $('input:radio[name="review[rating]"]').val([`${rating}`]);
+    $('input:radio[name="review[rating]"]').val([rating]);
   });
 
 });
