@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  
+
   before_action :authenticate_user!, except: [:top, :about]
-  
-  
+
+
   helper_method :followings_counter,
                 :followers_counter,
                 :viewable_sns_link?

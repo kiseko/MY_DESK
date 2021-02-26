@@ -4,73 +4,82 @@
 
     <div class="title-panel mb"><p>アイテム一覧</p></div>
 
-    <div class="left-button">
-      <%= link_to new_item_path do %>
-        <button type="button" class="link-button">アイテムの作成</button>
-      <% end %>
-    </div>
+    <%if @items.present? %>
 
-    <% @items.each do |item| %>
-      <% item_picture = item.item_pictures.first %>
-      <% homepage_link = item.homepage_link %>
-      <% amazon_link = item.amazon_link %>
-
-      <div class="list-item">
-        <%= link_to item_path(item.id), class: "item-detail-link" do %>
-          <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
-          <div class="list-item-information">
-            <h4><%= item.brand %></h4>
-            <h3><%= item.name %></h3>
-            <div class="scroll genre-index">
-              <% item.genres.each do |genre| %>
-                <div class="genre-content">
-                  <div class="genre-frame">
-                    <p class="genre-name"><%= genre.name %></p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="list-item-link">
-          <% if homepage_link.present? %>
-            <%= link_to homepage_link.url, class: "icon-link-button" do %>
-              <div class="item-link">
-                <i class="fas fa-home link-icon"></i>
-                <p><%= homepage_link.url %></p>
-              </div>
-            <% end %>
-          <% end %>
-
-          <% if amazon_link.present? %>
-            <%= link_to amazon_link.url, class: "icon-link-button" do %>
-              <div class="item-link">
-                <i class="fab fa-amazon link-icon"></i>
-                <p><%= amazon_link.url %></p>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-
-        <div class="list-item-right">
-
-          <div class="clip-count-field">
-          <h3 class="clip-count"><%= item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
-          </div>
-
-          <div class="right-button">
-            <%= link_to item_path(item.id), method: :delete do %>
-              <i class="fas fa-trash-alt gray-link-icon"></i>
-            <% end %>
-          </div>
-
-        </div>
-
+      <div class="left-button">
+        <%= link_to new_item_path do %>
+          <button type="button" class="link-button">アイテムの作成</button>
+        <% end %>
       </div>
 
-      <div class="bar"></div>
+      <% @items.each do |item| %>
+        <% item_picture = item.item_pictures.first %>
+        <% homepage_link = item.homepage_link %>
+        <% amazon_link = item.amazon_link %>
 
+        <div class="list-item">
+          <%= link_to item_path(item.id), class: "item-detail-link" do %>
+            <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
+            <div class="list-item-information">
+              <h4><%= item.brand %></h4>
+              <h3><%= item.name %></h3>
+              <div class="scroll genre-index">
+                <% item.genres.each do |genre| %>
+                  <div class="genre-content">
+                    <div class="genre-frame">
+                      <p class="genre-name"><%= genre.name %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="list-item-link">
+            <% if homepage_link.present? %>
+              <%= link_to homepage_link.url, class: "icon-link-button" do %>
+                <div class="item-link">
+                  <i class="fas fa-home link-icon"></i>
+                  <p><%= homepage_link.url %></p>
+                </div>
+              <% end %>
+            <% end %>
+
+            <% if amazon_link.present? %>
+              <%= link_to amazon_link.url, class: "icon-link-button" do %>
+                <div class="item-link">
+                  <i class="fab fa-amazon link-icon"></i>
+                  <p><%= amazon_link.url %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="list-item-right">
+
+            <div class="clip-count-field">
+            <h3 class="clip-count"><%= item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
+            </div>
+
+            <div class="right-button">
+              <%= link_to item_path(item.id), method: :delete do %>
+                <i class="fas fa-trash-alt gray-link-icon"></i>
+              <% end %>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="bar"></div>
+
+      <% end %>
+
+    <% else %>
+      <div class="empty-content">
+        <i class="fas fa-cubes"></i>
+        <p>アイテムはまだありません</p>
+      </div>
     <% end %>
 
   </div>
