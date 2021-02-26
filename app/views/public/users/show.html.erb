@@ -63,7 +63,7 @@
             <% end %>
 
             <% if @twitter_link.present? %>
-              <% if viewable_sns_link?(@user, @instagram_link) %>
+              <% if viewable_sns_link?(@user, @twitter_link) %>
                 <%= link_to @twitter_link.url, class: "icon-link-button" do %>
                   <i class="fab fa-twitter link-icon"></i>
                 <% end %>
