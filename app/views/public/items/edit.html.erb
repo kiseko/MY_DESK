@@ -5,9 +5,11 @@
   <%= form_with model: @item, url: item_path(@item.id), local: true do |f| %>
     <div class="form">
 
+      <%= render partial: "layouts/alert", locals: {model: @item} %>
+
       <div class="form-content">
         <div class="label">
-          <div class="marker"></div>
+          <div class="marker optional"></div>
           <%= f.label :brand, "ブランド", class: "label-text" %>
         </div>
         <%= f.text_field :brand, class: "input-box" %>

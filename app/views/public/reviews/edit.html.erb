@@ -2,10 +2,12 @@
 
   <p class=title>レビューの編集</p>
 
+  <%= attachment_image_tag @item_picture, :image, :fill, 100, 100,  format: "jpg", class: "item-picture" %>
+
   <%= form_with model: @review, url: item_review_path(@item_picture.item_id), local: true do |f| %>
     <div class="form">
 
-      <%= attachment_image_tag @item_picture, :image, :fill, 100, 100,  format: "jpg", class: "item-picture" %>
+      <%= render partial: "layouts/alert", locals: {model: @review} %>
 
       <div class="form-content">
         <div class="label">

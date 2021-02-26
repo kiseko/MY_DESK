@@ -11,6 +11,8 @@
 
       <% if @instagram_link.present? %>
 
+        <%= render partial: "layouts/alert", locals: {model: @instagram_link} %>
+
         <%= form_with model: @instagram_link, url: user_instagram_link_path(@user), method: :patch, local: true do |f| %>
           <div class="form-content">
             <div class="label">
@@ -38,6 +40,8 @@
         <% end %>
 
       <% else %>
+
+        <%= render partial: "layouts/alert", locals: {model: @new_instagram_link} %>
 
         <%= form_with model: @new_instagram_link, url: user_instagram_link_path(@user), method: :post, local: true do |f| %>
           <div class="form-content">
@@ -71,6 +75,8 @@
       </div>
       <% if @twitter_link.present? %>
 
+        <%= render partial: "layouts/alert", locals: {model: @twitter_link} %>
+
         <%= form_with model: @twitter_link, url: user_twitter_link_path(@user), method: :patch, local: true do |f| %>
           <div class="form-content">
             <div class="label">
@@ -98,6 +104,8 @@
         <% end %>
 
       <% else %>
+
+        <%= render partial: "layouts/alert", locals: {model: @new_twitter_link} %>
 
         <%= form_with model: @new_twitter_link, url: user_twitter_link_path(@user), method: :post, local: true do |f| %>
           <div class="form-content">

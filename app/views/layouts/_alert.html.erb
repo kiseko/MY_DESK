@@ -1,0 +1,10 @@
+<div class="alert-field">
+  <p><%= alert %></p>
+  <% if model.errors.any? %>
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li><p>--<%= message %>--</p></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

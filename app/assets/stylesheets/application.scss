@@ -1005,7 +1005,7 @@ footer p {
 
  .scene-picture {
   margin: 0 auto;
-  padding: 105px 0 60px;
+  padding: 60px 0 60px;
   display: block;
 }
 
@@ -1306,10 +1306,23 @@ p.gray-link-icon {
 }
 
 .title {
-  padding-bottom: 60px;
+  padding-bottom: 40px;
   text-align: center;
   color: #EA7304;
   font-size: 36px;
+}
+
+.alert-field {
+  padding-bottom: 20px;
+  list-style: none;
+}
+
+.alert-field p {
+  color: #F00;
+}
+
+.alert-field ul {
+  list-style: none;
 }
 
 .form-content {
@@ -1344,6 +1357,11 @@ p.gray-link-icon {
   background-color: #EE8F36;
   border-radius: 10px;
   margin-right: 10px;
+}
+
+.marker.optional {
+  background-color: transparent;
+  border: 2px solid #EE8F36;
 }
 
 .label-text {
@@ -1668,7 +1686,7 @@ p.gray-link-icon {
 
 
 .item-picture {
-  margin: 0 auto 50px;
+  margin: 0 auto 30px;
   display: block;
   border-radius: 10px;
 }
@@ -1687,6 +1705,7 @@ p.gray-link-icon {
 }
 
 .rating-radio-button {
+  display: flex;
   opacity: 0;
   pointer-events: none;
 }
@@ -1735,7 +1754,7 @@ p.gray-link-icon {
 
 
 .link-title {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   display: flex;
 }
 

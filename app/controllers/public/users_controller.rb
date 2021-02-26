@@ -29,10 +29,14 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
+    @old_unique_name = @user.unique_name
     if @user.update(user_params)
-      redirect_to user_path(current_user)
+      redirect_to user_path(@user)
+    elsif params[:user][:unique_name].blank?
+      redirect_to edit_user_path(@old_unique_name)
+      flash[:alert] = "--ユーザーIDが空のため更新できませんでした--"
     else
-      render :show
+      render :edit
     end
   end
 

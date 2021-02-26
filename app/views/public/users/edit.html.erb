@@ -2,12 +2,14 @@
 
   <p class=title>プロフィールの編集</p>
 
-  <%= form_with model: @user, url: user_path(current_user), local: true do |f| %>
+  <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
     <div class="form">
+
+      <%= render partial: "layouts/alert", locals: {model: @user} %>
 
       <div class="form-picture-content">
         <div class="label">
-          <div class="marker"></div>
+          <div class="marker optional"></div>
           <p class="label-text">プロフィール画像</p>
         </div>
         <div class="user-icon image-box">
@@ -38,7 +40,7 @@
 
        <div class="description form-content">
         <div class="label">
-          <div class="marker"></div>
+          <div class="marker optional"></div>
           <%= f.label :introduction, "自己紹介", class: "label-text" %>
         </div>
         <%= f.text_area :introduction, class: "input-box" %>

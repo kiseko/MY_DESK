@@ -9,6 +9,8 @@
         <h2>ホームページ</h2>
       </div>
       <% if @homepage_link.present? %>
+
+        <%= render partial: "layouts/alert", locals: {model: @homepage_link} %>
         <%= form_with model: @homepage_link, url: item_homepage_link_path(@item.id), method: :patch, local: true do |f| %>
           <div class="form-link-content">
             <div class="label">
@@ -24,7 +26,10 @@
             </div>
           </div>
         <% end %>
+
       <% else %>
+
+        <%= render partial: "layouts/alert", locals: {model: @new_homepage_link} %>
         <%= form_with model: @new_homepage_link, url: item_homepage_link_path(@item.id), method: :post, local: true do |f| %>
           <div class="form-link-content">
             <div class="label">
@@ -37,6 +42,7 @@
             </div>
           </div>
         <% end %>
+
       <% end %>
 
       <div class="link-title">
@@ -44,6 +50,8 @@
         <h2>Amazon</h2>
       </div>
       <% if @amazon_link.present? %>
+
+        <%= render partial: "layouts/alert", locals: {model: @amazon_link} %>
         <%= form_with model: @amazon_link, url: item_amazon_link_path(@item.id), method: :patch, local: true do |f| %>
           <div class="form-link-content">
             <div class="label">
@@ -59,7 +67,10 @@
             </div>
           </div>
         <% end %>
+
       <% else %>
+
+        <%= render partial: "layouts/alert", locals: {model: @new_amazon_link} %>
         <%= form_with model: @new_amazon_link, url: item_amazon_link_path(@item.id), method: :post, local: true do |f| %>
           <div class="form-link-content">
             <div class="label">
@@ -72,6 +83,7 @@
             </div>
           </div>
         <% end %>
+
       <% end %>
 
     </div>

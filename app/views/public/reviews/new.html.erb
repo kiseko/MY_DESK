@@ -7,6 +7,8 @@
   <%= form_with model: @review, url: item_review_path(@item_picture.item_id), local: true do |f| %>
     <div class="form">
 
+      <%= render partial: "layouts/alert", locals: {model: @review} %>
+
       <div class="form-content">
         <div class="label">
           <div class="marker"></div>
