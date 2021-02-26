@@ -32,4 +32,8 @@ class User < ApplicationRecord
     User.where(["unique_name LIKE? or hundle_name LIKE? or introduction LIke ?", "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
+  def active_for_authentication?
+    super && self.status != 2
+  end
+
 end

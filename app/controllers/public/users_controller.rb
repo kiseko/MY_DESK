@@ -59,8 +59,9 @@ class Public::UsersController < ApplicationController
 
   def resign
     @user = current_user
-    @user.status = 2
-    redirect_to user_path(current_user)
+    @user.update(status: 2)
+    reset_session
+    redirect_to root_path
   end
 
   def search
