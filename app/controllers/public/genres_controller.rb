@@ -11,7 +11,11 @@ class Public::GenresController < ApplicationController
     else
       @item = Item.find(params[:item_id])
       @item_pictures = @item.item_pictures
+      @homepage_link = @item.homepage_link
+      @amazon_link = @item.amazon_link
       @genres = @item.genres
+      @review = @item.review
+      @user = @item.user
       render template: "public/items/show"
     end
   end

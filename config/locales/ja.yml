@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    attributes:
+
+      user:
+        unique_name: ユーザーID
+        hundle_name: ユーザーネーム
+        introduction: 自己紹介
+        email: メールアドレス
+
+      instagram_link:
+        url: リンク先URL
+
+      twitter_link:
+        url: リンク先URL
+
+      item:
+        brand: ブランド名
+        name: アイテム名
+
+      item_picture:
+        image: アイテム画像
+
+      genre:
+        name: ジャンル名
+
+      review:
+        rating: 評価
+        description: レビュー文
+
+      homepage_link:
+        url: リンク先URL
+
+      amazon_links:
+        url: リンク先URL

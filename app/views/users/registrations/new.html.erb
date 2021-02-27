@@ -3,8 +3,9 @@
   <p class=title>アカウントの作成</p>
 
   <%= form_with model: @user, url: user_registration_path, id: "new_user", class: "new_user", local: true do |f| %>
-    <%= render "users/shared/error_messages", resource: resource %>
     <div class="form">
+
+      <%= render "users/shared/error_messages", resource: resource %>
 
       <div class="form-content">
         <div class="label">
