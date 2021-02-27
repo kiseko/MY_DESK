@@ -487,7 +487,7 @@ h3 {
 
 
 main {
-  margin-bottom: 50px;
+  margin-bottom: 120px;
 }
 
 
@@ -776,6 +776,11 @@ footer p {
 .bubble:nth-child(n+3) {
   background-color: transparent;
   border: 1px solid #5EA1A9;
+}
+
+.scene_plus-filed {
+  width: 40px;
+  height: 40px;
 }
 
 .circle-plus-button {

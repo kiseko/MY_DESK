@@ -96,8 +96,8 @@
           <div class="scene-select">
 
             <% if @scenes.present? %>
-              <% if @user.id == current_user.id %>
-                <div class="scene-delete-field">
+              <div class="scene-delete-field">
+                <% if @user.id == current_user.id %>
                   <% @scenes.each do |scene| %>
                     <div class="scene-delete">
                       <%=link_to user_scene_path(current_user, scene.id), method: :delete, data: {confirm: "シーンを削除してもよろしいですか？"} do %>
@@ -107,8 +107,8 @@
                       <% end %>
                     </div>
                   <% end %>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             <% end %>
 
             <% while @scene_counter < @scenes.count do %>
@@ -116,13 +116,16 @@
               <% @scene_counter += 1 %>
             <% end %>
 
-            <% if @user.id == current_user.id %>
-              <%=link_to new_user_scene_path(current_user) do %>
-                <button type="button" class="circle-plus-button">
-                  <div class="plus-mark-mini"></div>
-                </button>
+
+            <div class="scene-plus-field">
+              <% if @user.id == current_user.id %>
+                <%=link_to new_user_scene_path(current_user) do %>
+                  <button type="button" class="circle-plus-button">
+                    <div class="plus-mark-mini"></div>
+                  </button>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
 
           </div>
 
