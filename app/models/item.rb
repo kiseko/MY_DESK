@@ -10,11 +10,10 @@ class Item < ApplicationRecord
   has_one :amazon_link, dependent: :destroy
   belongs_to :user
 
-  validates :user_id, presence: true, length: {minimum: 1, maximum: 14}
+  validates :user_id, presence: true
+  validates :brand, presence: true, length: {minimum: 1, maximum: 14}
   validates :name, presence: true, length: {minimum: 1, maximum: 14}
   validates :comment_status, presence: true
-
-  attachment :image
 
   accepts_nested_attributes_for :item_pictures
 
