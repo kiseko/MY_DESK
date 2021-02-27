@@ -13,10 +13,10 @@
     </div>
   <% end %>
 
-  <div class="search-result">
-    <div  class="desker-result">
+  <div class="search-result jscroll">
+    <% if @users.present? %>
+      <div  class="card-list desker-result">
 
-      <% if @users.present? %>
         <% @users.each do |user| %>
           <% scene = user.scenes.first %>
 
@@ -46,7 +46,9 @@
           </div>
 
       <% end %>
-    <% end %>
 
-  </div>
+      <%= paginate @users %>
+
+    </div>
+  <% end %>
 </div>

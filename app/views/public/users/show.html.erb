@@ -136,7 +136,7 @@
           <% @scenes.each do |scene| %>
 
             <div class="desk-item">
-              <div class="item-card-list">
+              <div class="card-list">
 
                 <% if @user.id == current_user.id %>
                   <div class="card-shadow">
@@ -147,7 +147,8 @@
                   </div>
                 <% end %>
 
-                <% scene.scene_items.order(id: "DESC").each do |scene_item| %>
+                <% scene_items = scene.scene_items.order(id: "DESC") %>
+                <% scene_items.each do |scene_item| %>
                   <% item = scene_item.item %>
                   <% item_picture = item.item_pictures.first %>
 

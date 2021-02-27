@@ -73,6 +73,8 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'rails-i18n'
 gem 'enum_help'
 
+gem 'kaminari'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

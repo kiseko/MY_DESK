@@ -7,7 +7,7 @@ class Public::ClipsController < ApplicationController
   end
 
   def index
-    @clips = current_user.clips.includes(item: :user).where.not(users: {status: 2}).order(id: "DESC")
+    @clips = current_user.clips.includes(item: :user).where.not(users: {status: 2}).order(id: "DESC").page(params[:page]).per(8)
   end
 
   def destroy

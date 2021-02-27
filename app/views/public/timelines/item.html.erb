@@ -18,9 +18,9 @@
     <% end %>
   </div>
 
-  <div class="timeline">
+  <div class="timeline jscroll">
     <% if @scene_items.present? %>
-      <div class="tl-item-list">
+      <div class="card-list  tl-item-list">
 
         <% @scene_items.each do |scene_item| %>
           <% item = scene_item.item %>
@@ -123,7 +123,10 @@
 
         <% end %>
 
+        <%= paginate @scene_items %>
+
       </div>
+
     <%else %>
       <div class="empty-content">
         <i class="far fa-user"></i>

@@ -13,10 +13,10 @@
     </div>
   <% end %>
 
-  <div class="search-result">
-    <div class="item-result">
+  <div class="search-result jscroll">
+    <% if @scene_items.present? %>
+      <div class="card-list item-result">
 
-      <% if @scene_items.present? %>
         <% @scene_items.each do |scene_item| %>
           <% item = scene_item.item %>
           <% item_picture = item.item_pictures.first %>
@@ -110,9 +110,11 @@
           </div>
 
         <% end %>
-      <% end %>
 
-    </div>
+        <%= paginate @scene_items %>
+
+      </div>
+    <% end %>
   </div>
 
 </div>

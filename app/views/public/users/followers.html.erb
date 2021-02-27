@@ -3,7 +3,7 @@
   <% if  @active_followings.present? %>
     <div class="followings">
       <div class="side-line"></div>
-      <div class="followings-list">
+      <div class="followings-list jscroll">
         <% @active_followings.each do |following| %>
           <% user = User.find(following.user_id) %>
           <div class="following">
@@ -68,6 +68,7 @@
 
           <div class="bar"></div>
         <% end %>
+        <%= paginate @active_followings %>
       </div>
       <div class="side-line"></div>
     </div>

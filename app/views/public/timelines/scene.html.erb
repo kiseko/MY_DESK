@@ -18,9 +18,9 @@
     <% end %>
   </div>
 
-  <div class="timeline">
+  <div class="timeline jscroll">
     <% if @scenes.present? %>
-      <div class="tl-scene-list">
+      <div class="card-list tl-scene-list">
 
         <% @scenes.each do |scene| %>
           <% user = scene.user %>
@@ -55,6 +55,8 @@
           </div>
 
         <% end %>
+
+        <%= paginate @scenes %>
 
       </div>
     <%else %>

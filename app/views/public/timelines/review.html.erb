@@ -18,9 +18,9 @@
     <% end %>
   </div>
 
-  <div class="timeline">
+  <div class="timeline jscroll">
     <% if @reviews.present? %>
-      <div class="tl-item-list">
+      <div class="card-list tl-item-list">
 
         <% @reviews.each do |review| %>
           <% item = review.item %>
@@ -122,6 +122,8 @@
             </div>
 
         <% end %>
+
+        <%= paginate @reviews %>
 
       </div>
     <%else %>

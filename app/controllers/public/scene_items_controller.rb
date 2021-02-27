@@ -17,7 +17,7 @@ class Public::SceneItemsController < ApplicationController
   def new
     @scene_item = SceneItem.new
     @scene = Scene.find(params[:scene_id])
-    @items = current_user.items.order(updated_at: "DESC")
+    @items = current_user.items.order(updated_at: "DESC").page(params[:page]).per(10)
   end
 
   def create

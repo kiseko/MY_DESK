@@ -50,7 +50,7 @@ class Public::UsersController < ApplicationController
 
   def followers
     @followings = Following.where(following_user_id: current_user.id)
-    @active_followings = @followings.includes(:user).where.not(users: {status: 2}).order(id: "DESC")
+    @active_followings = @followings.includes(:user).where.not(users: {status: 2}).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def mail_setting
@@ -69,7 +69,7 @@ class Public::UsersController < ApplicationController
   end
 
   def search
-     @users = User.search(params[:search]).where(status: 0).order(updated_at: "DESC")
+     @users = User.search(params[:search]).where(status: 0).order(updated_at: "DESC").page(params[:page]).per(8)
      @search_value = (params[:search])
   end
 
