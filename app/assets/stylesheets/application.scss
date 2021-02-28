@@ -511,8 +511,6 @@ footer p {
   width: 1300px;
   margin: 0 auto;
   padding-top: 55px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .top-title {
@@ -2033,7 +2031,7 @@ right: 10px;
 
 
 nav.pagination {
-
+  display: none;
 }
 
 .item-list nav.pagination {
