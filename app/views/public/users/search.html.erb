@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="title-panel"><p>Desker</p></div>
+  <div class="title-panel"><p>ユーザー</p></div>
 
   <%= form_with url: search_users_path, method: :get, local: true do |f| %>
     <div class="search-form">
@@ -45,10 +45,18 @@
             <% end %>
           </div>
 
-      <% end %>
+        <% end %>
 
-      <%= paginate @users %>
+        <%= paginate @users %>
 
-    </div>
-  <% end %>
+      </div>
+    <% else %>
+      <div class="empty-content">
+        <i class="far fa-user"></i>
+        <p>ユーザーが見つかりませんでした</p>
+      </div>
+    <% end %>
+  </div>
+
+
 </div>

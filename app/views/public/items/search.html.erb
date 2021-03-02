@@ -114,6 +114,11 @@
         <%= paginate @scene_items %>
 
       </div>
+    <% else %>
+      <div class="empty-content">
+        <i class="fas fa-cubes"></i>
+        <p>アイテムが見つかりませんでした</p>
+      </div>
     <% end %>
   </div>
 
