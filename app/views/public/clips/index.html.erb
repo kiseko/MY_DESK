@@ -19,15 +19,17 @@
                   <h4><%= item.brand %></h4>
                   <h3><%= item.name %></h3>
 
-                  <div class="genre-index">
-                    <% item.genres.each do |genre| %>
-                      <div class="genre-content">
-                        <div class="genre-frame">
-                          <p class="genre-name"><%= genre.name %></p>
+                  <% if item.genres.present? %>
+                    <div class="genre-index">
+                      <% item.genres.each do |genre| %>
+                        <div class="genre-content">
+                          <div class="genre-frame">
+                            <p class="genre-name"><%= genre.name %></p>
+                          </div>
                         </div>
-                      </div>
-                    <% end %>
-                  </div>
+                      <% end %>
+                    </div>
+                  <% end %>
 
                   <div class="card-item-link">
                     <% if item.homepage_link.present? %>
