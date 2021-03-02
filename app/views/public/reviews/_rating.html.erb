@@ -1,0 +1,33 @@
+<div class="rating-star">
+  <% if review.rating == 1 %>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star gray-star"></i>
+    <i class="fas fa-star gray-star"></i>
+    <i class="fas fa-star gray-star"></i>
+    <i class="fas fa-star gray-star"></i>
+  <% elsif review.rating == 2 %>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star gray-star"></i>
+    <i class="fas fa-stargray- star"></i>
+    <i class="fas fa-star gray-star"></i>
+  <% elsif review.rating == 3 %>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star gray-star"></i>
+    <i class="fas fa-star gray-star"></i>
+  <% elsif review.rating == 4 %>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star gray-star"></i>
+  <% elsif review.rating == 5 %>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+  <% end %>
+</div>

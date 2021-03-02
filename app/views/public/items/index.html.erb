@@ -53,6 +53,10 @@
                 </div>
               <% end %>
             <% end %>
+
+            <% if item.review.present? %>
+              <%= render partial: "public/reviews/rating", locals: {review: item.review} %>
+            <% end %>
           </div>
 
           <div class="list-item-right">

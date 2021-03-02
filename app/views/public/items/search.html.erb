@@ -28,42 +28,6 @@
                 <%= attachment_image_tag item_picture, :image, :fill, 300, 300, class: "card-picture" %>
                 <div class="card-information">
 
-                  <% if item.review.present? %>
-                    <div class="rating-star">
-                      <% if item.review.rating == 1 %>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                      <% elsif item.review.rating == 2 %>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                        <i class="fas fa-stargray- star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                      <% elsif item.review.rating == 3 %>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                      <% elsif item.review.rating == 4 %>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star gray-star"></i>
-                      <% elsif item.review.rating == 5 %>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                        <i class="fas fa-star star"></i>
-                      <% end %>
-                    </div>
-                  <% end %>
-
                   <h4><%= item.brand %></h4>
                   <h3><%= item.name %></h3>
 
@@ -88,6 +52,10 @@
                       <i class="fab fa-amazon normal-icon"></i>
                     <% end %>
                   </div>
+
+                  <% if item.review.present? %>
+                    <%= render partial: "public/reviews/rating", locals: {review: item.review} %>
+                  <% end %>
 
                   <div class="updated-at">
                     <p><%= scene_item.created_at.strftime("%Y/%m/%d") %></p>

@@ -926,7 +926,7 @@ footer p {
 }
 
 .rating-star {
-  padding-bottom: 5px;
+  padding-top: 10px;
 }
 
 .star {
@@ -973,7 +973,7 @@ footer p {
 }
 
 .card-item-link .normal-icon {
-  margin: 10px 10px 0 0;
+  margin: 5px 10px 0 0;
   font-size: 30px;
 }
 
@@ -1108,7 +1108,11 @@ footer p {
 }
 
 .list-item-link .item-link {
-  padding: 0 0 20px 0;
+  padding: 0 0 15px 0;
+}
+
+.list-item-link .rating-star {
+  padding: 0 0 0 5px;
 }
 
 .list-item .circle-plus-button {

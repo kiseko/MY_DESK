@@ -11,8 +11,8 @@ class Item < ApplicationRecord
   belongs_to :user
 
   validates :user_id, presence: true
-  validates :brand, presence: true, length: {minimum: 1, maximum: 14}
-  validates :name, presence: true, length: {minimum: 1, maximum: 14}
+  validates :brand, length: {maximum: 14}
+  validates :name, presence: true, length: {maximum: 14}
   validates :comment_status, presence: true
 
   accepts_nested_attributes_for :item_pictures
