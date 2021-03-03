@@ -9,7 +9,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
     context 'unique_nameカラム' do
       it '空欄でないこと' do
-        user.unique_name = ''
+        user.unique_name = ""
         is_expected.to eq false
       end
       it '2文字以上であること: 1文字は×' do
@@ -36,7 +36,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
     context 'hundle_nameカラム' do
       it '空欄でないこと' do
-        user.hundle_name = ''
+        user.hundle_name = ""
         is_expected.to eq false
       end
       it '10文字以下であること: 10文字は〇' do
@@ -51,10 +51,17 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   end
 
   describe 'アソシエーションのテスト' do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
 
     context 'Followingモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:followings).macro).to eq :has_many
+      end
+
+      it 'userを削除すると、uerが行ったfollowingも削除される' do
+        user.followings.create(following_user_id: other_user.id)
+        expect{ user.destroy }.to change{ Following.count }.by(-1)
       end
     end
 
@@ -74,17 +81,32 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:items).macro).to eq :has_many
       end
+
+      it 'userを削除すると、uerに関連するitemも削除される' do
+        user.items.create(brand: "brand_name", name: "item_name")
+        expect{ user.destroy }.to change{ Item.count }.by(-1)
+      end
     end
 
     context 'InstagramLinkモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:instagram_link).macro).to eq :has_one
       end
+
+      it 'userを削除すると、uerに関連するinstagram_linkも削除される' do
+        user.create_instagram_link(url: "https://www.instagram.com/username")
+        expect{ user.destroy }.to change{ InstagramLink.count }.by(-1)
+      end
     end
 
     context 'TwitterLinkモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:twitter_link).macro).to eq :has_one
+      end
+
+      it 'userを削除すると、uerに関連するtwitter_linkも削除される' do
+        user.create_twitter_link(url: "https://twitter.com/username")
+        expect{ user.destroy }.to change{ TwitterLink.count }.by(-1)
       end
     end
   end

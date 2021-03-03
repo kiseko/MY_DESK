@@ -20,7 +20,7 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
 
     context 'nameカラム' do
       it '空欄でないこと' do
-        item.name = ''
+        item.name = ""
         is_expected.to eq false
       end
       it '14文字以下であること: 14文字は〇' do
