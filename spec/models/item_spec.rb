@@ -35,6 +35,9 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
   end
 
   describe 'アソシエーションのテスト' do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let(:item) { create(:item, user_id: user.id) }
 
     context 'Userモデルとの関係' do
       it 'N:1となっている' do
@@ -52,6 +55,11 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
       it '1:Nとなっている' do
         expect(Item.reflect_on_association(:genres).macro).to eq :has_many
       end
+
+      it 'itemを削除すると、itemに関連するgenreも削除される' do
+        item.genres.create(name: "genre_name")
+        expect{ item.destroy }.to change{ Genre.count }.by(-1)
+      end
     end
 
     context 'SceneItemモデルとの関係' do
@@ -64,11 +72,21 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
       it '1:Nとなっている' do
         expect(Item.reflect_on_association(:clips).macro).to eq :has_many
       end
+
+      it 'itemを削除すると、itemに関連するclipも削除される' do
+        item.clips.create(user_id: other_user.id)
+        expect{ item.destroy }.to change{ Clip.count }.by(-1)
+      end
     end
 
     context 'Reviewモデルとの関係' do
       it '1:1となっている' do
         expect(Item.reflect_on_association(:review).macro).to eq :has_one
+      end
+
+      it 'itemを削除すると、itemに関連するreviewも削除される' do
+        item.create_review(rating: 5, description: "review_text")
+        expect{ item.destroy }.to change{ Review.count }.by(-1)
       end
     end
 
@@ -76,11 +94,21 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
       it '1:1となっている' do
         expect(Item.reflect_on_association(:homepage_link).macro).to eq :has_one
       end
+
+      it 'itemを削除すると、itemに関連するhomepage_linkも削除される' do
+        item.create_homepage_link(url: "homepage_url")
+        expect{ item.destroy }.to change{ HomepageLink.count }.by(-1)
+      end
     end
 
     context 'AmazonLinkモデルとの関係' do
       it '1:1となっている' do
         expect(Item.reflect_on_association(:amazon_link).macro).to eq :has_one
+      end
+
+      it 'itemを削除すると、itemに関連するamazon_linkも削除される' do
+        item.create_amazon_link(url: "https://www.amazon.co.jp/product")
+        expect{ item.destroy }.to change{ AmazonLink.count }.by(-1)
       end
     end
 
