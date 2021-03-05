@@ -78,7 +78,7 @@ describe 'ユーザログイン前のテスト' do
         click_button "ログイン"
       end
 
-      it 'ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている' do
+      it 'ログイン後のリダイレクト先が、ログインしたユーザのデスク画面になっている' do
         expect(current_path).to eq "/deskers/" + user.unique_name.to_s
       end
     end
