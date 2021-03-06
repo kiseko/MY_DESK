@@ -28,14 +28,14 @@
                 <% if @user.status == 0 %>
                   <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
                     <%= f.hidden_field :status, value: 1 %>
-                    <button type="submit" class="form-icon">
+                    <button type="submit" data-confirm="あなたのデスクを非公開にします。" class="form-icon">
                       <i class="fas fa-door-open close-button"></i>
                     </button>
                   <% end %>
                 <% elsif  @user.status == 1 %>
                   <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
                     <%= f.hidden_field :status, value: 0 %>
-                    <button type="submit" class="form-icon">
+                    <button type="submit" data-confirm="あなたのデスクを公開します。" class="form-icon">
                       <i class="fas fa-door-closed open-button"></i>
                     </button>
                   <% end %>
@@ -52,6 +52,10 @@
               <div class="set-link right-button">
                 <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
               </div>
+            <% end %>
+
+            <%= link_to user_clips_path(@user), class: "icon-link-button" do %>
+              <i class="fas fa-paperclip link-icon"></i>
             <% end %>
 
             <% if @instagram_link.present? %>
