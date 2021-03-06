@@ -48,6 +48,10 @@
                 <p><%= amazon_link.url %></p>
                 </div>
             <% end %>
+
+            <% if item.review.present? %>
+              <%= render partial: "public/reviews/rating", locals: {review: item.review} %>
+            <% end %>
           </div>
 
           <%= form_with model: @scene_item, url: scene_items_path(@scene.id), local: true do |f| %>
