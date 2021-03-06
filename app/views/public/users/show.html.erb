@@ -145,6 +145,13 @@
                       <p>アイテムの追加</p>
                     <% end %>
                   </div>
+                <% elsif @user.id != current_user.id && scene.scene_items.blank? %>
+                  <div class="no-scene-item">
+                    <div class="empty-content">
+                      <i class="fas fa-cubes"></i>
+                      <p>シーンアイテムはありません</p>
+                    </div>
+                  </div>
                 <% end %>
 
                 <% scene_items = scene.scene_items.order(id: "DESC") %>
