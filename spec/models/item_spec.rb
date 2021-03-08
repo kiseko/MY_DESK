@@ -38,6 +38,7 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
     let(:user) { create(:user) }
     let(:other_user) { create(:user) }
     let(:item) { create(:item, user_id: user.id) }
+    let(:scene) { create(:scene, user_id: user.id) }
 
     context 'Userモデルとの関係' do
       it 'N:1となっている' do
@@ -48,6 +49,11 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
     context 'ItemPictureモデルとの関係' do
       it '1:Nとなっている' do
         expect(Item.reflect_on_association(:item_pictures).macro).to eq :has_many
+      end
+
+      it 'itemを削除すると、itemに関連するitem_pictureも削除される' do
+        item.item_pictures.create( image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sample.png')) )
+        expect{ item.destroy }.to change{ ItemPicture.count }.by(-1)
       end
     end
 
@@ -65,6 +71,11 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
     context 'SceneItemモデルとの関係' do
       it '1:Nとなっている' do
         expect(Item.reflect_on_association(:scene_items).macro).to eq :has_many
+      end
+
+      it 'itemを削除すると、itemに関連するscene_itemも削除される' do
+        scene.scene_items.create(item_id: item.id)
+        expect{ item.destroy }.to change{ SceneItem.count }.by(-1)
       end
     end
 
