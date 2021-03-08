@@ -73,9 +73,11 @@ class Public::ItemsController < ApplicationController
   end
 
   def search
-     @search_items = Item.search(params[:search])
-     @scene_items = SceneItem.where(item_id: @search_items.ids).includes(item: :user).where(users: {status: 0}).order(updated_at: "DESC").page(params[:page]).per(8)
-     @search_value = (params[:search])
+    @search_items = Item.search(params[:search])
+    @search_genre_ids = Genre.search(params[:search]).ids
+    @search_genre_items = Item.includes(:genres).where(genres: {id: @search_genre_ids})
+    @scene_items = SceneItem.search(@search_items, @search_genre_items).includes(item: :user).where(users: {status: 0}).order(updated_at: "DESC").page(params[:page]).per(8)
+    @search_value = (params[:search])
   end
 
 

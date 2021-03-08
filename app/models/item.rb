@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :item_pictures
 
   def self.search(search)
-    Item.where(["brand LIKE? or name LIKE?", "%#{search}%", "%#{search}%"])
+    where(["brand LIKE? or items.name LIKE?", "%#{search}%", "%#{search}%"])
   end
 
 end

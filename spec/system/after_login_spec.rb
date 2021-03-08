@@ -68,7 +68,7 @@ describe 'ユーザログイン後のテスト' do
 
     context '表示内容の確認' do
       it 'シーンアイテムの削除ボタンが表示される' do
-        link = find(".card-information a:last-child")
+        link = all(".card-information a").last
         expect(link[:href]).to eq scene_item_path(scene.id, scene.scene_items.first.id)
       end
 

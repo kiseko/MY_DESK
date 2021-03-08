@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    User.where(["unique_name LIKE? or hundle_name LIKE? or introduction LIke ?", "%#{search}%", "%#{search}%", "%#{search}%"])
+    where(["unique_name LIKE? or hundle_name LIKE? or introduction LIke ?", "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
   def active_for_authentication?
