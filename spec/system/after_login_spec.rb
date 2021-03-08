@@ -48,10 +48,33 @@ describe 'ユーザログイン後のテスト' do
         link = find(".scene-delete a")
         expect(link[:href]).to eq user_scene_path(user, scene.id)
       end
-      
+
       it 'シーンアイテム追加画面のリンクが表示される' do
         link = find(".new-scene-item-link")
         expect(link[:href]).to eq new_scene_item_path(scene.id)
+      end
+    end
+  end
+
+  describe 'ユーザデスク画面のテスト:　自分のページ(シーンあり, シーンアイテムあり)' do
+    let(:user) { create(:user) }
+    let(:item) { create(:item, user_id: user.id) }
+    let!(:scene){ create(:scene, user_id: user.id) }
+
+    before do
+      scene.scene_items.create(item_id: item.id)
+      visit user_path(user)
+    end
+
+    context '表示内容の確認' do
+      it 'シーンアイテムの削除ボタンが表示される' do
+        link = find(".card-information a:last-child")
+        expect(link[:href]).to eq scene_item_path(scene.id, scene.scene_items.first.id)
+      end
+
+      it 'シーンアイテム詳細画面のリンクが表示される' do
+        link = find(".item-detail-link")
+        expect(link[:href]).to eq item_path(item.id)
       end
     end
   end
