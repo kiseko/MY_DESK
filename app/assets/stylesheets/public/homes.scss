@@ -1,3 +1,28 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-page {
+  width: 1300px;
+  margin: 0 auto;
+  padding-top: 55px;
+}
+
+.top-title {
+    text-align: center;
+    color: #EA7304;
+    font-size: 60px;
+    white-space: nowrap;
+}
+
+.top-page .card-shadow {
+  height: 260px;
+}
+
+.top-page .card {
+  height: 260px;
+}
+
+.top-page .card-information {
+  height: 90px;
+}

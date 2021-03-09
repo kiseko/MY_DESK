@@ -1,3 +1,219 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-detail {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.item-visual {
+  width: 600px;
+}
+
+.item-visual .main-picture {
+  border-radius: 15px 15px 0 0;
+}
+
+.item-visual .set-picture-link {
+  width: 600px;
+}
+
+.thumbnail-area {
+  display: flex;
+  align-items: center;
+}
+
+.thumb-box {
+  width: 145px;
+  height: 145px;
+  margin-top: 10px;
+  padding: 8px;
+}
+
+.thumb-box:first-child {
+  margin-left: 10px;
+  background-color: #AED0D4;
+  border-radius: 10px;
+}
+
+.thumb-border {
+  width: 129px;
+  height: 129px;
+  padding: 2px;
+  border-radius: 7px;
+  position: relative;
+}
+
+.thumb-box:first-child .thumb-border {
+  background-color: #EE8F36;
+}
+
+.thumb-border .thumbnail {
+  margin: 0;
+}
+
+.thumb-box .delete-button {
+  border-radius: 5px 0 5px 0;
+  top : 99px;
+  right: 0px;
+  display: none;
+}
+
+.new-picture-link {
+  width: 125px;
+  height: 125px;
+  padding: 10px;
+  display: block;
+  background-color: #EE8F36;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.plus-mark {
+  position: relative;
+  width : 4px;
+  height: 30px;
+  margin: 0 13px 5px auto;
+  background-color: #FFF;
+}
+
+.plus-mark::after {
+  content: "";
+	position: absolute;
+	top: 13px;
+	left: -13px;
+	width: 30px;
+	height: 4px;
+	background-color: #FFF;
+}
+
+.new-picture-link .image-icon {
+  color: #FFF;
+  opacity: 1;
+}
+
+.item-information {
+  width: 600px;
+  padding-left: 20px;
+}
+
+.item-information-content {
+  width: 580px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #FAFAFA;
+}
+
+.item-information-content:first-child {
+  padding-bottom: 10px;
+}
+
+.item-information-head {
+  display: flex;
+}
+
+.clip-button-field {
+  margin-left: auto;
+}
+
+.item-information .genre-index {
+  padding-top: 10px;
+}
+
+.item-information .genre-content {
+  padding: 0 10px 10px 0;
+}
+
+.genre-frame-large {
+  max-width: 510px;
+  height: 30px;
+  padding: 2px 10px 0;
+  border: 1px solid #5EA1A9;
+  border-radius: 15px;
+}
+
+.genre-frame-large.deleteble {
+  padding: 2px 5px 0 10px;
+  border-radius: 15px 0 0 15px;
+  border-right: 0;
+}
+
+.item-information .genre-name {
+  font-size: 16px;
+}
+
+.link-layout {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #5EA1A9;
+  border-left: 0;
+  border-radius: 0 15px 15px 0;
+  position: relative;
+}
+
+.genre-form {
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.genre-input-box {
+  width: 510px;
+  height: 30px;
+  display: block;
+  padding: 0 10px 0 15px;
+  border: 2px solid #EE8F36;
+  border-right: 0;
+  border-radius: 15px 0 0 15px;
+  font-size: 18px;
+  outline: none;
+}
+
+.genre-form .link-layout {
+  background-color: #FFF;
+  border: 2px solid #EE8F36;
+  border-left: 0;
+}
+
+.genre-form .circle-plus-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  position: absolute;
+  top: -2px;
+}
+
+.genre-form .plus-mark-mini {
+  width : 2px;
+  height: 16px;
+  margin: 0 14px;
+}
+
+.genre-form .plus-mark-mini::after {
+	width: 16px;
+	height: 2px;
+	top: 7px;
+	left: -7px;
+}
+
+.set-link.right-button {
+  padding: 10px 0 10px 0;
+}
+
+.delete-review.link-icon {
+  padding-top: 10px;
+}
+
+.back.link-button {
+  width: 60px;
+  height: 35px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.desk-link {
+  display: inline-block;
+  text-decoration: none;
+}

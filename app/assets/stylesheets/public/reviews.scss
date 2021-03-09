@@ -1,3 +1,28 @@
 // Place all the styles related to the public/reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-picture {
+  margin: 0 auto 30px;
+  display: block;
+  border-radius: 10px;
+}
+
+#select-star {
+  width: 260px;
+  height: 40px;
+  padding-top: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#select-star i {
+  color: #ccc;
+  font-size: 30px;
+}
+
+.rating-radio-button {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+}

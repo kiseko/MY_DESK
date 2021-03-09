@@ -1,3 +1,309 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ユーザーデスク
+.user-desk {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.desk-visual {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.mydesk-panel {
+  width: 150px;
+  height: 30px;
+  margin: 0 0 5px auto;
+  padding-top: 1px;
+  background-color: #5EA1A9;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.mydesk-panel p {
+  color: #FFF;
+  line-height: 29px;
+}
+
+.desk-visual .follow-button-field {
+  width: 150px;
+  margin: 0 0 5px auto;
+}
+
+.user-information {
+  width: 580px;
+  min-height: 317px;
+  max-height: 634px;
+  padding: 20px;
+  background-color: #FAFAFA;
+  opacity: 0.98;
+  position: absolute;
+  top: 55px;
+  left: 20px;
+  transition: opacity 400ms;
+}
+
+.user-information.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.close-button {
+  margin: 0 0 59px auto;
+  color: #EA7304;
+  font-size: 20px;
+}
+
+.close-button:hover {
+  color: #B3B3B3;
+}
+
+.open-button {
+  margin: 0 0 59px auto;
+  color: #CCC;
+  font-size: 20px;
+}
+
+.open-button:hover {
+  color: #EE8F36;
+}
+
+.user-information .description-text {
+  max-height: 351px;
+  padding-top: 5px;
+  overflow: hidden;
+}
+
+.user-information .link-icon {
+  margin-top: 10px;
+}
+
+.scene-select {
+  padding: 15px 0 35px;
+  display: flex;
+  justify-content: center;
+}
+
+.scene-delete-field {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  position: relative;
+}
+
+.scene-delete {
+  display: none;
+}
+
+.scene-delete:first-child {
+  display: block;
+}
+
+.scene-delete .delete-button {
+  background-color: #CCC;
+  right: 0;
+}
+
+.scene-delete .delete-button:hover {
+  background-color: #C00;
+}
+
+.bubble {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  background-color: #5EA1A9;
+  border: 1px solid #5EA1A9;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bubble:nth-child(n+3) {
+  background-color: transparent;
+  border: 1px solid #5EA1A9;
+}
+
+.scene-plus-field {
+  width: 40px;
+  height: 40px;
+}
+
+.desk-item {
+  width: 1300px;
+  padding-left: 10px;
+  display: none;
+}
+
+.desk-item:first-child {
+  display: block;
+}
+
+.new-scene-item-link {
+  width: 300px;
+  height: 510px;
+  padding: 20px;
+  display: block;
+  background-color: #EE8F36;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  top: -5px;
+  left: -5px;
+  outline: none;
+}
+
+.new-scene-item-link p {
+  margin: 215px 0;
+  color: #FFF;
+  font-size: 20px;
+}
+
+.new-scene-item-link:hover {
+  background-color: #EA7304;
+}
+
+.no-scene-item {
+  width: 100%;
+  height: 540px;
+  padding-right: 10px;
+}
+
+
+
+// シーンの追加・編集
+.desk-visual .image-box {
+  width: 1200px;
+  height: 675px;
+  border-radius: 15px 15px 0 0;
+}
+
+.desk-visual .image-select {
+  padding: 0;
+  top : 310px;
+  left: 555px;
+}
+
+
+
+// プロフィールの編集
+.user-icon.image-box {
+  border-radius: 130px;
+}
+
+.user_icon_large {
+   border-radius: 130px;
+}
+
+
+
+// SNSリンクの編集
+.set-url {
+  display: flex;
+  align-items: center;
+}
+
+.set-url .link-button {
+  width: 60px;
+  min-width: 60px;
+  margin-right: 10px;
+}
+
+.status-select {
+  width: 220px;
+  height: 40px;
+  margin-right: 300px;
+  border: 1px solid #F5BC86;
+  border-radius: 10px;
+  position: relative;
+}
+
+.status-select::before {
+content: "";
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 6px solid  #EE8F36;
+pointer-events: none;
+position: absolute;
+top: 17px;
+right: 10px;
+}
+
+#instagram_link_status, #twitter_link_status {
+  width: 218px;
+  height: 38px;
+  padding-left: 10px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+	appearance: none;
+}
+
+
+
+// ユーザー設定
+.user-setting {
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.user-setting-info {
+  list-style: none;
+}
+
+.setting-info-panel {
+  width: 290px;
+  height: 35px;
+  margin-right: 30px;
+  padding: 3px 0 0 50px;
+  border: solid #FAE3CC;
+  border-width: 0 10px 2px 0;
+}
+
+.setting-info-panel.active {
+  border: solid #F6C79A;
+  border-width: 0 10px 2px 0;
+}
+
+
+.setting-info-panel p {
+  line-height: 32px;
+
+}
+
+.user-setting-form {
+  width: 580px;
+}
+
+.user-setting-form .label {
+  padding-bottom: 15px;
+}
+
+.form-input {
+  padding-bottom: 50px;
+}
+
+.user-setting-form.resign {
+  text-align: center;
+}
+
+.resign p {
+  padding: 10px 0 31px;
+}
+
+.resign .link-button {
+  background-color: #CCC;
+}
+
+.resign .link-button:hover {
+  background-color: #C00;
+}
