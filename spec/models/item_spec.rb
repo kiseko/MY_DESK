@@ -5,13 +5,14 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
     subject { item.valid? }
 
     let(:user) { create(:user) }
-    let!(:item) { build(:item, user_id: user.id) }
+    let(:item) { build(:item, user_id: user.id) }
 
     context 'brandカラム' do
       it '14文字以下であること: 14文字は〇' do
         item.brand = Faker::Lorem.characters(number: 14)
         is_expected.to eq true
       end
+
       it '14文字以下であること: 15文字は×' do
         item.brand = Faker::Lorem.characters(number: 15)
         is_expected.to eq false
@@ -23,10 +24,12 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
         item.name = ""
         is_expected.to eq false
       end
+
       it '14文字以下であること: 14文字は〇' do
         item.name = Faker::Lorem.characters(number: 14)
         is_expected.to eq true
       end
+
       it '200文字以下であること: 15文字は×' do
         item.name = Faker::Lorem.characters(number: 15)
         is_expected.to eq false
