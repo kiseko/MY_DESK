@@ -91,4 +91,45 @@ describe 'ユーザログイン後のテスト' do
     end
   end
 
+  describe 'シーンアイテム追加画面のテスト' do
+    let(:user) { create(:user) }
+    let!(:item) { create(:item, user_id: user.id) }
+    let!(:scene){ create(:scene, user_id: user.id) }
+
+    before do
+      visit user_path(user)
+      find(".new-scene-item-link").click
+    end
+
+    context '表示内容の確認' do
+      it 'アイテム作成画面のリンクが表示される' do
+        link = find(".new-item-link")
+        expect(link[:href]).to eq new_item_path
+      end
+
+      it 'シーンアイテム追加ボタンが表示される' do
+        expect(page).to have_css ".circle-plus-button"
+      end
+
+      it 'シーンアイテム追加ボタンが表示される' do
+        expect(page).to have_css ".circle-plus-button"
+      end
+
+      it 'シーンアイテムが追加される' do
+        expect { find(".circle-plus-button").click }.to change{ SceneItem.count }.by(1)
+      end
+    end
+  end
+
+  describe 'ユーザログアウトのテスト' do
+    before do
+      click_link "ログアウト"
+    end
+
+    context 'ログアウト機能のテスト' do
+      it 'ログアウト後のリダイレクト先が、トップになっている' do
+        expect(current_path).to eq "/"
+      end
+    end
+  end
 end

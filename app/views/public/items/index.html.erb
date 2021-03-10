@@ -7,7 +7,7 @@
     <%if @items.present? %>
 
       <div class="left-button">
-        <%= link_to new_item_path do %>
+        <%= link_to new_item_path, class: "new-item-link" do %>
           <button type="button" class="link-button">アイテムの作成</button>
         <% end %>
       </div>

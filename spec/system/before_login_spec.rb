@@ -40,7 +40,7 @@ describe 'ユーザログイン前のテスト' do
       end
 
       it '正しく新規登録される' do
-        expect { click_button "作成" }.to change(User.all, :count).by(1)
+        expect { click_button "作成" }.to change{ User.count }.by(1)
       end
       it '新規登録後のリダイレクト先が、新規登録できたユーザのデスク画面になっている' do
         click_button "作成"
