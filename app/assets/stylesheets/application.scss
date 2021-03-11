@@ -21,6 +21,7 @@
   padding: 0;
   box-sizing: border-box;
   color: #666;
+  font-family: san-selif;
 }
 
 body {
@@ -41,11 +42,11 @@ h3 {
   font-size: 18px;
 }
 
-// ヘッダー
-.header-nav {
-  margin-bottom: 104px;
+.container {
+  margin-top: 104px;
 }
 
+// ヘッダー
 .main-header-info, .header-info {
   display: flex;
   list-style: none;
@@ -319,7 +320,6 @@ h3 {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;
   transition: all 400ms;
 }
 
@@ -427,20 +427,27 @@ h3 {
 
 // サブヘッダー
 .sub-header {
-  min-width: 1244px;
+  margin: 0 auto;
+  width: 800px;
+  position: relative;
 }
 
 .sub-header-info {
-  margin: 0 auto;
   width: 800px;
-  padding-bottom: 30px;
   display: flex;
   list-style: none;
+  position: absolute;
+  transition: all 300ms;
+}
+
+.sub-header-info.out {
+  transform: translateY(-74px)
 }
 
 .sub-panel {
   width: 25%;
   height: 74px;
+  background-color: #FFF;
   border: solid #E6E6E6;
   border-width: 0 2px 2px 0;
   text-align: center;
@@ -460,6 +467,7 @@ h3 {
   color: #EE8F36;
   font-size: 18px;
 }
+
 .sub-panel i {
   padding-bottom: 10px;
 }

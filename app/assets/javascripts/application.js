@@ -42,6 +42,18 @@ $(function(){
     $(".desker-search").css("display", "block");
   });
 
+   $(window).scroll(function(){
+    var scroll = $(window).scrollTop();
+    if (scroll > 0) {
+      $(".sub-header-info").addClass("out");
+      $(".two-line-icon").removeClass("active");
+      $(".desker-search, .item-search").removeClass("in");
+    }
+    else {
+      $(".sub-header-info").removeClass("out");
+    }
+  });
+
 });
 
 
