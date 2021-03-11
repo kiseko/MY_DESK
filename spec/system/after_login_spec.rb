@@ -79,17 +79,6 @@ describe 'ユーザログイン後のテスト' do
     end
   end
 
-  describe 'ユーザログアウトのテスト' do
-    before do
-      click_link "ログアウト"
-    end
-
-    context 'ログアウト機能のテスト' do
-      it 'ログアウト後のリダイレクト先が、トップになっている' do
-        expect(current_path).to eq "/"
-      end
-    end
-  end
 
   describe 'シーンアイテム追加画面のテスト' do
     let(:user) { create(:user) }
@@ -114,12 +103,86 @@ describe 'ユーザログイン後のテスト' do
       it 'シーンアイテム追加ボタンが表示される' do
         expect(page).to have_css ".circle-plus-button"
       end
+    end
 
+    context 'データベースの確認' do
       it 'シーンアイテムが追加される' do
         expect { find(".circle-plus-button").click }.to change{ SceneItem.count }.by(1)
       end
     end
   end
+
+
+  describe 'SNSリンク設定画面のテスト' do
+    let(:user) { create(:user) }
+
+    before do
+      visit user_path(user)
+      click_link "SNSリンクの設定"
+      fill_in "instagram_link[url]", with: "https://www.instagram.com/test"
+      fill_in "twitter_link[url]", with: "https://twitter.com/test"
+    end
+
+    context 'データベースの確認' do
+      it 'Instagramのリンクが正しく登録される' do
+        expect { find(".instagram .link-button").click }.to change{ InstagramLink.count }.by(1)
+      end
+
+      it 'Instagramのリンク公開範囲が正しく登録される: 全員に公開' do
+        select "全員に公開", from: "instagram_link[status]"
+        find(".instagram .link-button").click
+        expect(user.instagram_link.status).to eq 0
+      end
+
+      it 'Instagramのリンク公開範囲が正しく登録される: フォロー先のみ公開' do
+        select "フォロー先のみ公開", from: "instagram_link[status]"
+        find(".instagram .link-button").click
+        expect(user.instagram_link.status).to eq 1
+      end
+
+      it 'Instagramのリンク公開範囲が正しく登録される: お気に入りのみ公開' do
+        select "お気に入りのみ公開", from: "instagram_link[status]"
+        find(".instagram .link-button").click
+        expect(user.instagram_link.status).to eq 2
+      end
+
+      it 'Instagramのリンクが正しく削除される' do
+        find(".instagram .link-button").click
+        click_link "SNSリンクの設定"
+        expect { find(".instagram .icon-link-button").click }.to change{ InstagramLink.count }.by(-1)
+      end
+
+
+      it 'Twitterのリンクが正しく登録される' do
+        expect { find(".twitter .link-button").click }.to change{ TwitterLink.count }.by(1)
+      end
+
+       it 'Twitterのリンク公開範囲が正しく登録される: 全員に公開' do
+        select "全員に公開", from: "twitter_link[status]"
+        find(".twitter .link-button").click
+        expect(user.twitter_link.status).to eq 0
+      end
+
+      it 'Twitterのリンク公開範囲が正しく登録される: フォロー先のみ公開' do
+        select "フォロー先のみ公開", from: "twitter_link[status]"
+        find(".twitter .link-button").click
+        expect(user.twitter_link.status).to eq 1
+      end
+
+      it 'Twitterのリンク公開範囲が正しく登録される: お気に入りのみ公開' do
+        select "お気に入りのみ公開", from: "twitter_link[status]"
+        find(".twitter .link-button").click
+        expect(user.twitter_link.status).to eq 2
+      end
+
+      it 'Twitterのリンクが正しく削除される' do
+        find(".twitter .link-button").click
+        click_link "SNSリンクの設定"
+        expect { find(".twitter .icon-link-button").click }.to change{ TwitterLink.count }.by(-1)
+      end
+    end
+  end
+
 
   describe 'ユーザログアウトのテスト' do
     before do
@@ -132,4 +195,6 @@ describe 'ユーザログイン後のテスト' do
       end
     end
   end
+
+
 end
