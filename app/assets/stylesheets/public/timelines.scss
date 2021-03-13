@@ -1,3 +1,88 @@
 // Place all the styles related to the public/timelines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.timeline {
+  width: 1355px;
+  margin: 0 auto;
+  padding: 0 30px 0 35px;
+}
+
+.timeline-select {
+  width: 480px;
+  margin: 0 auto 55px;
+  display: flex;
+}
+
+.timeline-panel {
+  width: 160px;
+  height: 36px;
+  margin: 0 auto;
+  padding-top: 4px;
+  border: solid #6EAAB1;
+  border-width: 2px 0 2px 2px;
+  color: #6EAAB1;
+  text-align: center;
+}
+
+.timeline-panel p {
+  color: #6EAAB1;
+  font-size: 18px;
+}
+
+.timeline-panel.active {
+  background-color: #6EAAB1;
+}
+
+.timeline-panel.active p {
+  color: #FFF;
+}
+
+.left-panel.timeline-panel {
+  border-radius: 10px 0 0 10px;
+}
+
+.right-panel.timeline-panel {
+  border-radius: 0 10px 10px 0;
+  border-right: 2px solid #6EAAB1;
+}
+
+.timeline-information {
+  padding: 5px 0 10px 0;
+}
+
+.timeline .profile {
+  padding-top: 10px;
+}
+
+.tl-scene-list .card-shadow {
+  height: 330px;
+}
+
+.tl-scene-list .card {
+  height: 330px;
+}
+
+.tl-scene-list .card-information {
+  height: 160px;
+}
+
+.tl-scene-list .created-at {
+  padding: 129px 0 10px;
+}
+
+.tl-item-list .card-shadow {
+  height: 620px;
+}
+
+.tl-item-list .card {
+  height: 620px;
+}
+
+.tl-item-list .card-information {
+  height: 320px;
+}
+
+.tl-item-list .created-at {
+  padding: 289px 0 10px;
+}

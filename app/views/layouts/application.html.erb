@@ -51,49 +51,51 @@
                     </div>
                   </div>
 
-                  <div class="desker-search">
-                    <div class="search-target">
-                      <div class="target-desker">
-                        <p>ユーザー</p>
-                      </div>
-                      <div class="target-item">
-                        <p>アイテム</p>
-                      </div>
-                    </div>
-                    <div class="search-box">
-                      <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-                        <div class="search-form">
-                          <%= f.text_field :search, class: "search-input-box" %>
-                          <div class="link-layout">
-                            <button type="submit" class="circle-search-button">
-                              <i class="fas fa-search"></i>
-                            </button>
-                          </div>
+                  <div class="search-field">
+                    <div class="desker-search">
+                      <div class="search-target">
+                        <div class="target-desker">
+                          <p>ユーザー</p>
                         </div>
-                      <% end %>
+                        <div class="target-item">
+                          <p>アイテム</p>
+                        </div>
+                      </div>
+                      <div class="search-box">
+                        <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+                          <div class="search-form">
+                            <%= f.text_field :search, class: "search-input-box" %>
+                            <div class="link-layout">
+                              <button type="submit" class="circle-search-button">
+                                <i class="fas fa-search"></i>
+                              </button>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
                     </div>
-                  </div>
 
-                   <div class="item-search">
-                    <div class="search-target">
-                      <div class="target-desker">
-                        <p>ユーザー</p>
-                      </div>
-                      <div class="target-item">
-                        <p>アイテム</p>
-                      </div>
-                    </div>
-                    <div class="search-box">
-                      <%= form_with url: search_items_path, method: :get, local: true do |f| %>
-                        <div class="search-form">
-                          <%= f.text_field :search, class: "search-input-box" %>
-                          <div class="link-layout">
-                            <button type="submit" class="circle-search-button">
-                              <i class="fas fa-search"></i>
-                            </button>
-                          </div>
+                     <div class="item-search">
+                      <div class="search-target">
+                        <div class="target-desker">
+                          <p>ユーザー</p>
                         </div>
-                      <% end %>
+                        <div class="target-item">
+                          <p>アイテム</p>
+                        </div>
+                      </div>
+                      <div class="search-box">
+                        <%= form_with url: search_items_path, method: :get, local: true do |f| %>
+                          <div class="search-form">
+                            <%= f.text_field :search, class: "search-input-box" %>
+                            <div class="link-layout">
+                              <button type="submit" class="circle-search-button">
+                                <i class="fas fa-search"></i>
+                              </button>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
 
@@ -142,6 +144,54 @@
               </li>
             </ul>
           </nav>
+
+          <div class="search-field responsive">
+            <div class="desker-search">
+              <div class="search-target">
+                <div class="target-desker">
+                  <p>ユーザー</p>
+                </div>
+                <div class="target-item">
+                  <p>アイテム</p>
+                </div>
+              </div>
+              <div class="search-box">
+                <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+                  <div class="search-form">
+                    <%= f.text_field :search, class: "search-input-box" %>
+                    <div class="link-layout">
+                      <button type="submit" class="circle-search-button">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="item-search">
+              <div class="search-target">
+                <div class="target-desker">
+                  <p>ユーザー</p>
+                </div>
+                <div class="target-item">
+                  <p>アイテム</p>
+                </div>
+              </div>
+              <div class="search-box">
+                <%= form_with url: search_items_path, method: :get, local: true do |f| %>
+                  <div class="search-form">
+                    <%= f.text_field :search, class: "search-input-box" %>
+                    <div class="link-layout">
+                      <button type="submit" class="circle-search-button">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% else %>
           <nav class="header-nav">
             <ul class="header-info">
