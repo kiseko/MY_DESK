@@ -4,7 +4,7 @@
     <% if @user.present? %>
       <% if @user.id == current_user.id || @user.status == 0 %>
 
-        <div class="desk-visual">
+        <div class="desk-visual-field">
           <% if @user.id == current_user.id %>
             <div class="mydesk-panel">
               <p>マイデスク</p>
@@ -15,87 +15,89 @@
             </div>
           <% end %>
 
-          <div class="user-information">
-
-            <div class="profile">
-              <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
-              <div class="identification">
-                <h3 class="user-id">@<%= @user.unique_name %></h3>
-                <h3 class="user-name"><%= @user.hundle_name %></h3>
+          <div class="desk-visual">
+            <div class="user-information">
+  
+              <div class="profile">
+                <%= attachment_image_tag @user, :image, :fill, 80, 80, fallback: "user-icon.png", size: "80x80", class: "user-icon" %>
+                <div class="identification">
+                  <h3 class="user-id">@<%= @user.unique_name %></h3>
+                  <h3 class="user-name"><%= @user.hundle_name %></h3>
+                </div>
+  
+                <% if @user.id == current_user.id %>
+                  <% if @user.status == 0 %>
+                    <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+                      <%= f.hidden_field :status, value: 1 %>
+                      <button type="submit" data-confirm="あなたのデスクを非公開にします。" class="form-icon">
+                        <i class="fas fa-door-open close-button"></i>
+                      </button>
+                    <% end %>
+                  <% elsif  @user.status == 1 %>
+                    <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+                      <%= f.hidden_field :status, value: 0 %>
+                      <button type="submit" data-confirm="あなたのデスクを公開します。" class="form-icon">
+                        <i class="fas fa-door-closed open-button"></i>
+                      </button>
+                    <% end %>
+                  <% end %>
+                <% end %>
+  
               </div>
-
+  
+              <div class="description-text">
+                <%= simple_format(@user.introduction) %>
+              </div>
+  
               <% if @user.id == current_user.id %>
-                <% if @user.status == 0 %>
-                  <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-                    <%= f.hidden_field :status, value: 1 %>
-                    <button type="submit" data-confirm="あなたのデスクを非公開にします。" class="form-icon">
-                      <i class="fas fa-door-open close-button"></i>
-                    </button>
-                  <% end %>
-                <% elsif  @user.status == 1 %>
-                  <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-                    <%= f.hidden_field :status, value: 0 %>
-                    <button type="submit" data-confirm="あなたのデスクを公開します。" class="form-icon">
-                      <i class="fas fa-door-closed open-button"></i>
-                    </button>
-                  <% end %>
-                <% end %>
-              <% end %>
-
-            </div>
-
-            <div class="description-text">
-              <%= simple_format(@user.introduction) %>
-            </div>
-
-            <% if @user.id == current_user.id %>
-              <div class="set-link right-button">
-                <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-              </div>
-            <% end %>
-
-            <%= link_to user_clips_path(@user), class: "icon-link-button" do %>
-              <i class="fas fa-paperclip link-icon"></i>
-            <% end %>
-
-            <% if @instagram_link.present? %>
-              <% if viewable_sns_link?(@user, @instagram_link) %>
-                <%= link_to @instagram_link.url, class: "icon-link-button" do %>
-                  <i class="fab fa-instagram link-icon"></i>
-                <% end %>
-              <% end %>
-            <% end %>
-
-            <% if @twitter_link.present? %>
-              <% if viewable_sns_link?(@user, @twitter_link) %>
-                <%= link_to @twitter_link.url, class: "icon-link-button" do %>
-                  <i class="fab fa-twitter link-icon"></i>
-                <% end %>
-              <% end %>
-            <% end %>
-
-            <% if @user.id == current_user.id %>
-              <div class="set-link right-button">
-                <%= link_to "SNSリンクの設定", link_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-              </div>
-            <% end %>
-
-          </div>
-
-          <% if @scenes.present? %>
-            <div>
-              <% @scenes.each do |scene| %>
-                <div class="main-picture-area">
-                  <%= attachment_image_tag scene, :image, :fill, 1200, 675, class: "main-picture" %>
-                  <% if @user.id == current_user.id %>
-                    <%= link_to "シーン画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
-                  <% end %>
+                <div class="set-link right-button">
+                  <%= link_to "プロフィールの編集", edit_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
                 </div>
               <% end %>
+  
+              <%= link_to user_clips_path(@user), class: "icon-link-button" do %>
+                <i class="fas fa-paperclip link-icon"></i>
+              <% end %>
+  
+              <% if @instagram_link.present? %>
+                <% if viewable_sns_link?(@user, @instagram_link) %>
+                  <%= link_to @instagram_link.url, class: "icon-link-button" do %>
+                    <i class="fab fa-instagram link-icon"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+  
+              <% if @twitter_link.present? %>
+                <% if viewable_sns_link?(@user, @twitter_link) %>
+                  <%= link_to @twitter_link.url, class: "icon-link-button" do %>
+                    <i class="fab fa-twitter link-icon"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+  
+              <% if @user.id == current_user.id %>
+                <div class="set-link right-button">
+                  <%= link_to "SNSリンクの設定", link_user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
+                </div>
+              <% end %>
+  
             </div>
-          <% else %>
-            <%= image_tag "desk-icon.png", size: "1200x675" %>
-          <% end %>
+  
+            <% if @scenes.present? %>
+              <div>
+                <% @scenes.each do |scene| %>
+                  <div class="main-picture-area">
+                    <%= attachment_image_tag scene, :image, :fill, 1200, 675, class: "main-picture" %>
+                    <% if @user.id == current_user.id %>
+                      <%= link_to "シーン画像の変更", edit_user_scene_path(current_user, scene.id), data: {"turbolinks" => false}, class: "set-picture-link" %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <%= image_tag "desk-icon.png", size: "1200x675" %>
+            <% end %>
+          </div>
 
           <div class="scene-select">
 
@@ -136,7 +138,7 @@
         </div>
 
 
-        <div>
+        <div class="desk-item-field">
           <% @scenes.each do |scene| %>
 
             <div class="desk-item">

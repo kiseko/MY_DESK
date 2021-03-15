@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :unique_name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 15}, format: { with: /\A[a-z0-9\_]+\z/ }
   validates :hundle_name, presence: true, length: {maximum: 10}
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :introduction, length: {maximum: 255}
+  validates :introduction, length: {maximum: 200}
   validates :encrypted_password, presence: true
   validates :status, presence: true
 

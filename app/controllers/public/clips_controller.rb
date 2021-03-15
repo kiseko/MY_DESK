@@ -9,7 +9,7 @@ class Public::ClipsController < ApplicationController
   def index
     @user = User.find_by(unique_name: params[:user_id])
     if @user.present?
-      @clips = @user.clips.includes(item: :user).where.not(users: {status: 2}).order(id: "DESC").page(params[:page]).per(8)
+      @clips = @user.clips.includes(item: :user).where.not(users: {status: 2}).order(id: "DESC").page(params[:page]).per(12)
     end
   end
 

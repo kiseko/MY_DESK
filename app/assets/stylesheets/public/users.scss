@@ -3,15 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // ユーザーデスク
-.user-desk {
-  width: 1360px;
-  margin: 0 auto;
-}
-
-.desk-visual {
+.desk-visual-field {
   width: 1200px;
   margin: 0 auto;
-  position: relative;
 }
 
 .mydesk-panel {
@@ -29,20 +23,23 @@
   line-height: 29px;
 }
 
-.desk-visual .follow-button-field {
+.desk-visual-field .follow-button-field {
   width: 150px;
   margin: 0 0 5px auto;
 }
 
+.desk-visual {
+  position: relative;
+}
+
 .user-information {
   width: 580px;
-  min-height: 317px;
-  max-height: 634px;
+  max-height: 450px;
   padding: 20px;
   background-color: #FAFAFA;
   opacity: 0.98;
   position: absolute;
-  top: 55px;
+  top: 20px;
   left: 20px;
   transition: opacity 400ms;
 }
@@ -73,7 +70,7 @@
 }
 
 .user-information .description-text {
-  max-height: 351px;
+  max-height: 189px;
   padding-top: 5px;
   overflow: hidden;
 }
@@ -133,9 +130,6 @@
 }
 
 .desk-item {
-  width: 1355px;
-  margin: 0 auto;
-  padding: 0 30px 0 35px;
   display: none;
 }
 
