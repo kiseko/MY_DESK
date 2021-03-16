@@ -21,13 +21,15 @@ $(function(){
 
   $(".my-desk-login").hover(function(){
     $(".desk-line-icon, .my-desk-info").toggleClass("active");
+    $(".desker-search, .item-search").removeClass("in");
   });
 
-  $(".square-panel, .rectangle-panel").hover(function(){
-    $(".user-setting-link").toggleClass("active");
+  $(".user-setting-trigger, .rectangle-panel").hover(function(){
+    $(".user-setting-info").toggleClass("active");
+    $(".desker-search, .item-search").removeClass("in");
   });
 
-  $(".search-trigger").on("click",function(){
+  $(".search-trigger, .sp-search-trigger").on("click",function(){
     $(this).toggleClass("active");
     $(".two-line-icon").toggleClass("active");
     $(".desker-search, .item-search").toggleClass("in");

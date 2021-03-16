@@ -102,14 +102,29 @@
                 </div>
               </li>
 
-              <li class="square-panel">
-                <%= attachment_image_tag current_user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
-                <div class="user-setting-link">
-                  <%= link_to mail_setting_user_path(current_user), class: "icon-link-button" do%>
-                    <p>ユーザーの設定</p>
-                  <% end %>
+              <li class="square-panel responsive sp-search-trigger">
+                <div class="square-panel-information">
+                  <i class="fas fa-search"></i>
+                  <p>検索する<p>
                 </div>
               </li>
+
+              <li class="square-panel user-setting-trigger">
+                <%= attachment_image_tag current_user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                <ul class="user-setting-info">
+                  <li class="user-setting-panel">
+                    <%= link_to mail_setting_user_path(current_user), class: "icon-link-button" do%>
+                      <p>ユーザーの設定</p>
+                    <% end %>
+                  </li>
+                  <li class="user-setting-panel responsive">
+                    <%= link_to destroy_user_session_path, method: :delete, class: "icon-link-button" do%>
+                      <p>ログアウト</p>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+
               <li class="rectangle-panel">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "session log-out" %>
               </li>

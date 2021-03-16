@@ -25,7 +25,7 @@
 }
 
 body {
-  min-width: 1320px;
+  // min-width: 1320px;
 }
 
 main {
@@ -234,16 +234,11 @@ h3 {
   height: 74px;
   background-color: #EE8F36;
   border-right: 1px solid #EA7304;
+  text-align: center;
   position: relative;
 }
 
-.user-setting-link {
-  width: 222px;
-  height: 35px;
-  background-color: #FEFBF8;
-  border: solid #FAE3CC;
-  border-width: 0 10px 2px 10px;
-  text-align: center;
+.user-setting-info {
   opacity: 0;
   pointer-events: none;
   position: absolute;
@@ -253,17 +248,26 @@ h3 {
   transition: all 200ms;
 }
 
-.user-setting-link.active {
+.user-setting-info.active {
   opacity: 1;
   pointer-events: auto;
 }
 
-.user-setting-link:hover {
+.user-setting-panel {
+  width: 222px;
+  height: 35px;
+  background-color: #FEFBF8;
+  border: solid #FAE3CC;
+  border-width: 0 10px 2px 10px;
+  text-align: center;
+}
+
+.user-setting-panel:hover {
   border: solid #F6C79A;
   border-width: 0 10px 2px 10px;
 }
 
-.user-setting-link p {
+.user-setting-panel p {
   padding-top: 3px;
   line-height: 32px;
 }
@@ -431,6 +435,8 @@ h3 {
   font-size: 18px;
 }
 
+.square-panel.responsive,
+.user-setting-panel.responsive,
 .search-field.responsive {
   display: none;
 }
@@ -1428,6 +1434,8 @@ nav.pagination {
 
 
 
+
+
 @media screen and (max-width: 1380px) {
   .desk-visual-field {
     width: 85%;
@@ -1450,6 +1458,7 @@ nav.pagination {
     margin-right: 30px;
   }
 }
+
 
 
 @media screen and (max-width: 1260px) {
@@ -1552,12 +1561,62 @@ nav.pagination {
   .item-image-box {
     margin: 0 auto;
   }
-
 }
 
+
+
 @media screen and (max-width: 720px) {
+  .square-panel.responsive,
+  .user-setting-panel.responsive {
+    display: block;
+  }
+
+  .header-search,
+  .main-header-info .rectangle-panel,
+  .header-info .square-panel {
+    display: none;
+  }
+
+  .square-panel {
+    border-left: 1px solid #EA7304;
+    border-right: initial;
+  }
+
+  .square-panel-information {
+    padding-top: 18px;
+  }
+
+  .square-panel-information p {
+    color: #FFF;
+  }
+
+  .square-panel-information i {
+    color: #FFF;
+    font-size: 20px;
+  }
+
+  .user-setting-info {
+    left: initial;
+    right: 0;
+  }
+
+
+  .sub-panel p {
+    font-size: 14px;
+  }
+
+
+  .top-title {
+    font-size: 34px;
+  }
+
+
   .desk-visual-field {
     width: 100%;
+  }
+
+  .mydesk-panel {
+    margin-right: 10px;
   }
 
   .card-list {
@@ -1572,5 +1631,4 @@ nav.pagination {
   .card-shadow:nth-child(3n) {
     margin-right: 0;
   }
-
 }
