@@ -18,48 +18,65 @@
         <% amazon_link = item.amazon_link %>
 
         <div class="list-item">
+          
+          <div class="item-add responsive">
+            <%= form_with model: @scene_item, url: scene_items_path(@scene.id), local: true do |f| %>
+              <%= f.hidden_field :item_id, value: item.id %>
+              <button type="submit" class="circle-plus-button">
+                <div class="plus-mark-mini"></div>
+              </button>
+            <% end %>
+          </div>
 
-          <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
-          <div class="list-item-information">
-            <h4><%= item.brand %></h4>
-            <h3><%= item.name %></h3>
-            <div class="scroll genre-index">
-              <% item.genres.each do |genre| %>
-                <div class="genre-content">
-                  <div class="genre-frame">
-                    <p class="genre-name"><%= genre.name %></p>
+          <div class="list-item-left">
+            <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
+            <div class="list-item-information">
+              <h4><%= item.brand %></h4>
+              <h3><%= item.name %></h3>
+              <div class="scroll genre-index">
+                <% item.genres.each do |genre| %>
+                  <div class="genre-content">
+                    <div class="genre-frame">
+                      <p class="genre-name"><%= genre.name %></p>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
 
-          <div class="list-item-link">
-            <% if homepage_link.present? %>
-              <div class="item-link">
-                <i class="fas fa-home link-icon"></i>
-                <p><%= homepage_link.url %></p>
+          <div class="list-item-right">
+            <% if homepage_link.present? || amazon_link.present? || item.review.present? %>
+              <div class="list-item-link">
+                <% if homepage_link.present? %>
+                  <div class="item-link">
+                    <i class="fas fa-home normal-icon"></i>
+                    <p><%= homepage_link.url %></p>
+                  </div>
+                <% end %>
+
+                <% if amazon_link.present? %>
+                  <div class="item-link">
+                    <i class="fab fa-amazon normal-icon "></i>
+                    <p><%= amazon_link.url %></p>
+                    </div>
+                <% end %>
+
+                <% if item.review.present? %>
+                  <%= render partial: "public/reviews/rating", locals: {review: item.review} %>
+                <% end %>
               </div>
             <% end %>
 
-            <% if amazon_link.present? %>
-              <div class="item-link">
-                <i class="fab fa-amazon link-icon"></i>
-                <p><%= amazon_link.url %></p>
-                </div>
-            <% end %>
-
-            <% if item.review.present? %>
-              <%= render partial: "public/reviews/rating", locals: {review: item.review} %>
-            <% end %>
-          </div>
-
-          <%= form_with model: @scene_item, url: scene_items_path(@scene.id), local: true do |f| %>
-            <%= f.hidden_field :item_id, value: item.id %>
-            <button type="submit" class="circle-plus-button">
+            <div class="item-add">
+              <%= form_with model: @scene_item, url: scene_items_path(@scene.id), local: true do |f| %>
+                <%= f.hidden_field :item_id, value: item.id %>
+                <button type="submit" class="circle-plus-button">
                   <div class="plus-mark-mini"></div>
                 </button>
-          <% end %>
+              <% end %>
+            </div>
+          </div>
 
         </div>
 
