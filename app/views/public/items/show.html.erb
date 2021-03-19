@@ -24,7 +24,7 @@
               <div class="thumb-box">
                 <div class="thumb-border">
 
-                  <%= attachment_image_tag item_picture, :image, :fill, 125, 125, format: "jpg", class: "thumbnail" %>
+                  <%= attachment_image_tag item_picture, :image, :fill, 280, 280, format: "jpg", class: "thumbnail" %>
 
                   <% if @user.id == current_user.id %>
                     <%= link_to item_item_picture_path(@item.id, item_picture.id), method: :delete do %>
@@ -60,13 +60,7 @@
 
           <div class="item-information-content">
 
-            <div class="item-information-head">
-
-              <div>
-                <h3><%= @item.brand %></h3>
-                <h2><%= @item.name %></h2>
-              </div>
-
+            <div class="clip-count-field">
               <% if @item.user_id == current_user.id %>
                 <h3 class="clip-count"><%= @item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
               <% else %>
@@ -74,15 +68,17 @@
                   <%= render partial: "public/clips/clip", locals: { item: @item } %>
                 </div>
               <% end %>
-
             </div>
+
+            <h3 class="item-brand"><%= @item.brand %></h3>
+            <h2 class="item-name"><%= @item.name %></h2>
 
             <div class="genre-index">
               <% @genres.each do |genre| %>
                 <div class="genre-content">
                   <% if @user.id == current_user.id %>
-                    <div class="genre-frame-large deleteble">
-                      <p class="genre-name"><%= genre.name %></p>
+                    <div class="genre-frame-large deletable">
+                      <p class="genre-name-large"><%= genre.name %></p>
                     </div>
                     <div class="link-layout">
                       <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
@@ -93,7 +89,7 @@
                     </div>
                   <% else %>
                     <div class="genre-frame-large">
-                      <p class="genre-name"><%= genre.name %></p>
+                      <p class="genre-name-large"><%= genre.name %></p>
                     </div>
                   <% end %>
                 </div>

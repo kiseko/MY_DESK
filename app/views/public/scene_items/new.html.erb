@@ -18,7 +18,7 @@
         <% amazon_link = item.amazon_link %>
 
         <div class="list-item">
-          
+
           <div class="item-add responsive">
             <%= form_with model: @scene_item, url: scene_items_path(@scene.id), local: true do |f| %>
               <%= f.hidden_field :item_id, value: item.id %>
@@ -31,8 +31,8 @@
           <div class="list-item-left">
             <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
             <div class="list-item-information">
-              <h4><%= item.brand %></h4>
-              <h3><%= item.name %></h3>
+              <h4 class="item-brand"><%= item.brand %></h4>
+              <h3 class="item-name"><%= item.name %></h3>
               <div class="scroll genre-index">
                 <% item.genres.each do |genre| %>
                   <div class="genre-content">

@@ -33,8 +33,8 @@
             <%= link_to item_path(item.id), class: "item-detail-link" do %>
               <%= attachment_image_tag item_picture, :image, :fill, 115, 115, class: "thumbnail" %>
               <div class="list-item-information">
-                <h4><%= item.brand %></h4>
-                <h3><%= item.name %></h3>
+                <h4 class="item-brand"><%= item.brand %></h4>
+                <h3 class="item-name"><%= item.name %></h3>
                 <div class="scroll genre-index">
                   <% item.genres.each do |genre| %>
                     <div class="genre-content">

@@ -46,6 +46,10 @@ h3 {
   margin-top: 104px;
 }
 
+.field_with_errors {
+  width: 100%;
+}
+
 // ヘッダー
 .header-nav {
   position: relative;
@@ -534,6 +538,7 @@ footer p {
 .profile {
   display: flex;
   align-items: flex-end;
+  position: relative;
 }
 
 .user-icon {
@@ -554,6 +559,12 @@ footer p {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.profile .form-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .description-text p {
@@ -578,6 +589,7 @@ footer p {
 }
 
 .main-picture {
+  width: 100%;
   vertical-align: bottom;
 }
 
@@ -586,7 +598,7 @@ footer p {
 }
 
 .set-picture-link {
-  width: 1200px;
+  width: 100%;
   height: 40px;
   padding: 4px;
   display: block;
@@ -627,6 +639,7 @@ footer p {
   outline: none;
   position: absolute;
   top: -1px;
+  right: -1px;
 }
 
 .delete-button:hover {
@@ -988,7 +1001,6 @@ footer p {
 }
 
 .clip-count-field {
-  width: 45px;
   height: 30px;
   display: flex;
   align-items: center;
@@ -1015,6 +1027,7 @@ footer p {
 .thumbnail {
   border-radius: 5px;
   cursor: pointer;
+  vertical-align: bottom;
 }
 
 
@@ -1461,11 +1474,6 @@ nav.pagination {
     width: 85%;
   }
 
-  .desk-visual .main-picture,
-  .desk-visual-field .set-picture-link {
-    width: 100%;
-  }
-
   .card-list {
     width: 1025px;
   }
@@ -1559,6 +1567,29 @@ nav.pagination {
   .list-item-etc {
     display: none;
   }
+
+
+
+  .item-detail {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+  }
+
+  .item-visual {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .item-visual .main-picture {
+    width: 100%;
+  }
+
+  .item-information {
+    width: 100%;
+    padding-left: initial;
+  }
+
 }
 
 
@@ -1708,25 +1739,78 @@ nav.pagination {
 
 
 
-  .list-item .genre-frame {
-    max-width: 250px;
+  .item-list {
+    width: 98%;
   }
 
+  .list-item .genre-frame {
+    max-width: 300px;
+  }
+
+
+
+  .thumb-box {
+    width: 50%;
+    height: auto;
+  }
+
+  .thumb-box:first-child {
+    margin-left: initial;
+  }
+
+  .thumb-box:nth-child(n+3) {
+    margin-top: initial;
+  }
+
+  .item-information .item-name {
+    font-size: 20px;
+  }
+
+  .item-information .item-brand {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 480px) {
+  .user-id {
+    font-size: 16px;
+  }
+
+  .user-name {
+    font-size: 18px;
+  }
+
+  .description-text p {
+    font-size: 16px;
+  }
+
+
 
   .item-list .left-button {
     text-align: center;
   }
 
-  .list-item h3,
-  .list-item h4 {
-    max-width: 195px;
+  .list-item .item-name {
+    max-width: 205px;
     font-size: 16px;
   }
 
+  .list-item .item-brand {
+    max-width: 205px;
+    font-size: 14px;
+  }
+
   .list-item .genre-frame {
-    max-width: 185px;
+    max-width: 190px;
+  }
+
+
+
+  .item-information .item-name {
+    font-size: 18px;
+  }
+
+  .item-information .item-brand {
+    font-size: 16px;
   }
 }
