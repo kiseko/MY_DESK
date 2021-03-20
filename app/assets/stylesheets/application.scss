@@ -482,7 +482,7 @@ h3 {
 }
 
 .right-panel.sub-panel {
-  border-radius: 0 0 35px 0;
+  border-radius: 0 0 37px 0;
 }
 
 .sub-panel p {
@@ -491,12 +491,7 @@ h3 {
   font-size: 18px;
 }
 
-.sub-panel i {
-  padding-bottom: 10px;
-}
-
 .sub-panel h3 {
-  padding-bottom: 5px;
   color: #EE8F36;
   font-size: 20px;
 }
@@ -1744,8 +1739,35 @@ nav.pagination {
   }
 
 
+  .sub-panel {
+    height: 64px;
+  }
+
+  .left-panel.sub-panel {
+    border-radius: 0 0 0 32px;
+  }
+
+  .right-panel.sub-panel {
+    border-radius: 0 0 32px 0;
+  }
+
   .sub-panel p {
+    padding-top: 10px;
     font-size: 14px;
+  }
+
+  .sub-panel h3 {
+    font-size: 18px;
+  }
+
+  .sub-panel .link-icon {
+    padding-top: 2px;
+    font-size: 20px;
+  }
+
+
+  .container {
+    margin-top: 94px;
   }
 
 
@@ -1810,6 +1832,12 @@ nav.pagination {
 }
 
 @media screen and (max-width: 480px) {
+  .sub-panel p {
+    padding-top: 12px;
+    font-size: 12px;
+  }
+
+
   .user-id {
     font-size: 16px;
   }
