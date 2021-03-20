@@ -227,11 +227,20 @@
       </header>
 
       <main>
-      <%= yield %>
+        <div class="loading-field">
+          <div class="loading">
+            <div class="loading-icon">
+              <div class="vertical-line"></div>
+              <div class="horizontal-line"></div>
+              <div class="vertical-line"></div>
+            </div>
+          </div>
+        </div>
+        <%= yield %>
       </main>
 
       <footer>
-        <p>kiseko's portfolio</p>
+        <p>koseki's portfolio</p>
       </footer>
 
     </div>

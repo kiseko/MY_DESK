@@ -19,6 +19,15 @@
 
 $(function(){
 
+  $(window).load(function(){
+    $(".loading-field").css("display", "none");
+    $("main").css("position", "static");
+  });
+
+});
+
+$(function(){
+
   $(".my-desk-login").hover(function(){
     $(".desk-line-icon, .my-desk-info").toggleClass("active");
     $(".desker-search, .item-search").removeClass("in");
