@@ -117,8 +117,8 @@ $(function(){
 
 $(function(){
 
-  $(".three-dots").on("click",function(){
-    var index = $(".three-dots").index(this);
+  $(".two-dots").on("click",function(){
+    var index = $(".two-dots").index(this);
     $(".mute-icon").eq(index).toggleClass("appearance");
     $(".block-icon").eq(index).toggleClass("appearance");
   });

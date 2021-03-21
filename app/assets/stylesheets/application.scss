@@ -1066,7 +1066,7 @@ footer p {
 
 // フォロー・フォロワー一覧
 .followings {
-  width: 804px;
+  width: 760px;
   margin: 0 auto;
   display: flex;
 }
@@ -1077,22 +1077,31 @@ footer p {
   background-color: #EA7304;
 }
 
-.followings-list{
-  width: 800px;
+.following-list{
+  width: 740px;
+  margin: 0 auto;
 }
 
 .following {
-  padding: 0 30px;
+  width: 720px;
+  margin: 0 auto;
 }
 
 .following-information {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
 }
 
-.profile-field {
-  width: 370px;
+.following-information-left {
+  width: 360px;
+  height: 60px;
+}
+
+.following-information-right {
+  width: 360px;
+  padding-right: 30px;
+  display: flex;
 }
 
 .follow-button-field {
@@ -1143,7 +1152,7 @@ footer p {
 }
 
 .favorite-button-field {
-  width: 45px;
+  min-width: 45px;
 }
 
 .following-information .link-icon {
@@ -1177,6 +1186,7 @@ footer p {
 
 p.gray-link-icon {
   font-size: 22px;
+  width: initial;
 }
 
 .mute-block-form {
@@ -1184,7 +1194,6 @@ p.gray-link-icon {
 }
 
 .mute-block {
-  margin: 0 5px 0 auto;
   position: relative;
 }
 
@@ -1208,15 +1217,11 @@ p.gray-link-icon {
 }
 
 .following .description-text {
-  max-height: 54px;
   margin-bottom: 15px;
-  overflow: hidden;
-
 }
 
-.followings-list .bar {
-  margin: 0 auto 15px;
-  width: 760px;
+.following-list .bar {
+  margin-bottom: 15px;
 }
 
 
@@ -1701,6 +1706,36 @@ nav.pagination {
   }
 }
 
+@media screen and (max-width: 780px) {
+  .followings {
+    width: 98%;
+  }
+
+  .following-list {
+    width: 96%;
+  }
+
+  .following {
+    width: 100%;
+  }
+
+  .following-information {
+    display: block;
+  }
+
+  .following-information-left {
+    margin-bottom: 10px;
+  }
+
+  .following-information-right {
+    width: 100%;
+  }
+
+  .following-information-right div:first-child {
+    margin-right: auto;
+  }
+}
+
 
 
 @media screen and (max-width: 720px) {
@@ -1878,5 +1913,19 @@ nav.pagination {
 
   .item-information .item-brand {
     font-size: 16px;
+  }
+
+
+
+  .followings {
+    width: 100%;
+  }
+
+  .following-list {
+    width: 98%;
+  }
+
+  .side-line {
+    display: none;
   }
 }
