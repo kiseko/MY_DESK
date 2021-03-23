@@ -9,7 +9,6 @@
           <div class="following">
 
             <div class="following-information">
-
               <div class="following-information-left">
                 <%= link_to user_path(user), class: "desk-link" do %>
                   <div class="profile">
@@ -55,12 +54,13 @@
                   </div>
                 </div>
                </div>
-
             </div>
 
-            <div class="description-text">
-              <%= simple_format(user.introduction.gsub(/\r?\n/, " ")) %>
-            </div>
+            <%if user.introduction.present? %>
+              <div class="description-text">
+                <%= simple_format(user.introduction.gsub(/\r?\n/, " ")) %>
+              </div>
+            <% end %>
 
           </div>
 

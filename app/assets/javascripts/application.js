@@ -28,20 +28,33 @@ $(function(){
 
 $(function(){
 
-  $(".my-desk-login").hover(function(){
-    $(".desk-line-icon, .my-desk-info").toggleClass("active");
+  $(".logo").on("mouseenter",function(){
+    $(".desk-line-icon, .my-desk-info").addClass("active");
+    $(".search-trigger, .two-line-icon").removeClass("active");
     $(".desker-search, .item-search").removeClass("in");
+    $(".user-setting-info").removeClass("active");
   });
 
-  $(".user-setting-trigger, .rectangle-panel").hover(function(){
-    $(".user-setting-info").toggleClass("active");
+  $(".desk-info-panel.close").on("click",function(){
+    $(".desk-line-icon, .my-desk-info").removeClass("active");
+  });
+
+  $(".user-setting-trigger").on("mouseenter",function(){
+    $(".user-setting-info").addClass("active");
+    $(".search-trigger, .two-line-icon").removeClass("active");
     $(".desker-search, .item-search").removeClass("in");
+    $(".desk-line-icon, .my-desk-info").removeClass("active");
+  });
+
+  $(".user-setting-panel.close").on("click",function(){
+    $(".user-setting-info").removeClass("active");
   });
 
   $(".search-trigger, .sp-search-trigger").on("click",function(){
     $(this).toggleClass("active");
     $(".two-line-icon").toggleClass("active");
     $(".desker-search, .item-search").toggleClass("in");
+    $(".desk-line-icon, .my-desk-info, .user-setting-info").removeClass("active");
   });
 
   $(".target-item").on("click",function(){
@@ -170,4 +183,26 @@ $(function() {
     contentSelector: ".jscroll",
     nextSelector: "span.next:last a",
   });
+});
+
+
+$(function(){
+
+  document.getElementsByTagName('body')[0].setAttribute('ontouchstart','');
+  var touch = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  if (touch) {
+    try {
+      for (var si in document.styleSheets) {
+        var styleSheet = document.styleSheets[si];
+        if (!styleSheet.rules) continue;
+        for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+          if (!styleSheet.rules[ri].selectorText) continue;
+          if (styleSheet.rules[ri].selectorText.match(':hover')) {
+            styleSheet.rules[ri].selectorText = styleSheet.rules[ri].selectorText.replace(':hover', ':active');
+          }
+        }
+      }
+    } catch (ex) {}
+  }
+
 });

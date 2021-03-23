@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body ontouchstart="">
     <div class="separate">
 
       <header>
@@ -36,6 +36,9 @@
                     <%= link_to items_path, class: "icon-link-button" do %>
                       <p>アイテム一覧</p>
                     <% end %>
+                  </li>
+                  <li class="desk-info-panel close">
+                    <div class="cross-mark"></div>
                   </li>
                 </ul>
               </li>
@@ -109,8 +112,10 @@
                 </div>
               </li>
 
-              <li class="square-panel user-setting-trigger">
-                <%= attachment_image_tag current_user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+              <li class="square-panel">
+                <div class="user-setting-trigger">
+                  <%= attachment_image_tag current_user, :image, :fill, 60, 60, fallback: "user-icon.png", size: "60x60", class: "thumb-user-icon" %>
+                </div>
                 <ul class="user-setting-info">
                   <li class="user-setting-panel">
                     <%= link_to mail_setting_user_path(current_user), class: "icon-link-button" do%>
@@ -121,6 +126,9 @@
                     <%= link_to destroy_user_session_path, method: :delete, class: "icon-link-button" do%>
                       <p>ログアウト</p>
                     <% end %>
+                  </li>
+                  <li class="user-setting-panel close">
+                    <div class="cross-mark"></div>
                   </li>
                 </ul>
               </li>
