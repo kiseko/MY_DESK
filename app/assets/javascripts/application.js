@@ -188,7 +188,7 @@ $(function() {
 
 $(function(){
 
-  document.getElementsByTagName('body')[0].setAttribute('ontouchstart','');
+  document.getElementsByTagName("body")[0].setAttribute("ontouchstart","");
   var touch = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
   if (touch) {
     try {
@@ -197,8 +197,8 @@ $(function(){
         if (!styleSheet.rules) continue;
         for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
           if (!styleSheet.rules[ri].selectorText) continue;
-          if (styleSheet.rules[ri].selectorText.match(':hover')) {
-            styleSheet.rules[ri].selectorText = styleSheet.rules[ri].selectorText.replace(':hover', ':active');
+          if (styleSheet.rules[ri].selectorText.match(":hover")) {
+            styleSheet.rules[ri].selectorText = styleSheet.rules[ri].selectorText.replace(":hover", ":active");
           }
         }
       }

@@ -1468,7 +1468,7 @@ p.gray-link-icon {
 
 // 検索結果
 .title-panel {
-  width: 160px;
+  width: 150px;
   height: 36px;
   margin: 0 auto;
   padding-top: 5px;
@@ -1994,4 +1994,19 @@ nav.pagination {
   .side-line {
     display: none;
   }
+
+
+
+  .timeline-select {
+    width: 100%;
+  }
+
+  .timeline-select .icon-link-button {
+    width: 34%;
+  }
+
+  .timeline-panel {
+    width: initial;
+  }
+
 }
