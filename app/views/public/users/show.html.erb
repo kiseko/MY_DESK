@@ -95,7 +95,7 @@
                 <% end %>
               </div>
             <% else %>
-              <%= image_tag "desk-icon.png", size: "1200x675" %>
+              <%= image_tag "desk-icon.png", class: "scene-fallback" %>
             <% end %>
           </div>
 
@@ -150,13 +150,6 @@
                       <div class=plus-mark></div>
                       <p>アイテムの追加</p>
                     <% end %>
-                  </div>
-                <% elsif @user.id != current_user.id && scene.scene_items.blank? %>
-                  <div class="no-scene-item">
-                    <div class="empty-content">
-                      <i class="fas fa-cubes"></i>
-                      <p>シーンアイテムはありません</p>
-                    </div>
                   </div>
                 <% end %>
 
@@ -230,6 +223,15 @@
                 <% end %>
 
               </div>
+              
+              <% if @user.id != current_user.id && scene.scene_items.blank? %>
+                <div class="no-scene-item">
+                  <div class="empty-content">
+                    <i class="fas fa-cubes"></i>
+                    <p>シーンアイテムはありません</p>
+                  </div>
+                </div>
+              <% end %>
             </div>
 
           <% end %>

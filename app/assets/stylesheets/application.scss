@@ -1528,6 +1528,8 @@ p.gray-link-icon {
   font-size: 40px;
 }
 
+
+
 nav.pagination {
   display: none;
 }
@@ -1740,6 +1742,10 @@ nav.pagination {
     margin: 0 auto;
   }
 
+  #select-star {
+    width: 100%;
+  }
+
 
 
   .user-setting {
@@ -1784,6 +1790,13 @@ nav.pagination {
 
   .user-setting {
     display: block;
+  }
+
+
+
+  .empty-content i,
+  .empty-content p {
+    font-size: 25px;
   }
 }
 
@@ -2018,6 +2031,13 @@ nav.pagination {
 
   .timeline-panel {
     width: initial;
+  }
+
+
+
+  .empty-content i,
+  .empty-content p {
+    font-size: 18px;
   }
 
 }
