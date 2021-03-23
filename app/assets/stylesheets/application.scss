@@ -424,6 +424,7 @@ h3 {
 }
 
 .search-form {
+  padding: 0 10px 0;
   display: flex;
   justify-content: center;
 }
@@ -1486,12 +1487,6 @@ p.gray-link-icon {
   margin: 5px 0 55px;
 }
 
-.search-result {
-  width: 1355px;
-  margin: 0 auto;
-  padding: 0 30px 0 35px;
-}
-
 .desker-result .card-shadow {
   height: 340px;
 }
@@ -1744,6 +1739,16 @@ nav.pagination {
   .item-image-box {
     margin: 0 auto;
   }
+
+
+
+  .user-setting {
+    width: 90%;
+  }
+
+  .user-setting-form {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 780px) {
@@ -1773,6 +1778,12 @@ nav.pagination {
 
   .following-information-right div:first-child {
     margin-right: auto;
+  }
+
+
+
+  .user-setting {
+    display: block;
   }
 }
 

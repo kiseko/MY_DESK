@@ -32,6 +32,8 @@ class Public::UsersController < ApplicationController
     @old_unique_name = @user.unique_name
     if @user.update(user_params)
       redirect_to user_path(@user)
+    elsif !params[:user][:email].nil?
+      render :mail_setting
     elsif params[:user][:unique_name].blank?
       redirect_to edit_user_path(@old_unique_name)
       flash[:alert] = "--ユーザーIDが空のため更新できませんでした--"

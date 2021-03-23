@@ -2,40 +2,41 @@
 
   <div class="user-setting">
 
-    <nav class="user-setting-info">
-      <li class="setting-info-panel active">
+    <nav class="user-setting-select">
+      <li class="setting-select-panel active">
         <%= link_to mail_setting_user_path(@user), class: "icon-link-button" do %>
           <p>メールアドレス変更</p>
         <% end %>
       </li>
-      <li class="setting-info-panel">
+      <li class="setting-select-panel">
         <%= link_to edit_user_registration_path, class: "icon-link-button" do %>
           <p>パスワード変更</p>
         <% end %>
       </li>
-      <li class="setting-info-panel">
+      <li class="setting-select-panel">
         <%= link_to leave_user_path(@user), class: "icon-link-button" do %>
           <p>退会</p>
         <% end %>
       </li>
     </nav>
 
-    <%= form_with model: @user, url: user_path(current_user), local: true do |f| %>
-      <div class="user-setting-form">
+    <div class="user-setting-form">
+      <%= form_with model: @user, url: user_path(current_user), local: true do |f| %>
+        <%= render partial: "layouts/alert", locals: {model: @user} %>
 
-        <div class="label">
-          <div class="marker"></div>
-          <%= f.label :email, "メールアドレス", class: "label-text" %>
-        </div>
-        <div class="form-input">
-        <%= f.text_field :email, class: "input-box" %>
-        </div>
-        <div class="center-button">
-          <%= f.submit "変更", class: "form-data link-button" %>
-        </div>
-
+      <div class="label">
+        <div class="marker"></div>
+        <%= f.label :email, "メールアドレス", class: "label-text" %>
       </div>
-    <% end %>
+      <div class="form-input">
+      <%= f.text_field :email, class: "input-box" %>
+      </div>
+      <div class="center-button">
+        <%= f.submit "変更", class: "form-data link-button" %>
+      </div>
+
+      <% end %>
+    </div>
 
   </div>
 

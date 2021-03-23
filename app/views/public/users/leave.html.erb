@@ -2,18 +2,18 @@
 
   <div class="user-setting">
 
-    <nav class="user-setting-info">
-      <li class="setting-info-panel">
+    <nav class="user-setting-select">
+      <li class="setting-select-panel">
         <%= link_to mail_setting_user_path(@user), class: "icon-link-button" do %>
           <p>メールアドレス変更</p>
         <% end %>
       </li>
-      <li class="setting-info-panel">
+      <li class="setting-select-panel">
         <%= link_to edit_user_registration_path, class: "icon-link-button" do %>
           <p>パスワード変更</p>
         <% end %>
       </li>
-      <li class="setting-info-panel active">
+      <li class="setting-select-panel active">
         <%= link_to leave_user_path(@user), class: "icon-link-button" do %>
           <p>退会</p>
         <% end %>
