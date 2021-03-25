@@ -39,10 +39,12 @@
             <% end %>
             <% if @item_pictures.count < 4 %>
               <% if @user.id == current_user.id %>
-                <div class="thumb-box">
+                <div class="thumb-box square">
                   <div class="thumb-border">
                     <%= link_to new_item_item_picture_path(@item.id), data: {"turbolinks" => false}, class: "new-picture-link" do %>
-                      <div class=plus-mark></div>
+                      <div class="plus-mark-field">
+                        <div class=plus-mark></div>
+                      </div>
                       <div class="center-button">
                         <i class="fas fa-image image-icon"></i>
                       </div>
