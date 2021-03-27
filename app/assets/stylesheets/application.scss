@@ -1232,7 +1232,7 @@ footer p {
 }
 
 p.gray-link-icon {
-  padding-top: 3px;
+  padding-top: 2px;
   font-size: 22px;
   width: initial;
 }
@@ -1243,22 +1243,13 @@ p.gray-link-icon {
 }
 
 .mute-icon {
-  height: 35px;
   display: none;
   position: absolute;
   top: 0;
   right: -32px;
 }
 
-.block-icon {
-  display: none;
-  position: absolute;
-  top: 20px;
-  right: -32px;
-}
-
-.mute-icon.appearance,
-.block-icon.appearance {
+.mute-icon.appearance {
   display: block;
 }
 

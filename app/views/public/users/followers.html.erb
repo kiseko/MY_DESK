@@ -41,7 +41,7 @@
                     <% end %>
                   <% end %>
                 <% end %>
-                
+
                 <% if current_user.followings.find_by(following_user_id: user.id).present? %>
                   <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
                     <%= render partial: "public/followings/favorite", locals: { user: user } %>
