@@ -7,9 +7,11 @@
       <%= form_with model: @item_picture, url: item_item_pictures_path(@item.id), local: true do |f| %>
         <div class="image-box">
           <%= f.attachment_field :image, id: "image" %>
-          <div class="image-select">
-            <i class="fas fa-image image-icon"></i>
-            <p class="underline-button">画像の選択</p>
+          <div class="center-button">
+            <div class="image-select">
+              <i class="fas fa-image image-icon"></i>
+              <p class="underline-button">画像の選択</p>
+            </div>
           </div>
         </div>
         <%= f.submit "追加", class: "decision set-picture-link" %>
@@ -25,13 +27,7 @@
 
       <div class="item-information-content">
 
-        <div class="item-information-head">
-
-          <div>
-            <h3><%= @item.brand %></h3>
-            <h2><%= @item.name %></h2>
-          </div>
-
+        <div class="clip-count-field">
           <% if @item.user_id == current_user.id %>
             <h3 class="clip-count"><%= @item.clips.count %></h3><i class="fas fa-paperclip normal-icon"></i>
           <% else %>
@@ -39,15 +35,17 @@
               <%= render partial: "public/clips/clip", locals: { item: @item } %>
             </div>
           <% end %>
-
         </div>
+
+        <h3 class="item-brand"><%= @item.brand %></h3>
+        <h2 class="item-name"><%= @item.name %></h2>
 
         <div class="genre-index">
           <% @genres.each do |genre| %>
             <div class="genre-content">
               <% if @user.id == current_user.id %>
-                <div class="genre-frame-large deleteble">
-                  <p class="genre-name"><%= genre.name %></p>
+                <div class="genre-frame-large deletable">
+                  <p class="genre-name-large"><%= genre.name %></p>
                 </div>
                 <div class="link-layout">
                   <%= link_to item_genre_path(@item.id, genre.id), method: :delete do %>
@@ -58,7 +56,7 @@
                 </div>
               <% else %>
                 <div class="genre-frame-large">
-                  <p class="genre-name"><%= genre.name %></p>
+                  <p class="genre-name-large"><%= genre.name %></p>
                 </div>
               <% end %>
             </div>
@@ -77,6 +75,8 @@
             </div>
           <% end %>
         <% end %>
+
+        <%= render partial: "layouts/alert", locals: {model: @genre} %>
 
         <% if @user.id == current_user.id %>
           <div class="set-link right-button">
@@ -112,39 +112,8 @@
 
       <% if @review.present? %>
         <div class="item-information-content">
-          <div class="rating-star">
-            <% if @review.rating == 1 %>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star gray-star"></i>
-              <i class="fas fa-star gray-star"></i>
-              <i class="fas fa-star gray-star"></i>
-              <i class="fas fa-star gray-star"></i>
-            <% elsif @review.rating == 2 %>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star gray-star"></i>
-              <i class="fas fa-stargray- star"></i>
-              <i class="fas fa-star gray-star"></i>
-            <% elsif @review.rating == 3 %>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star gray-star"></i>
-              <i class="fas fa-star gray-star"></i>
-            <% elsif @review.rating == 4 %>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star gray-star"></i>
-            <% elsif @review.rating == 5 %>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-              <i class="fas fa-star star"></i>
-            <% end %>
-          </div>
+
+          <%= render partial: "public/reviews/rating", locals: {review: @review} %>
 
           <div class="description-text">
             <p>
@@ -195,7 +164,7 @@
         </div>
       <% end %>
 
-      </div>
+    </div>
 
   </div>
 

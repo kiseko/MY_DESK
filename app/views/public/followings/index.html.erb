@@ -26,10 +26,6 @@
                   <%= render partial: "public/followings/follow", locals: { user: user } %>
                 </div>
 
-                <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
-                  <%= render partial: "public/followings/favorite", locals: { user: user } %>
-                </div>
-
                 <% if user.instagram_link.present? %>
                   <% if viewable_sns_link?(user, user.instagram_link) %>
                     <%= link_to user.instagram_link.url, class: "icon-link-button" do %>
@@ -45,6 +41,10 @@
                     <% end %>
                   <% end %>
                 <% end %>
+
+                <div id="favorite-users-<%= user.id %>" class="favorite-button-field">
+                  <%= render partial: "public/followings/favorite", locals: { user: user } %>
+                </div>
 
                 <div class="mute-block">
                   <p class="gray-link-icon two-dots">･･</p>

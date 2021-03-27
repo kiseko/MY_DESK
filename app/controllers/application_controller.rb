@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     sns_link.user_id == current_user.id ||
     sns_link.status == 0 ||
     sns_link.status == 1 && user.followings.find_by(following_user_id: current_user.id) ||
-    sns_link.status == 2 && user.followings.find_by(following_user_id: current_user.id, status: 1).present?
+    sns_link.status == 2 && user.followings.find_by(following_user_id: current_user.id, status: 1)
   end
 
 

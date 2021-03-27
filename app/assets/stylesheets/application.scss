@@ -1147,6 +1147,10 @@ footer p {
   display: flex;
 }
 
+.following-information-right div:first-child {
+  margin-right: auto;
+}
+
 .follow-button-field {
   width: 160px;
   height: 30px;
@@ -1347,26 +1351,40 @@ p.gray-link-icon {
 }
 
 .image-box {
-  width: 260px;
-  height: 260px;
+  width: 100%;
   background-color: #FAFAFA;
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
   text-align: center;
   position: relative;
 }
 
-.item-visual .image-box {
-  width: 600px;
-  height: 600px;
-  border-radius: 15px 15px 0 0;
+.image-box .main-picture {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.image-select {
+.image-box .center-button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top : 100px;
-  left: 85px;
+  top: 0;
+  left: 0;
+}
+
+.item.image-box {
+  width: 260px;
+  height: 260px;
+  border-radius: 10px;
+}
+
+.item-visual .image-box {
+  padding-top: 100%;
+  border-radius: 15px 15px 0 0;
 }
 
 .image-select .underline-button {
@@ -1711,6 +1729,7 @@ nav.pagination {
     padding-left: 0;
   }
 
+  .form .image-box,
   .user-icon.image-box {
     margin: 0 auto;
   }

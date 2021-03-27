@@ -15,9 +15,11 @@
         <div class="user-icon image-box">
           <%= attachment_image_tag @user, :image, :fill, 260, 260, format: "jpg", class: "main-picture user_icon_large" %>
           <%= f.attachment_field :image, id: "image" %>
-          <div class="image-select">
-            <i class="fas fa-image image-icon"></i>
-            <p class="underline-button">画像の選択</p>
+          <div class="center-button">
+            <div class="image-select">
+              <i class="fas fa-image image-icon"></i>
+              <p class="underline-button">画像の選択</p>
+            </div>
           </div>
         </div>
       </div>

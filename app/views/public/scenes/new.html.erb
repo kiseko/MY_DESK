@@ -2,22 +2,26 @@
 
   <div class="user-desk">
 
-    <div class="desk-visual">
+    <div class="desk-visual-field">
+      <div class="desk-visual">
 
-      <%= form_with model: @scene, url: user_scenes_path(current_user), local: true do |f| %>
-        <div class="image-box">
-          <%= f.attachment_field :image, id: "image" %>
-          <div class="image-select">
-            <i class="fas fa-image image-icon"></i>
-            <p class="underline-button">画像の選択</p>
+        <%= form_with model: @scene, url: user_scenes_path(current_user), local: true do |f| %>
+          <div class="image-box">
+            <%= f.attachment_field :image, id: "image" %>
+            <div class="center-button">
+              <div class="image-select">
+                <i class="fas fa-image image-icon"></i>
+                <p class="underline-button">画像の選択</p>
+              </div>
+            </div>
           </div>
+          <%= f.submit "追加", class: "decision set-picture-link" %>
+        <% end %>
+        <div class="center-button">
+          <%= link_to "キャンセル", user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
         </div>
-        <%= f.submit "追加", class: "decision set-picture-link" %>
-      <% end %>
-      <div class="center-button">
-        <%= link_to "キャンセル", user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-      </div>
 
+      </div>
     </div>
 
   </div>

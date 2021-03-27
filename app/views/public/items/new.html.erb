@@ -12,13 +12,15 @@
           <div class="marker"></div>
           <p class="label-text">アイテム画像</p>
         </div>
-        <div class="image-box">
+        <div class="item image-box">
           <%= f.fields_for :item_pictures do |i| %>
             <%= i.attachment_field :image, id: "image" %>
           <% end %>
-          <div class="image-select">
-            <i class="fas fa-image image-icon"></i>
-            <p class="underline-button">画像の選択</p>
+          <div class="center-button">
+            <div class="image-select">
+              <i class="fas fa-image image-icon"></i>
+              <p class="underline-button">画像の選択</p>
+            </div>
           </div>
         </div>
       </div>

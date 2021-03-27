@@ -2,23 +2,27 @@
 
   <div class="user-desk">
 
-    <div class="desk-visual">
+    <div class="desk-visual-field">
+      <div class="desk-visual">
 
-      <%= form_with model: @scene, url: user_scene_path(current_user, @scene.id), local: true do |f| %>
-        <div class="image-box">
-          <%= attachment_image_tag @scene, :image, :fill, 1200, 675, format: "jpg", class: "main-picture" %>
-          <%= f.attachment_field :image, id: "image" %>
-          <div class="image-select">
-            <i class="fas fa-image image-icon"></i>
-            <p class="underline-button">画像の選択</p>
+        <%= form_with model: @scene, url: user_scene_path(current_user, @scene.id), local: true do |f| %>
+          <div class="image-box">
+            <%= attachment_image_tag @scene, :image, :fill, 1200, 675, format: "jpg", class: "main-picture" %>
+            <%= f.attachment_field :image, id: "image" %>
+            <div class="center-button">
+              <div class="image-select">
+                <i class="fas fa-image image-icon"></i>
+                <p class="underline-button">画像の選択</p>
+              </div>
+            </div>
           </div>
+          <%= f.submit "変更", class: "decision set-picture-link" %>
+        <% end %>
+        <div class="center-button">
+          <%= link_to "キャンセル", user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
         </div>
-        <%= f.submit "変更", class: "decision set-picture-link" %>
-      <% end %>
-      <div class="center-button">
-        <%= link_to "キャンセル", user_path(current_user), data: {"turbolinks" => false}, class: "underline-button" %>
-      </div>
 
+      </div>
     </div>
 
   </div>

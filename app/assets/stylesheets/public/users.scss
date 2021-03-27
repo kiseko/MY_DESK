@@ -178,22 +178,16 @@
 
 // シーンの追加・編集
 .desk-visual .image-box {
-  width: 1200px;
-  height: 675px;
-  border-radius: 15px 15px 0 0;
-}
-
-.desk-visual .image-select {
-  padding: 0;
-  top : 310px;
-  left: 555px;
+  padding-top: 56%;
 }
 
 
 
 // プロフィールの編集
 .user-icon.image-box {
-  border-radius: 130px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
 }
 
 .user_icon_large {
