@@ -24,6 +24,10 @@
   font-family: sans-serif;
 }
 
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+
 body {
   min-width: 375px;
 }
