@@ -46,8 +46,8 @@
                   <%= render partial: "public/followings/favorite", locals: { user: user } %>
                 </div>
 
-                <div class="mute-block">
-                  <p class="gray-link-icon two-dots">･･</p>
+                <div class="two-dots">
+                  <p class="gray-link-icon">･･</p>
 
                   <div id="mute-users-<%= user.id %>" class="mute-icon">
                     <%= render partial: "public/followings/mute", locals: { user: user } %>

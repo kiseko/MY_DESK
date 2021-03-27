@@ -1232,22 +1232,21 @@ footer p {
 }
 
 p.gray-link-icon {
+  padding-top: 3px;
   font-size: 22px;
   width: initial;
 }
 
-.mute-block-form {
-  height: 0px;
-}
-
-.mute-block {
+.two-dots {
+  height:  35px;
   position: relative;
 }
 
 .mute-icon {
+  height: 35px;
   display: none;
   position: absolute;
-  top: 2px;
+  top: 0;
   right: -32px;
 }
 
@@ -1261,6 +1260,12 @@ p.gray-link-icon {
 .mute-icon.appearance,
 .block-icon.appearance {
   display: block;
+}
+
+.mute-icon .form-icon {
+  display: flex;
+  align-items: center;
+  height: 35px;
 }
 
 .following .description-text {
