@@ -24,7 +24,7 @@
 
       <P>アカウントに関するすべてのデータは表示されなくなり、利用不可となります。</P>
 
-      <%= link_to resign_user_path(current_user), method: :patch do %>
+      <%= link_to resign_user_path(current_user), method: :patch, data: {confirm: "【確認】本当にアカウントを削除してもよろしいですか？"} do %>
         <button type="button" class="link-button">アカウント削除</button>
       <% end %>
 
