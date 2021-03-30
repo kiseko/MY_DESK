@@ -107,7 +107,7 @@ describe 'ユーザログイン後のテスト' do
 
     context 'データベースの確認' do
       it 'シーンアイテムが追加される' do
-        expect { find(".circle-plus-button").click }.to change{ SceneItem.count }.by(1)
+        expect { all(".circle-plus-button").first.click }.to change{ SceneItem.count }.by(1)
       end
     end
   end
@@ -184,9 +184,25 @@ describe 'ユーザログイン後のテスト' do
   end
 
 
+  describe '退会画面のテスト' do
+    let(:user) { create(:user) }
+
+    before do
+      click_on "ユーザーの設定"
+      click_on "退会"
+    end
+
+    context '表示内容の確認' do
+      it 'アカウント削除ボタンが表示される' do
+        expect(page).to have_button 'アカウント削除'
+      end
+    end
+  end
+
+
   describe 'ユーザログアウトのテスト' do
     before do
-      click_link "ログアウト"
+      find(".log-out").click
     end
 
     context 'ログアウト機能のテスト' do
