@@ -194,7 +194,52 @@ describe 'ユーザログイン後のテスト' do
 
     context '表示内容の確認' do
       it 'アカウント削除ボタンが表示される' do
-        expect(page).to have_button 'アカウント削除'
+        expect(page).to have_button "アカウント削除"
+      end
+    end
+  end
+
+
+  describe 'アイテム詳細画面のテスト:　自分のページ(レビューなし)' do
+    let(:user) { create(:user) }
+    let!(:item) { create(:item, user_id: user.id) }
+    let!(:item_picture) { create(:item_picture, item_id: item.id) }
+
+    before do
+      click_on "アイテム一覧"
+      all(".item-detail-link").first.click
+    end
+
+    context '表示内容の確認' do
+      it 'アイテム画像変更画面のリンクが表示される' do
+        expect(page).to have_link "アイテム画像の変更"
+      end
+
+      it 'アイテム画像追加画面のリンクが表示される' do
+        expect(page).to have_css ".new-picture-link"
+      end
+
+      it 'アイテム編集画面のリンクが表示される' do
+        expect(page).to have_link "アイテム情報の編集"
+      end
+
+      it 'アイテムリンク設定画面のリンクが表示される' do
+        expect(page).to have_link "アイテムリンクの設定"
+      end
+
+      it 'レビュー作成画面のリンクが表示される' do
+        expect(page).to have_button "レビューを作成"
+      end
+
+      it 'アイテム作成者のデスク詳細画面のリンクが表示される' do
+        expect(page).to have_css ".desk-link"
+      end
+    end
+
+    context 'データベースの確認' do
+      it 'ジャンルが正しく登録される' do
+        fill_in "genre[name]", with: "ガジェット"
+        expect { find(".circle-plus-button").click }.to change{ Genre.count }.by(1)
       end
     end
   end
