@@ -208,6 +208,7 @@ describe 'ユーザログイン後のテスト' do
     before do
       click_on "アイテム一覧"
       all(".item-detail-link").first.click
+      fill_in "genre[name]", with: "ガジェット"
     end
 
     context '表示内容の確認' do
@@ -234,12 +235,21 @@ describe 'ユーザログイン後のテスト' do
       it 'アイテム作成者のデスク詳細画面のリンクが表示される' do
         expect(page).to have_css ".desk-link"
       end
+
+      it 'ジャンル削除ボタンが表示される' do
+        find(".circle-plus-button").click
+        expect(page).to have_css ".genre-delete"
+      end
     end
 
     context 'データベースの確認' do
       it 'ジャンルが正しく登録される' do
-        fill_in "genre[name]", with: "ガジェット"
         expect { find(".circle-plus-button").click }.to change{ Genre.count }.by(1)
+      end
+
+      it 'ジャンルが正しく削除される' do
+        find(".circle-plus-button").click
+        expect { find(".genre-delete").click }.to change{ Genre.count }.by(-1)
       end
     end
   end
