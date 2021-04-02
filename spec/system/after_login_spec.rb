@@ -36,7 +36,6 @@ describe 'ユーザログイン後のテスト' do
   end
 
   describe 'ユーザデスク画面のテスト:　自分のページ(シーンあり)' do
-    let(:user) { create(:user) }
     let!(:scene){ create(:scene, user_id: user.id) }
 
     before do
@@ -57,7 +56,6 @@ describe 'ユーザログイン後のテスト' do
   end
 
   describe 'ユーザデスク画面のテスト:　自分のページ(シーンあり, シーンアイテムあり)' do
-    let(:user) { create(:user) }
     let(:item) { create(:item, user_id: user.id) }
     let!(:scene){ create(:scene, user_id: user.id) }
 
@@ -81,7 +79,6 @@ describe 'ユーザログイン後のテスト' do
 
 
   describe 'シーンアイテム追加画面のテスト' do
-    let(:user) { create(:user) }
     let!(:item) { create(:item, user_id: user.id) }
     let!(:scene){ create(:scene, user_id: user.id) }
 
@@ -114,8 +111,6 @@ describe 'ユーザログイン後のテスト' do
 
 
   describe 'SNSリンク設定画面のテスト' do
-    let(:user) { create(:user) }
-
     before do
       visit user_path(user)
       click_link "SNSリンクの設定"
@@ -185,8 +180,6 @@ describe 'ユーザログイン後のテスト' do
 
 
   describe '退会画面のテスト' do
-    let(:user) { create(:user) }
-
     before do
       click_on "ユーザーの設定"
       click_on "退会"
@@ -201,7 +194,6 @@ describe 'ユーザログイン後のテスト' do
 
 
   describe 'アイテム詳細画面のテスト:　自分のページ(レビューなし)' do
-    let(:user) { create(:user) }
     let!(:item) { create(:item, user_id: user.id) }
     let!(:item_picture) { create(:item_picture, item_id: item.id) }
 
@@ -250,6 +242,26 @@ describe 'ユーザログイン後のテスト' do
       it 'ジャンルが正しく削除される' do
         find(".circle-plus-button").click
         expect { find(".genre-delete").click }.to change{ Genre.count }.by(-1)
+      end
+    end
+  end
+
+  describe 'アイテム詳細画面のテスト:　他ユーザーのページ' do
+    let(:other_user) { create(:user) }
+    let!(:item) { create(:item, user_id: other_user.id) }
+    let!(:item_picture) { create(:item_picture, item_id: item.id) }
+
+    before do
+      visit item_path(item.id)
+    end
+
+    context '表示内容の確認' do
+      it 'クリップボタンが表示される' do
+        expect(page).to have_css ".clip-button"
+      end
+
+      it '戻るボタンが表示される' do
+        expect(page).to have_button "戻る"
       end
     end
   end
