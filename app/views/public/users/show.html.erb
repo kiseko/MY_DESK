@@ -208,7 +208,7 @@
                           </div>
 
                           <% if @user.id == current_user.id %>
-                            <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete do %>
+                            <%= link_to scene_item_path(scene.id, scene_item.id), method: :delete, class: "scene-item-delete" do %>
                               <button type="button" class="delete-button">
                                 <div class="cross-mark"></div>
                               </button>

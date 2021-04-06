@@ -43,6 +43,10 @@ describe 'ユーザログイン後のテスト' do
     end
 
     context '表示内容の確認' do
+      it 'シーン画像の変更ボタンが表示される' do
+        expect(page).to have_link "シーン画像の変更"
+      end
+
       it 'シーンの削除ボタンが表示される' do
         link = find(".scene-delete a")
         expect(link[:href]).to eq user_scene_path(user, scene.id)
@@ -66,13 +70,67 @@ describe 'ユーザログイン後のテスト' do
 
     context '表示内容の確認' do
       it 'シーンアイテムの削除ボタンが表示される' do
-        link = all(".card-information a").last
+        link = find(".scene-item-delete")
         expect(link[:href]).to eq scene_item_path(scene.id, scene.scene_items.first.id)
       end
 
       it 'シーンアイテム詳細画面のリンクが表示される' do
         link = find(".item-detail-link")
         expect(link[:href]).to eq item_path(item.id)
+      end
+    end
+  end
+
+
+  describe 'ユーザデスク画面のテスト:　他のユーザーのページ' do
+    let(:other_user) { create(:user) }
+    let(:item) { create(:item, user_id: other_user.id) }
+    let!(:scene){ create(:scene, user_id: other_user.id) }
+
+    before do
+      scene.scene_items.create(item_id: item.id)
+      visit user_path(other_user)
+    end
+
+    context '表示内容の確認' do
+      it 'フォローボタンが表示される' do
+        expect(page).to have_css ".follow-button"
+      end
+
+      it 'クリップボタンが表示される' do
+        expect(page).to have_css ".clip-button"
+      end
+
+      it 'デスクの非公開ボタンが表示されない' do
+        expect(page).not_to have_css ".close-button"
+      end
+
+      it 'プロフィール編集画面のリンクが表示されない' do
+        expect(page).not_to have_link "プロフィールの編集"
+      end
+
+      it 'SNSリンク設定画面のリンクが表示されない' do
+        expect(page).not_to have_link "SNSリンクの設定"
+      end
+
+      it 'シーン画像の変更ボタンが表示されない' do
+        expect(page).not_to have_link "シーン画像の変更"
+      end
+
+      it 'シーン新規作成画面のリンクが表示されない' do
+        expect(page).not_to have_css ".scene-plus-field a"
+      end
+
+      it 'シーンの削除ボタンが表示されない' do
+        expect(page).not_to have_css ".scene-delete a"
+      end
+
+      it 'シーンアイテム追加画面のリンクが表示されない' do
+        expect(page).not_to have_css ".new-scene-item-link"
+      end
+
+      it 'シーンアイテムの削除ボタンが表示されない' do
+        expect(page).not_to have_css ".scene-item-delete"
       end
     end
   end
