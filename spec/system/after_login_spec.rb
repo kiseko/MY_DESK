@@ -237,6 +237,50 @@ describe 'ユーザログイン後のテスト' do
   end
 
 
+  describe 'フォロー中一覧画面のテスト' do
+    let!(:other_user) { create(:user) }
+
+    before do
+      user.followings.create(following_user_id: other_user.id)
+      click_link "フォロー中"
+    end
+
+    context '表示内容の確認' do
+      it 'フォローしたユーザーが表示される' do
+        expect(page).to have_css ".following"
+      end
+
+      it 'フォロー中ボタンが表示される' do
+        expect(page).to have_button "フォロー中"
+      end
+
+      it 'お気に入りボタンが表示される' do
+        expect(page).to have_css ".fa-bookmark"
+      end
+    end
+  end
+
+
+  describe 'フォロワー一覧画面のテスト' do
+    let!(:other_user) { create(:user) }
+
+    before do
+      other_user.followings.create(following_user_id: user.id)
+      click_link "フォロワー"
+    end
+
+    context '表示内容の確認' do
+      it 'フォロワーが表示される' do
+        expect(page).to have_css ".following"
+      end
+
+      it 'フォローするボタンが表示される' do
+        expect(page).to have_button "フォローする"
+      end
+    end
+  end
+
+
   describe '退会画面のテスト' do
     before do
       click_on "ユーザーの設定"
