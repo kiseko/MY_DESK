@@ -147,7 +147,6 @@
 
           <% if @review.present? %>
             <div class="item-information-content">
-
               <%= render partial: "public/reviews/rating", locals: {review: @review} %>
 
               <div class="description-text">
@@ -167,12 +166,11 @@
                   <% end %>
                 </div>
               <% end %>
-
             </div>
           <% else %>
             <% if @user.id == current_user.id %>
               <div class="item-information-content center-button">
-                <%= link_to new_item_review_path(@item.id) do %>
+                <%= link_to new_item_review_path(@item.id), class: "new-review-link" do %>
                   <button type="button" class="link-button">レビューを作成</button>
                 <% end %>
               </div>

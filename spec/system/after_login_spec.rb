@@ -348,6 +348,7 @@ describe 'ユーザログイン後のテスト' do
     end
   end
 
+
   describe 'アイテム詳細画面のテスト:　他ユーザーのページ' do
     let(:other_user) { create(:user) }
     let!(:item) { create(:item, user_id: other_user.id) }
@@ -364,6 +365,31 @@ describe 'ユーザログイン後のテスト' do
 
       it '戻るボタンが表示される' do
         expect(page).to have_button "戻る"
+      end
+    end
+  end
+
+
+  describe 'レビュー作成画面のテスト' do
+    let!(:item) { create(:item, user_id: user.id) }
+    let!(:item_picture) { create(:item_picture, item_id: item.id) }
+
+    before do
+      visit item_path(item.id)
+      find(".new-review-link").click
+    end
+
+    context '表示内容の確認' do
+      it 'アイテム画像が表示される' do
+        expect(page).to have_css ".item-picture"
+      end
+    end
+
+    context 'データベースの確認' do
+      it 'レビューが正しく登録される' do
+        choose "review_rating_5"
+        fill_in "review[description]", with: "気に入ってます。"
+        expect { click_button "作成" }.to change{ Review.count }.by(1)
       end
     end
   end
