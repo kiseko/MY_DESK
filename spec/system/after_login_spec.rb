@@ -295,6 +295,36 @@ describe 'ユーザログイン後のテスト' do
   end
 
 
+  describe 'アイテム一覧画面のテスト' do
+    let!(:item) { create(:item, user_id: user.id) }
+    let!(:item_picture) { create(:item_picture, item_id: item.id) }
+
+    before do
+      click_on "アイテム一覧"
+    end
+
+    context '表示内容の確認' do
+      it 'アイテム作成画面のリンクが表示される' do
+        expect(page).to have_css ".new-item-link"
+      end
+
+      it 'アイテムのサムネイルが表示される' do
+        expect(page).to have_css ".thumbnail"
+      end
+
+      it 'クリップ数のカウントが表示される' do
+        expect(page).to have_css ".clip-count-field"
+      end
+    end
+
+    context 'データベースの確認' do
+      it 'アイテムが正しく削除される' do
+        expect { all(".item-delete").last.click }.to change{ Item.count }.by(-1)
+      end
+    end
+  end
+
+
   describe 'アイテム詳細画面のテスト:　自分のページ(レビューなし)' do
     let!(:item) { create(:item, user_id: user.id) }
     let!(:item_picture) { create(:item_picture, item_id: item.id) }
