@@ -425,6 +425,21 @@ describe 'ユーザログイン後のテスト' do
   end
 
 
+  describe '退会画面のテスト' do
+
+    before do
+      click_on "ユーザーの設定"
+      click_on "退会"
+    end
+
+    context '表示内容の確認' do
+      it 'アイテム画像が表示される' do
+        expect(page).to have_button "アカウント削除"
+      end
+    end
+  end
+
+
   describe 'ユーザログアウトのテスト' do
     before do
       find(".log-out").click
