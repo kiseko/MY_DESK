@@ -424,6 +424,22 @@ describe 'ユーザログイン後のテスト' do
     end
   end
 
+  describe 'メールアドレス変更画面のテスト' do
+
+    before do
+      click_on "ユーザーの設定"
+    end
+
+    context 'データベースの確認' do
+      it 'メールアドレスが正しく変更される' do
+        fill_in "user[email]", with: "test@gmail.com"
+        click_button "変更"
+        click_on "ユーザーの設定"
+        expect(page).to have_field "メールアドレス", with: "test@gmail.com"
+      end
+    end
+  end
+
 
   describe '退会画面のテスト' do
 
@@ -433,7 +449,7 @@ describe 'ユーザログイン後のテスト' do
     end
 
     context '表示内容の確認' do
-      it 'アイテム画像が表示される' do
+      it 'アカウント削除ボタンが表示される' do
         expect(page).to have_button "アカウント削除"
       end
     end
