@@ -95,4 +95,21 @@ describe 'ユーザログイン前のテスト' do
       end
     end
   end
+
+
+  describe 'トップ画面のテスト' do
+    let(:user) { create(:user) }
+    let!(:scene){ create(:scene, user_id: user.id) }
+
+    before do
+      visit root_path
+    end
+
+    context '表示内容の確認' do
+      it 'ユーザーのデスク一覧が表示される' do
+        expect(page).to have_css ".card"
+      end
+    end
+  end
+
 end
