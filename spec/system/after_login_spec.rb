@@ -281,6 +281,22 @@ describe 'ユーザログイン後のテスト' do
   end
 
 
+  describe 'アイテム検索結果画面のテスト' do
+    let!(:item) { create(:item, user_id: user.id, name: "スピーカー") }
+
+    before do
+      fill_in "item-input", with: "スピーカー"
+      find(".item-search-button").click
+    end
+
+    context '表示内容の確認' do
+      it '検索した文字が表示される' do
+        expect(page).to have_field "item-search-result", with: "スピーカー"
+      end
+    end
+  end
+
+
   describe '退会画面のテスト' do
     before do
       click_on "ユーザーの設定"
